@@ -18,7 +18,7 @@ const Navbar = () => {
       </div>
       {/* nav ul section  */}
       <div>
-        <ul className="uppercase flex gap-10">
+        <ul className="uppercase flex gap-10 hover:bg-slate-300">
           <li>Home</li>
           <li>All Products</li>
           <li>About Us</li>
