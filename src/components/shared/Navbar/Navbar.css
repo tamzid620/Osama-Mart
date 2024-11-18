@@ -1,0 +1,7 @@
+ ul li:hover {
+    color: #F26626;
+ }
+
+ .dropShadow{
+   filter: drop-shadow(1px 1px 1px #F26626) ;
+}
