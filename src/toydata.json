@@ -1,0 +1,212 @@
+[
+  {
+    "toy_id":"01",
+    "seller": "Tamzid",
+    "name": "Lightsaber",
+    "picture": "https://cdn.shopify.com/s/files/1/0532/0792/4900/products/replica-leia-neopixel-saber-on-purple.jpg?v=1667665028&width=900.jpg",
+    "price": 29.99,
+    "rating": 4.5,
+    "quantity": 10,
+    "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!",
+    "available": true,
+    "subCategory": "Avengers",
+    "categories":[
+      {
+        "picture": "https://media.karousell.com/media/photos/products/2022/3/12/zd_toys_iron_man_mark_l_mk50_p_1647069384_23a4e0c0_progressive",
+        "name": "Iron Man",
+        "price": 19.99,
+        "rating": 4.5,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"02",
+    "seller": "Tamzid",
+    "name": "Millennium Falcon",
+    "picture": "https://www.lego.com/cdn/cs/set/assets/blt95c35d4ed5665a49/75192.jpg?format=webply&fit=bounds&quality=75&width=800&height=800&dpr=1",
+    "price": 149.99,
+    "rating": 5.0,
+    "quantity": 5,
+    "description": "Take control of the fastest ship in the galaxy! This highly detailed Millennium Falcon replica comes with removable panels, working lights, and sounds. It's a must-have for any Star Wars fan.",
+    "available": true,
+    "subCategory": "Avergers",
+    "categories":[
+      {
+        "picture": "https://www.kapowtoys.co.uk/wp-content/uploads/2021/10/falcap1.jpg",
+        "name": "Captain America",
+        "price": 14.99,
+        "rating": 4.2,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"03",
+    "seller": "Tamzid",
+    "name": "Darth Vader Action Figure",
+    "picture": "https://gazette-eu-west2.azureedge.net/media/26680/1982-vader-2336nedi.jpg",
+    "price": 19.99,
+    "rating": 4.2,
+    "quantity": 8,
+    "description": "Embrace the dark side with this impressive Darth Vader action figure. It features multiple points of articulation, a lightsaber accessory, and a removable helmet. Join the Sith Lord in his quest for power!",
+    "available": true,
+    "subCategory": "DC",
+    "categories":[
+      {
+        "picture": "https://i.pinimg.com/564x/2f/4a/58/2f4a58fb8cc384c766a6b1b721a46f73.jpg",
+        "name": "SuperMan",
+        "price": 24.99,
+        "rating": 4.7,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"04",
+    "seller": "Tamzid",
+    "name": "R2-D2 Interactive Droid",
+    "picture": "https://cdn.shopify.com/s/files/1/0886/0860/products/ori-sphero-drone-bb-8-star-wars-1534_1024x1024.jpg?v=1579560374.jpg",
+    "price": 79.99,
+    "rating": 4.7,
+    "quantity": 3,
+    "description": "Meet your new astromech droid companion, R2-D2! This interactive droid can move, make sounds, and project holographic messages, just like in the movies. It's a loyal and resourceful ally for any Star Wars adventure.",
+    "available": true,
+    "subCategory": "DC",
+    "categories":[
+      {
+        "picture": "https://www.target.com.au/medias/static_content/product/images/full/69/87/A1816987.jpg?impolicy=product_portrait_hero",
+        "name": "Batman",
+        "price": 29.99,
+        "rating": 4.6,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"05",
+    "seller": "Tamzid",
+    "name": "X-Wing Fighter Model Kit",
+    "picture": "https://i5.walmartimages.ca/images/Large/710/008/6000201710008.jpg",
+    "price": 39.99,
+    "rating": 4.4,
+    "quantity": 6,
+    "description": "Build and display your own X-Wing Fighter with this detailed model kit. It includes all the necessary parts and decals for a stunning replica. May the Force be with you as you embark on this exciting construction project.",
+    "available": true,
+    "subCategory": "Transformers",
+    "categories":[
+      {
+        "picture": "https://i5.walmartimages.ca/images/Enlarge/846/796/6000198846796.jpg",
+        "name": "Bumblebee",
+        "price": 19.99,
+        "rating": 4.4,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"06",
+    "seller": "Tamzid",
+    "name": "BB-8 App-Enabled Droid",
+    "picture": "https://cdn.shopify.com/s/files/1/0886/0860/products/ori-sphero-drone-bb-8-star-wars-1534_1024x1024.jpg?v=1579560374.jpg",
+    "price": 79.99,
+    "rating": 4.6,
+    "quantity": 10,
+    "description": "Bring the lovable BB-8 droid to life with this app-enabled toy. Control it using your smartphone, explore holographic simulations, and embark on exciting missions in a galaxy far, far away.",
+    "available": true,
+    "subCategory": "Transformers",
+    "categories":[
+      {
+        "picture": "https://lmb3.files.wordpress.com/2019/12/tfbbssvoymtmv-1.jpg?w=1400&h=",
+        "name": "Megatron",
+        "price": 24.99,
+        "rating": 4.3,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"07",
+    "seller": "Tamzid",
+    "name": "Kylo Ren Lightsaber",
+    "picture": "https://cdn.shopify.com/s/files/1/0643/7444/0178/products/kylo-ren-lightsaber-baselit-xenopixel-proffie-1_510x.progressive.jpg?v=1678980203.jpg",
+    "price": 39.99,
+    "rating": 4.4,
+    "quantity": 5,
+    "description": "Embrace the power of the dark side with the Kylo Ren Lightsaber. This realistic replica features a pulsating blade, movie-inspired sound effects, and a durable hilt. Join the Knights of Ren and unleash your fury!",
+    "available": true,
+    "subCategory": "Avengers",
+    "categories":[
+      {
+        "picture": "https://cdn.shopify.com/s/files/1/1969/6605/products/1bc33ac6-11c8-4aa4-bd4e-40018186548a.jpg?v=1669925315&width=1920",
+        "name": "Thor",
+        "price": 24.99,
+        "rating": 4.7,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"08",
+    "seller": "Tamzid",
+    "name": "Stormtrooper Helmet",
+    "picture": "https://m.media-amazon.com/images/I/71kJWVXYDZL._AC_SL1500_.jpg",
+    "price": 59.99,
+    "rating": 4.8,
+    "quantity": 8,
+    "description": "Enlist in the Galactic Empire with this authentic Stormtrooper helmet. It features a glossy white finish, adjustable straps, and accurate details. Complete your Stormtrooper cosplay or display it as a collectible!",
+    "available": true,
+    "subCategory": "Transformers",
+    "categories":[
+      {
+        "picture": "https://i5.walmartimages.ca/images/Enlarge/846/796/6000198846796.jpg",
+        "name": "Bumblebee",
+        "price": 19.99,
+        "rating": 4.4,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"09",
+    "seller": "Tamzid",
+    "name": "The Child Plush Toy",
+    "picture": "https://i5.walmartimages.ca/images/Large/710/008/6000201710008.jpg",
+    "price": 19.99,
+    "rating": 4.9,
+    "quantity": 15,
+    "description": "Cuddle up with the adorable Baby Yoda with this soft and huggable plush toy. Inspired by the character from The Mandalorian series, it's the perfect companion for Star Wars fans of all ages.",
+    "available": true,
+    "subCategory": "Avengers",
+    "categories":[
+      {
+        "picture": "https://media.karousell.com/media/photos/products/2022/3/12/zd_toys_iron_man_mark_l_mk50_p_1647069384_23a4e0c0_progressive",
+        "name": "Iron Man",
+        "price": 19.99,
+        "rating": 4.5,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  },
+  {
+    "toy_id":"10",
+    "seller": "Tamzid",
+    "name": "Star Wars LEGO Millennium Falcon",
+    "picture": "https://m.media-amazon.com/images/I/81PhO-kyPuL._AC_SL1500_.jpg",
+    "price": 149.99,
+    "rating": 5.0,
+    "quantity": 3,
+    "description": "Build the iconic Millennium Falcon with this Star Wars LEGO set. It includes minifigures of your favorite characters, realistic details, and removable sections for easy access to the interior. Embark on epic space adventures!",
+    "available": true,
+    "subCategory": "Avengers",
+    "categories":[
+      {
+        "picture": "https://lmb3.files.wordpress.com/2019/12/tfbbssvoymtmv-1.jpg?w=1400&h=",
+        "name": "Megatron",
+        "price": 24.99,
+        "rating": 4.3,
+        "description": "Experience the power of the Force with this iconic lightsaber. It features realistic sound effects and lights up in different colors. Perfect for epic Jedi duels!"
+      }
+    ]
+  }
+]

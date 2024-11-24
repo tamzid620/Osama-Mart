@@ -1,5 +1,6 @@
 "use client";
 import { Kanit } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import "@/components/shared/Navbar/Navbar.css";
 import React, { useState } from "react";
 import Image from "next/image";
@@ -7,6 +8,10 @@ import navbarImage from "@/assests/icons/OsamaMart -Logo.png";
 import menuBar from "@/assests/icons/menu-bar.png";
 
 const kanit = Kanit({
+  weight: ["400", "700"],
+  style: ["normal"],
+});
+const merriweather = Merriweather({
   weight: ["400", "700"],
   style: ["normal"],
 });

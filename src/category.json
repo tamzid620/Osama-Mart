@@ -1,0 +1,45 @@
+// [
+//       {
+//         "id": 1,
+//         "picture": "https://media.karousell.com/media/photos/products/2022/3/12/zd_toys_iron_man_mark_l_mk50_p_1647069384_23a4e0c0_progressive",
+//         "name": "Iron Man",
+//         "price": 19.99,
+//         "rating": 4.5
+//       },
+//       {
+//         "id": 2,
+//         "picture": "https://www.kapowtoys.co.uk/wp-content/uploads/2021/10/falcap1.jpg",
+//         "name": "Captain America",
+//         "price": 14.99,
+//         "rating": 4.2
+//       },
+//       {
+//         "id": 3,
+//         "picture": "https://cdn.shopify.com/s/files/1/1969/6605/products/1bc33ac6-11c8-4aa4-bd4e-40018186548a.jpg?v=1669925315&width=1920",
+//         "name": "Thor",
+//         "price": 24.99,
+//         "rating": 4.7
+//       },
+//       {
+//         "id": 4,
+//         "picture": "https://m.media-amazon.com/images/I/91Y8bCTzlML._AC_SL1500_.jpg",
+//         "name": "Optimus Prime",
+//         "price": 29.99,
+//         "rating": 4.6
+//       },
+//       {
+//         "id": 5,
+//         "picture": "https://i5.walmartimages.ca/images/Enlarge/846/796/6000198846796.jpg",
+//         "name": "Bumblebee",
+//         "price": 19.99,
+//         "rating": 4.4
+//       },
+//       {
+//         "id": 6,
+//         "picture": "https://lmb3.files.wordpress.com/2019/12/tfbbssvoymtmv-1.jpg?w=1400&h=",
+//         "name": "Megatron",
+//         "price": 24.99,
+//         "rating": 4.3
+//       }
+//     ]
+  
