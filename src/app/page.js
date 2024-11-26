@@ -1,4 +1,5 @@
 import Banner from "@/components/shared/Banner/Banner";
+import OurCategories from "@/components/shared/OurCategories/OurCategories";
 
 export const metadata = {
   title: "OsamaMart -Home",
@@ -7,9 +8,9 @@ export const metadata = {
 
 const Home = () => {
   return (
-    <div className="xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto 
-      flex justify-between items-center">
-    <Banner/>
+    <div className="xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto mt-16">
+      <Banner />
+      <OurCategories />
     </div>
   );
 }

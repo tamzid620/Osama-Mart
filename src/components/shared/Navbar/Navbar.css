@@ -1,7 +1,15 @@
- ul li:hover {
-    color: #F26626;
+ul li {
+   color: #F26626;
+}
+ul li:hover {
+   color:  white;
  }
+.absolute li {
+   color:  white;
+}
 
  .dropShadow{
    filter: drop-shadow(1px 1px 1px #F26626) ;
 }
+
+

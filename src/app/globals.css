@@ -19,5 +19,4 @@ body {
   background: var(--background); */
   color: var(--background);
   background: var(--foreground);
-  font-family: Montserrat, Lora, serif;
 }

@@ -24,10 +24,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`${kanit.className} relative xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto 
-      flex justify-between items-center lg:px-4 md:px-4 sm: px-4 `}
-    >
+    <nav className= "bg-black fixed top-0 z-10 w-full shadow-sm shadow-gray-900">
+      <div className={`${kanit.className} relative xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto 
+      flex justify-between items-center lg:px-4 md:px-4 sm: px-4 `}>
+
       {/* Image section  */}
       <div>
         <Image
@@ -62,6 +62,7 @@ const Navbar = () => {
           <li>About Us</li>
         </ul>
       )}
+            </div>
     </nav>
   );
 };
