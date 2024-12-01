@@ -15,15 +15,15 @@ const OurCategories = () => {
 
   return (
     <div className="my-20">
-        <h1 className="">Our Category</h1>
+        <h1 className={`${kanit.className} text-3xl text-center mb-5 `}>Our Category</h1>
         {/* ---------------------------- Tab title section ----------------------------  */}
     <div className="md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
-      <div className="flex justify-between sm: gap-3 text-center">
+      <div className="flex sm: gap-3 text-center">
         {/* Vehicles & Starships  */}
-        <div className="md:flex gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
-          <span className="flex justify-center">
+        <div className="md:flex w-full gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
+          <span className="flex justify-center ms-5">
             <Image
-              className="w-[30px] "
+              className="w-[30px]"
               src={icon1}
               alt="category Icons"
             ></Image>
@@ -35,10 +35,10 @@ const OurCategories = () => {
           </span>
         </div>
         {/* Action Figures  */}
-        <div className="md:flex gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
+        <div className="md:flex w-full gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
           <span className="flex justify-center">
             <Image
-              className="w-[30px] "
+              className="w-[30px] ms-8"
               src={icon2}
               alt="category Icons"
             ></Image>
@@ -50,10 +50,10 @@ const OurCategories = () => {
           </span>
         </div>
         {/* Lightsabers & Weapons  */}
-        <div className="md:flex gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
+        <div className="md:flex w-full gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
           <span className="flex justify-center">
             <Image
-              className="w-[30px] "
+              className="w-[30px] ms-3"
               src={icon3}
               alt="category Icons"
             ></Image>
