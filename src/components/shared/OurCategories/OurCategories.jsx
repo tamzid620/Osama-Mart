@@ -7,10 +7,6 @@ import icon1 from "@/assests/icons/millennium-falcon.png";
 import icon2 from "@/assests/icons/droid.png";
 import icon3 from "@/assests/icons/light-saber.png";
 import { IoIosCart } from "react-icons/io";
-import img1 from "@/assests/images/Mango-Ice.jpg";
-import img2 from "@/assests/images/GUM-MINT.jpg";
-import img3 from "@/assests/images/elfbar-ep8000-Black-Razz-Ice.jpg";
-import img4 from "@/assests/images/BLUE-RAZZ-LEMONADE.jpg";
 import suffleIcon from "@/assests/icons/white-suffle.png";
 import searchIcon from "@/assests/icons/white-search.png";
 import heartIcon from "@/assests/icons/white-heart.png";
@@ -23,79 +19,45 @@ const kanit = Kanit({
   style: ["normal"],
 });
 
-// const products = [
-//   {
-//     image: img1,
-//     hoverImage: img2,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img3,
-//     hoverImage: img4,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img1,
-//     hoverImage: img2,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img3,
-//     hoverImage: img4,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img1,
-//     hoverImage: img2,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img3,
-//     hoverImage: img4,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img1,
-//     hoverImage: img2,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-//   {
-//     image: img3,
-//     hoverImage: img4,
-//     title: "Nerd Alien 12000 puffs 20mg",
-//     price: "$40.00 - $390.00",
-//   },
-// ];
 const OurCategories = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [filtertoys, setFiltertoys] = useState([]);
+  const [showAllToys, setShowAllToys] = useState(8) ;
+  const [allToys, setAllToys] = useState([]);
+  const [selectedTab, setSelectedTab] = useState('All') ;
 
   useEffect(() => {
     axios
       .get(baseUrl("all-toys"))
-      .then((res) => setFiltertoys(res.data))
+      .then((res) => setAllToys(res.data))
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+    }, []);
+ // Filter the toys by category
+    const filteredToys = allToys.filter((toy) =>
+    selectedTab === 'All' ? allToys : toy.category === selectedTab
+    );
+    // defalut toys shows 
+    const defaultToys = filteredToys.slice(0, showAllToys) 
 
   return (
     <div className="my-20">
-      <h1 className={`${kanit.className} text-3xl text-center mb-5 `}>
-        Our Category {filtertoys.length}
+      <h1
+        className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626] `}
+      >
+        Our Category
       </h1>
       {/* ---------------------------- Tab title section ----------------------------  */}
       <div className="md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
         <div className="flex sm: gap-3 text-center">
           {/* Vehicles & Starships  */}
-          <div className="md:flex w-full gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
+          <div onClick={()=> setSelectedTab("Vehicles & Starships")}
+          className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
+            selectedTab === "Vehicles & Starships"
+            ? "bg-[#F26626]  border-white"
+            : "border-[#F26626]"
+          } text-white hover:border-white hover:bg-[#F26626]`}
+           >
             <span className="flex justify-center ms-5">
               <Image
                 className="w-[30px]"
@@ -110,7 +72,12 @@ const OurCategories = () => {
             </span>
           </div>
           {/* Action Figures  */}
-          <div className="md:flex w-full gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
+          <div onClick={()=> setSelectedTab("Action Figures")}
+         className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
+          selectedTab === "Action Figures"
+          ? "bg-[#F26626]  border-white"
+          : "border-[#F26626]"
+        } text-white hover:border-white hover:bg-[#F26626]`}>
             <span className="flex justify-center">
               <Image
                 className="w-[30px] ms-8"
@@ -125,7 +92,12 @@ const OurCategories = () => {
             </span>
           </div>
           {/* Lightsabers & Weapons  */}
-          <div className="md:flex w-full gap-1 border-2 py-2 px-3 border-[#F26626] hover:border-white hover:bg-[#F26626]">
+          <div onClick={()=> setSelectedTab("Lightsabers & Weapons")}
+         className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
+          selectedTab === "Lightsabers & Weapons"
+          ? "bg-[#F26626]  border-white"
+          : "border-[#F26626]"
+        } text-white hover:border-white hover:bg-[#F26626]`}>
             <span className="flex justify-center">
               <Image
                 className="w-[30px] ms-3"
@@ -142,17 +114,14 @@ const OurCategories = () => {
         </div>
       </div>
       {/* ---------------------------- information section  ----------------------------  */}
-      <div className="mt-20">
+      <div className="mt-10 flex justify-center">
         {/* special Items Lists  */}
-        <div
-          className="lg:mx-0 md:mx-3 sm: mx-5
-        grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5"
-        >
-          {filtertoys.map(
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
+          {defaultToys.map(
             ({ id, image, hoverImage, name, quantity, rating, price }) => (
               <div
                 key={id}
-                className=" card-zoom bg-gray-200 text-[#000040] text-center w-[280px] rounded-lg shadow-md"
+                className=" card-zoom bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md"
               >
                 <span className=" zoom-effect block overflow-hidden">
                   <Image
@@ -181,8 +150,8 @@ const OurCategories = () => {
                   <ReactStars
                     count={5}
                     size={24}
-                    value={5}
-                    color2={"#ffd700"}
+                    value={rating}
+                    color2={"#F26626"}
                   />
                   {/* rating appers here -------------------------------------------------------------------------- */}
                 </span>
@@ -198,7 +167,7 @@ const OurCategories = () => {
                   onMouseEnter={() => setHoveredIndex(id)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <button className="w-full mx-4 bg-white hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
+                  <button className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
                     {hoveredIndex === id ? (
                       <IoIosCart
                         size={20}
@@ -257,7 +226,9 @@ const OurCategories = () => {
       </div>
       {/* CLICK FOR MORE BUTTON  */}
       <div className="flex justify-center my-5">
-        <button className="bg-[#000040] hover:bg-[#000040c8] text-white py-2 px-4 font-semibold uppercase rounded-md text-sm">
+        <button
+        onClick={() => setShowAllToys(filteredToys.length)}
+        className="bg-[#F26626] hover:bg-white text-white hover:text-[#F26626] py-2 px-4 font-semibold uppercase rounded-sm text-sm">
           Click for More
         </button>
       </div>
