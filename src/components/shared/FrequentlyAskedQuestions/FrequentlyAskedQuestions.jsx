@@ -26,7 +26,7 @@ const FrequentlyAskedQuestions = () => {
           <div className="join join-vertical w-full">
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" defaultChecked />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-orange-500">
               What is the estimated delivery time for orders?
               </div>
               <div className="collapse-content">
@@ -35,7 +35,7 @@ const FrequentlyAskedQuestions = () => {
             </div>
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-orange-500">
               What payment methods do you accept?
               </div>
               <div className="collapse-content">
@@ -44,7 +44,7 @@ const FrequentlyAskedQuestions = () => {
             </div>
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-orange-500">
               Can I return or exchange a toy if I'm not satisfied?
               </div>
               <div className="collapse-content">
@@ -56,7 +56,7 @@ const FrequentlyAskedQuestions = () => {
           <div className="join join-vertical w-full">
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" defaultChecked />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-orange-500">
               Do you offer gift-wrapping services?
               </div>
               <div className="collapse-content">
@@ -65,7 +65,7 @@ const FrequentlyAskedQuestions = () => {
             </div>
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-orange-500">
               Are the toys on your website safe for children?
               </div>
               <div className="collapse-content">
@@ -74,7 +74,7 @@ const FrequentlyAskedQuestions = () => {
             </div>
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-xl font-medium text-orange-500">
               How can I contact customer support?
               </div>
               <div className="collapse-content">

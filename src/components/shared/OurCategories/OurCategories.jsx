@@ -31,11 +31,10 @@ const OurCategories = () => {
   const [selectedTab, setSelectedTab] = useState("All");
 
   useEffect(() => {
-    axios
-      .get(baseUrl("all-toys"))
+    axios.get(baseUrl("all-toys"))
       .then((res) => setAllToys(res.data))
       .catch((error) => {
-        console.log(error);
+        setAllToys(error);
       });
   }, []);
   // Filter the toys by category

@@ -2,6 +2,7 @@ import Banner from "@/components/shared/Banner/Banner";
 import FrequentlyAskedQuestions from "@/components/shared/FrequentlyAskedQuestions/FrequentlyAskedQuestions";
 import OurCategories from "@/components/shared/OurCategories/OurCategories";
 import OurLatestNews from "@/components/shared/OurLatestNews/OurLatestNews";
+import OurSpecialGallery from "@/components/shared/OurSpecialGallery/OurSpecialGallery";
 
 export const metadata = {
   title: "OsamaMart -Home",
@@ -14,6 +15,7 @@ const Home = () => {
       <Banner />
       <OurCategories />
       <OurLatestNews/>
+      <OurSpecialGallery/>
       <FrequentlyAskedQuestions/>
     </div>
   );
