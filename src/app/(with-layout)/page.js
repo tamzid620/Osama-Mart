@@ -1,4 +1,5 @@
 import Banner from "@/components/shared/Banner/Banner";
+import FrequentlyAskedQuestions from "@/components/shared/FrequentlyAskedQuestions/FrequentlyAskedQuestions";
 import OurCategories from "@/components/shared/OurCategories/OurCategories";
 import OurLatestNews from "@/components/shared/OurLatestNews/OurLatestNews";
 
@@ -13,6 +14,7 @@ const Home = () => {
       <Banner />
       <OurCategories />
       <OurLatestNews/>
+      <FrequentlyAskedQuestions/>
     </div>
   );
 }

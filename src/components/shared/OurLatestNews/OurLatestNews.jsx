@@ -1,10 +1,10 @@
-import Image from "next/image";
-import { Kanit } from "next/font/google";
-import { Mulish } from "next/font/google";
 import React from "react";
+import Image from "next/image";
 import cardImage1 from "@/assests/images/store2.jpg";
 import cardImage2 from "@/assests/images/store1.jpg";
 import cardImage3 from "@/assests/images/store3.jpg";
+import { Kanit } from "next/font/google";
+import { Mulish } from "next/font/google";
 
 const kanit = Kanit({
     weight: ["400", "700"],
@@ -14,7 +14,7 @@ const kanit = Kanit({
     weight: ["300", "700"],
     style: ["normal"],
   });
-const data = [
+const newsData = [
   {
     id: 1,
     cardImage: cardImage1,
@@ -44,8 +44,8 @@ const OurLatestNews = () => {
         Our Latest News
       </h1>
           {/* ---------------------------- Information section ----------------------------  */}
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm: gap-8">
-      {data.map(({ id, cardImage, title, disc }) => (
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm: grid-cols-1 gap-8">
+      {newsData.map(({ id, cardImage, title, disc }) => (
         <div key={id} className={`${mulish.className} card bg-white text-black w-full shadow-xl `}>
           <figure>
             <Image className="w-full h-[250px]" src={cardImage} alt="toy image" />
