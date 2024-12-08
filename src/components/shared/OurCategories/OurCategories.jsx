@@ -130,7 +130,7 @@ const OurCategories = () => {
             ({ id, image, hoverImage, name, quantity, rating, price }) => (
               <div
                 key={id}
-                className=" card-zoom bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md"
+                className=" card-zoom bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md shadow-[#F26626]"
               >
                 <span className=" zoom-effect block overflow-hidden">
                   <Image

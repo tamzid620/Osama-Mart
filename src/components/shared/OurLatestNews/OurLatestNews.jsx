@@ -46,7 +46,7 @@ const OurLatestNews = () => {
           {/* ---------------------------- Information section ----------------------------  */}
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm: grid-cols-1 gap-8">
       {newsData.map(({ id, cardImage, title, disc }) => (
-        <div key={id} className={`${mulish.className} card bg-white text-black w-full shadow-xl `}>
+        <div key={id} className={`${mulish.className} card bg-white text-black w-full shadow-md shadow-[#F26626]`}>
           <figure>
             <Image className="w-full h-[250px]" src={cardImage} alt="toy image" />
           </figure>
