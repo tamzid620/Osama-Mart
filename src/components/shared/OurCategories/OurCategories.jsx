@@ -7,7 +7,7 @@ import { Mulish } from "next/font/google";
 import icon1 from "@/assests/icons/millennium-falcon.png";
 import icon2 from "@/assests/icons/droid.png";
 import icon3 from "@/assests/icons/light-saber.png";
-import { IoIosCart } from "react-icons/io";
+import { IoMdArrowRoundForward } from "react-icons/io";
 import suffleIcon from "@/assests/icons/white-suffle.png";
 import searchIcon from "@/assests/icons/white-search.png";
 import heartIcon from "@/assests/icons/white-heart.png";
@@ -176,10 +176,12 @@ const OurCategories = () => {
                 >
                   <button className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
                     {hoveredIndex === id ? (
-                      <IoIosCart
-                        size={20}
-                        className="transition-opacity duration-500"
-                      />
+                     
+                      <span className=" flex justify-center items-center">Details  <IoMdArrowRoundForward
+                      size={20}
+                      className="transition-opacity duration-500"
+                    />
+                      </span>
                     ) : (
                       <span className="transition-opacity duration-500">
                         Select Options
