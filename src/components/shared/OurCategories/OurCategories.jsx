@@ -3,6 +3,7 @@ import "./OurCategories.css";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Kanit } from "next/font/google";
+import { Mulish } from "next/font/google";
 import icon1 from "@/assests/icons/millennium-falcon.png";
 import icon2 from "@/assests/icons/droid.png";
 import icon3 from "@/assests/icons/light-saber.png";
@@ -18,12 +19,16 @@ const kanit = Kanit({
   weight: ["400", "700"],
   style: ["normal"],
 });
+const mulish = Mulish({
+  weight: ["300", "700"],
+  style: ["normal"],
+});
 
 const OurCategories = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [showAllToys, setShowAllToys] = useState(8) ;
+  const [showAllToys, setShowAllToys] = useState(8);
   const [allToys, setAllToys] = useState([]);
-  const [selectedTab, setSelectedTab] = useState('All') ;
+  const [selectedTab, setSelectedTab] = useState("All");
 
   useEffect(() => {
     axios
@@ -32,13 +37,13 @@ const OurCategories = () => {
       .catch((error) => {
         console.log(error);
       });
-    }, []);
- // Filter the toys by category
-    const filteredToys = allToys.filter((toy) =>
-    selectedTab === 'All' ? allToys : toy.category === selectedTab
-    );
-    // defalut toys shows 
-    const defaultToys = filteredToys.slice(0, showAllToys) 
+  }, []);
+  // Filter the toys by category
+  const filteredToys = allToys.filter((toy) =>
+    selectedTab === "All" ? allToys : toy.category === selectedTab
+  );
+  // defalut toys shows
+  const defaultToys = filteredToys.slice(0, showAllToys);
 
   return (
     <div className="my-20">
@@ -51,13 +56,14 @@ const OurCategories = () => {
       <div className="md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
         <div className="flex sm: gap-3 text-center">
           {/* Vehicles & Starships  */}
-          <div onClick={()=> setSelectedTab("Vehicles & Starships")}
-          className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
-            selectedTab === "Vehicles & Starships"
-            ? "bg-[#F26626]  border-white"
-            : "border-[#F26626]"
-          } text-white hover:border-white hover:bg-[#F26626]`}
-           >
+          <div
+            onClick={() => setSelectedTab("Vehicles & Starships")}
+            className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
+              selectedTab === "Vehicles & Starships"
+                ? "bg-[#F26626]  border-white"
+                : "border-[#F26626]"
+            } text-white hover:border-white hover:bg-[#F26626]`}
+          >
             <span className="flex justify-center ms-5">
               <Image
                 className="w-[30px]"
@@ -72,12 +78,14 @@ const OurCategories = () => {
             </span>
           </div>
           {/* Action Figures  */}
-          <div onClick={()=> setSelectedTab("Action Figures")}
-         className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
-          selectedTab === "Action Figures"
-          ? "bg-[#F26626]  border-white"
-          : "border-[#F26626]"
-        } text-white hover:border-white hover:bg-[#F26626]`}>
+          <div
+            onClick={() => setSelectedTab("Action Figures")}
+            className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
+              selectedTab === "Action Figures"
+                ? "bg-[#F26626]  border-white"
+                : "border-[#F26626]"
+            } text-white hover:border-white hover:bg-[#F26626]`}
+          >
             <span className="flex justify-center">
               <Image
                 className="w-[30px] ms-8"
@@ -92,12 +100,14 @@ const OurCategories = () => {
             </span>
           </div>
           {/* Lightsabers & Weapons  */}
-          <div onClick={()=> setSelectedTab("Lightsabers & Weapons")}
-         className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
-          selectedTab === "Lightsabers & Weapons"
-          ? "bg-[#F26626]  border-white"
-          : "border-[#F26626]"
-        } text-white hover:border-white hover:bg-[#F26626]`}>
+          <div
+            onClick={() => setSelectedTab("Lightsabers & Weapons")}
+            className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
+              selectedTab === "Lightsabers & Weapons"
+                ? "bg-[#F26626]  border-white"
+                : "border-[#F26626]"
+            } text-white hover:border-white hover:bg-[#F26626]`}
+          >
             <span className="flex justify-center">
               <Image
                 className="w-[30px] ms-3"
@@ -140,8 +150,7 @@ const OurCategories = () => {
                   />
                 </span>
                 <p
-                  style={{ fontFamily: "Lato, sans-serif" }}
-                  className="mx-2 my-2 font-semibold mt-3"
+                  className={`${kanit.className} mx-2 my-2 font-semibold mt-3`}
                 >
                   {name}
                 </p>
@@ -156,10 +165,9 @@ const OurCategories = () => {
                   {/* rating appers here -------------------------------------------------------------------------- */}
                 </span>
                 <p
-                  style={{ fontFamily: "Lato, sans-serif" }}
-                  className="px-2 pb-5 font-semibold "
+                  className={`${mulish.className} px-2 pb-5 font-semibold `}
                 >
-                  {price}
+                 $ {price}
                 </p>
                 {/* CART SELECT OPTIONS BUTTON  */}
                 <div
@@ -226,11 +234,21 @@ const OurCategories = () => {
       </div>
       {/* CLICK FOR MORE BUTTON  */}
       <div className="flex justify-center my-5">
-        <button
-        onClick={() => setShowAllToys(filteredToys.length)}
-        className="bg-[#F26626] hover:bg-white text-white hover:text-[#F26626] py-2 px-4 font-semibold uppercase rounded-sm text-sm">
-          Click for More
-        </button>
+        {filteredToys.length <= 8 ? (
+          " "
+        ) : (
+          <div>
+            {showAllToys < filteredToys.length && (
+              <button
+                onClick={() => setShowAllToys(filteredToys.length)}
+                className="bg-[#F26626] hover:bg-white text-white hover:text-[#F26626] 
+                py-2 px-4 font-semibold uppercase rounded-sm text-sm"
+              >
+                Click for More
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

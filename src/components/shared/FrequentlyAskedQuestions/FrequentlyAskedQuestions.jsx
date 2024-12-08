@@ -20,7 +20,7 @@ const FrequentlyAskedQuestions = () => {
         Frequently Asked Questions
       </h1>
       {/* ---------------------------- Information section ----------------------------  */}
-      <div className="grid lg:grid-cols-2 md:grid-cols-1 sm: grid-cols-1 gap-8">
+      <div className={`${mulish.className} grid lg:grid-cols-2 md:grid-cols-1 sm: grid-cols-1 gap-8 `}>
         
         {/* accordion 1  */}
           <div className="join join-vertical w-full">
