@@ -7,6 +7,8 @@ import Image from "next/image";
 import navbarImage from "@/assests/icons/OsamaMart -Logo.png";
 import menuBar from "@/assests/icons/menu-bar.png";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import Link from "next/link";
+import ViewCart from "../ViewCart/ViewCart";
 
 const kanit = Kanit({
   weight: ["400", "700"],
@@ -19,6 +21,11 @@ const merriweather = Merriweather({
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [viewCart, setViewCart] = useState(false);
+
+  const toggleViewCart = () => {
+    setViewCart(!viewCart);
+  };
 
   const handleMenuBar = () => {
     setIsOpen(!isOpen);
@@ -41,15 +48,22 @@ const Navbar = () => {
         {/* nav ul section for large device  */}
         <div className="md:flex sm: hidden">
           <ul className="uppercase flex gap-10 ">
-            <li title="Home">Home</li>
-            <li title="All Products">All Products</li>
-            <li title="About Us">About Us</li>
-            <li title="View Cart"><BsFillCartCheckFill size={20}/></li>
+            <li title="Home"><Link href="/">Home</Link></li>
+            <li title="All Products"><Link href="/allProducts">All Products</Link></li>
+            <li title="About Us"><Link href="/aboutUs">About Us</Link></li>
+            <li title="View Cart" onClick={toggleViewCart}>
+              <BsFillCartCheckFill size={20} />
+            </li>
           </ul>
         </div>
         {/* nav ul section for medium & small  device  */}
         <div className="relative md:hidden sm: flex">
-       <BsFillCartCheckFill title="View Cart" className="me-5 text-[#F26626]" size={30}/>
+          <BsFillCartCheckFill
+            title="View Cart"
+            size={30}
+            onClick={toggleViewCart}
+            className="me-5 text-[#F26626]"
+          />
           <Image
             onClick={handleMenuBar}
             className="w-[30px] dropShadow "
@@ -63,11 +77,20 @@ const Navbar = () => {
          bg-[#F26626] dropShadow w-full -mx-4 
          text-center leading-[50px] py-4"
           >
-           <li title="Home">Home</li>
-            <li title="All Products">All Products</li>
-            <li title="About Us">About Us</li>
-            
+            <li title="Home"><Link href="/">Home</Link></li>
+            <li title="All Products"><Link href="/allProducts">All Products</Link></li>
+            <li title="About Us"><Link href="/aboutUs">About Us</Link></li>
           </ul>
+        )}
+      </div>
+      {/* ViewCart  SideBar */}
+      <div className="relative">
+        {viewCart ? (
+          <div className="absolute bg-white w-[350px] shadow-md shadow-[#F26626] h-screen z-10 transition ease-in-out duration-500 ">
+            <ViewCart toggleViewCart={toggleViewCart}/>
+          </div>
+        ) : (
+          <></>
         )}
       </div>
     </nav>

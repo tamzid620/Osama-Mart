@@ -1,133 +1,45 @@
-"use client";
-import "./OurCategories.css";
+"use client" ;
+import "@/components/shared/OurCategories/OurCategories.css";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
-import icon1 from "@/assests/icons/millennium-falcon.png";
-import icon2 from "@/assests/icons/droid.png";
-import icon3 from "@/assests/icons/light-saber.png";
+import { baseUrl } from "@/utilies/config";
 import { FaCartArrowDown } from "react-icons/fa";
 import suffleIcon from "@/assests/icons/white-suffle.png";
 import searchIcon from "@/assests/icons/white-search.png";
 import heartIcon from "@/assests/icons/white-heart.png";
 import ReactStars from "react-stars";
 import axios from "axios";
-import { baseUrl } from "@/utilies/config";
 
 const kanit = Kanit({
-  weight: ["400", "700"],
-  style: ["normal"],
-});
-const mulish = Mulish({
-  weight: ["300", "700"],
-  style: ["normal"],
-});
+    weight: ["400", "700"],
+    style: ["normal"],
+  });
+  const mulish = Mulish({
+    weight: ["300", "700"],
+    style: ["normal"],
+  });
+  
+  const AllProductsCards = () => {
+    
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [allToys, setAllToys] = useState([]);
 
-const OurCategories = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [showAllToys, setShowAllToys] = useState(4);
-  const [allToys, setAllToys] = useState([]);
-  const [selectedTab, setSelectedTab] = useState("Vehicles & Starships");
+    useEffect(() => {
+      axios
+        .get(baseUrl("all-toys"))
+        .then((res) => setAllToys(res.data))
+        .catch((error) => {
+          setAllToys(error);
+        });
+    }, []);
 
-  useEffect(() => {
-    axios
-      .get(baseUrl("all-toys"))
-      .then((res) => setAllToys(res.data))
-      .catch((error) => {
-        setAllToys(error);
-      });
-  }, []);
-  // Filter the toys by category
-  const filteredToys = allToys.filter((toy) =>
-    selectedTab === "All" ? allToys : toy.category === selectedTab
-  );
-  // defalut toys shows
-  const defaultToys = filteredToys.slice(0, showAllToys);
-
-  return (
-    <div className="my-20">
-      <h1
-        className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626] `}
-      >
-        Our Category
-      </h1>
-      {/* ---------------------------- Tab title section ----------------------------  */}
-      <div className="md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
-        <div className="flex sm: gap-3 text-center">
-          {/* Vehicles & Starships  */}
-          <div
-            onClick={() => setSelectedTab("Vehicles & Starships")}
-            className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
-              selectedTab === "Vehicles & Starships"
-                ? "bg-[#F26626]  border-white"
-                : "border-[#F26626]"
-            } text-white hover:border-white hover:bg-[#F26626]`}
-          >
-            <span className="flex justify-center ms-5">
-              <Image
-                className="w-[30px]"
-                src={icon1}
-                alt="category Icons"
-              ></Image>
-            </span>
-            <span
-              className={`${kanit.className} uppercase mt-1 md:text-md sm: text-[14px]`}
-            >
-              Vehicles & Starships
-            </span>
-          </div>
-          {/* Action Figures  */}
-          <div
-            onClick={() => setSelectedTab("Action Figures")}
-            className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
-              selectedTab === "Action Figures"
-                ? "bg-[#F26626]  border-white"
-                : "border-[#F26626]"
-            } text-white hover:border-white hover:bg-[#F26626]`}
-          >
-            <span className="flex justify-center">
-              <Image
-                className="w-[30px] ms-8"
-                src={icon2}
-                alt="category Icons"
-              ></Image>
-            </span>
-            <span
-              className={`${kanit.className} uppercase mt-1 md:text-md sm: text-[14px]`}
-            >
-              Action Figures
-            </span>
-          </div>
-          {/* Lightsabers & Weapons  */}
-          <div
-            onClick={() => setSelectedTab("Lightsabers & Weapons")}
-            className={`md:flex w-full gap-1 border-2 py-2 px-3  ${
-              selectedTab === "Lightsabers & Weapons"
-                ? "bg-[#F26626]  border-white"
-                : "border-[#F26626]"
-            } text-white hover:border-white hover:bg-[#F26626]`}
-          >
-            <span className="flex justify-center">
-              <Image
-                className="w-[30px] ms-3"
-                src={icon3}
-                alt="category Icons"
-              ></Image>
-            </span>
-            <span
-              className={`${kanit.className} uppercase mt-1 md:text-md sm: text-[14px]`}
-            >
-              Lightsabers & Weapons
-            </span>
-          </div>
-        </div>
-      </div>
-      {/* information section  ------------------------------------------------------------------------------  */}
-      <div className="mt-10 flex justify-center">
+    return (
+<div className="my-10 flex justify-center">
         {/* special Items Lists  */}
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
-          {defaultToys.map(
+          {allToys.map(
             ({ id, image, hoverImage, name, quantity, rating, price }) => (
               <div
                 key={id}
@@ -233,26 +145,7 @@ const OurCategories = () => {
           )}
         </div>
       </div>
-      {/* CLICK FOR MORE BUTTON  */}
-      <div className="flex justify-center my-5">
-        {filteredToys.length <= 4 ? (
-          " "
-        ) : (
-          <div>
-            {showAllToys < filteredToys.length && (
-              <button
-                onClick={() => setShowAllToys(filteredToys.length)}
-                className="bg-[#F26626] hover:bg-white text-white hover:text-[#F26626] 
-                py-2 px-4 font-semibold uppercase rounded-sm text-sm"
-              >
-                Click for More
-              </button>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+    );
 };
 
-export default OurCategories;
+export default AllProductsCards;
