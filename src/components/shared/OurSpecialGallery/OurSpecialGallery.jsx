@@ -84,7 +84,7 @@ const OurSpecialGallery = () => {
           {specialGallery.map(({ id , img }) => (
             <div key={id} className="">
                 <Image
-                  className="w-full h-[350px]"
+                  className="w-full h-[350px] border-black border-l-4 border-r-4 "
                   width={500}
                   height={500}
                   src={img}

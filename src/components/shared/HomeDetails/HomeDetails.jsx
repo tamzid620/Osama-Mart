@@ -28,7 +28,7 @@ const HomeDetails = () => {
       {/* content section  */}
       <div>
 <h1 className={`${kanit.className} text-4xl mb-5 text-[#F26626]`}>Handy Toy Store</h1>
-<p  className={`${mulish.className} text-xl `}>Welcome to our Toy Store! Step into a world of imagination and play where joy knows no bounds. Discover a treasure trove of toys that will ignite the imagination of children of all ages. From classic favorites to the latest trends, we offer a wide selection of toys that will bring smiles, laughter, and unforgettable memories. Whether youre searching for the perfect gift, planning a birthday party, or simply indulging in a playful adventure, our Toy Store is your ultimate destination. Come and explore a world of wonder, where dreams come true and imagination takes flight!</p>
+<p  className={`${mulish.className} md:text-xl  `}>Welcome to our Toy Store! Step into a world of imagination and play where joy knows no bounds. Discover a treasure trove of toys that will ignite the imagination of children of all ages. From classic favorites to the latest trends, we offer a wide selection of toys that will bring smiles, laughter, and unforgettable memories. Whether youre searching for the perfect gift, planning a birthday party, or simply indulging in a playful adventure, our Toy Store is your ultimate destination. Come and explore a world of wonder, where dreams come true and imagination takes flight!</p>
       </div>
         </div>
     </div>
