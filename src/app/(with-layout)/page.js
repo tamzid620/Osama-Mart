@@ -4,7 +4,6 @@ import HomeDetails from "@/components/shared/HomeDetails/HomeDetails";
 import OurCategories from "@/components/shared/OurCategories/OurCategories";
 import OurLatestNews from "@/components/shared/OurLatestNews/OurLatestNews";
 import OurSpecialGallery from "@/components/shared/OurSpecialGallery/OurSpecialGallery";
-import Loader from "@/utilies/Loader/Loader";
 
 export const metadata = {
   title: "OsamaMart -Home",
@@ -15,7 +14,6 @@ const Home = () => {
   return (
     <div className="xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto mt-16">
       <Banner />
-      <Loader/>
       <OurCategories />
       <OurLatestNews/>
       <OurSpecialGallery/>
