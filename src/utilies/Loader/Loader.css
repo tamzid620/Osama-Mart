@@ -1,0 +1,45 @@
+.loaderBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 50px;
+  }
+  
+  .wrapper {
+    position: relative;
+    width: 200px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.607);
+    border-radius: 99999px;
+    border: 2px solid white;
+    box-sizing: content-box;
+  }
+  
+  .padding-mask {
+    container-type: inline-size;
+    position: absolute;
+    inset: 0;
+    margin: 5px;
+    border-radius: 99999px;
+    overflow: hidden;
+  }
+  
+  .slide {
+    position: absolute;
+    inset: 0;
+    margin: 0 auto;
+    width: 50cqw;
+    border-radius: 99999px;
+    background-color: #F26626;
+    animation: 1s infinite alternate cha-cha ease-in-out;
+  }
+  
+  @keyframes cha-cha {
+    from {
+      translate: -60cqw;
+    }
+    
+    to {
+      translate: 60cqw;
+    }
+  }

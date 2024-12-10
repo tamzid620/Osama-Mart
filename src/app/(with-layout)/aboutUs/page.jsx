@@ -2,6 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import childPageBanner from "@/assests/images/child-page-banner-1.jpeg";
 import { Kanit } from "next/font/google";
+import HomeDetails from '@/components/shared/HomeDetails/HomeDetails';
 
 const kanit = Kanit({
   weight: ["400", "700"],
@@ -34,7 +35,7 @@ const AboutUs = () => {
       </div>
 {/* content section  */}
 <div className="my-10">
-    <h1> All Products</h1>
+<HomeDetails/>
 </div>
     </div>
     );
