@@ -11,6 +11,7 @@ import searchIcon from "@/assests/icons/white-search.png";
 import heartIcon from "@/assests/icons/white-heart.png";
 import ReactStars from "react-stars";
 import axios from "axios";
+import Loader from "@/utilies/Loader/Loader";
 
 const kanit = Kanit({
     weight: ["400", "700"],
@@ -37,7 +38,10 @@ const kanit = Kanit({
 
     return (
 <div className="my-10 flex justify-center">
-        {/* special Items Lists  */}
+{allToys.length === 0 ? (
+    // Show the Loader when there is no data
+    <Loader />
+  ) : (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
           {allToys.map(
             ({ id, image, hoverImage, name, quantity, rating, price }) => (
@@ -144,6 +148,7 @@ const kanit = Kanit({
             )
           )}
         </div>
+           )}
       </div>
     );
 };

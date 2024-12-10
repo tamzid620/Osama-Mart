@@ -19,6 +19,6 @@
   weight: ["400", "700"],
   style: ["normal"],
 });
-•    ${kanit.className}
-•    ${Merriweather.className}
+•    {` ${kanit.className} `}
+•   {` ${mulish.className} `}
 •    
