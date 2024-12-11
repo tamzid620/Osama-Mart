@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import errorImage from '@/assests/images/404.png'
+import errorImage from '../assests/images/404.png'
 import { Kanit } from "next/font/google";
 
 const kanit = Kanit({

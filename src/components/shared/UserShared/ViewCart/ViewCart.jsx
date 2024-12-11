@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import closeIcon from '@/assests/icons/closeBlack.png'
+import closeIcon from '../../../../assests/icons/closeBlack.png'
 
 const ViewCart = ({ toggleViewCart }) => {
     return (

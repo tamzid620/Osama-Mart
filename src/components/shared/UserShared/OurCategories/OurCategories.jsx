@@ -4,17 +4,17 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
-import icon1 from "@/assests/icons/millennium-falcon.png";
-import icon2 from "@/assests/icons/droid.png";
-import icon3 from "@/assests/icons/light-saber.png";
+import icon1 from "../../../../assests/icons/millennium-falcon.png";
+import icon2 from "../../../../assests/icons/droid.png";
+import icon3 from "../../../../assests/icons/light-saber.png";
 import { FaCartArrowDown } from "react-icons/fa";
-import suffleIcon from "@/assests/icons/white-suffle.png";
-import searchIcon from "@/assests/icons/white-search.png";
-import heartIcon from "@/assests/icons/white-heart.png";
+import suffleIcon from "../../../../assests/icons/white-suffle.png";
+import searchIcon from "../../../../assests/icons/white-search.png";
+import heartIcon from "../../../../assests/icons/white-heart.png";
 import ReactStars from "react-stars";
 import axios from "axios";
-import { baseUrl } from "@/utilies/config";
-import Loader from "@/utilies/Loader/Loader";
+import { baseUrl } from "../../../../utilies/config";
+import Loader from "../../../../utilies/Loader/Loader";
 
 const kanit = Kanit({
   weight: ["400", "700"],

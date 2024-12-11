@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
 import axios from "axios";
-import { baseUrl } from "@/utilies/config";
+import { baseUrl } from "../../../../utilies/config";
 
 const kanit = Kanit({
   weight: ["400", "700"],

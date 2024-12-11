@@ -1,5 +1,5 @@
-import Navbar from "@/components/shared/UserShared/Navbar/Navbar";
-import Footer from "@/components/shared/UserShared/Footer/Footer";
+import Footer from "../../components/shared/UserShared/Footer/Footer.jsx";
+import Navbar from "../../components/shared/UserShared/Navbar/Navbar";
 
 const UserLayout = ({ children }) => {
   return (

@@ -1,13 +1,14 @@
 'use client';
 import React, { useState } from 'react';
 import Image from 'next/image';
-import loginBanner from '@/assests/images/banner.jpg';
+import loginBanner from '../../assests/images/banner.jpg';
 import { Kanit } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import Link from 'next/link';
-import brandLogo from "@/assests/icons/OsamaMart -Logo.png";
-import showPasswordIcon from "@/assests/icons/show-password-icon-18.jpg";
-import hidePasswordIcon from "@/assests/icons/show-password-icon-19.jpg";
+import brandLogo from "../../assests/icons/OsamaMart -Logo.png";
+import showPasswordIcon from "../../assests/icons/show-password-icon-18.jpg";
+import hidePasswordIcon from "../../assests/icons/show-password-icon-19.jpg";
+import {signIn} from 'next-auth/react';
 
 const kanit = Kanit({
     weight: ["400", "700"],
@@ -36,21 +37,29 @@ const Login = () => {
             setEmailError("Email is required");
         } else {
             setEmailError("");
-            if (!e.target.value) {
-                setPasswordError("Password is required");
-            } else {
-                setPasswordError("");
-            }
         }
     };
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        if (!e.target.value) {
+            setPasswordError("Password is required");
+        } else {
+            setPasswordError("");
+        }
     };
 
     // handle submit button -------------
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const res = await signIn('credentials', {
+            redirect: false,
+            email: email,
+            password: password,
+        });
+        console.log("res---" ,res);
+     
     };
 
     return (
@@ -76,7 +85,7 @@ const Login = () => {
                             className="block text-white text-sm font-bold mb-2"
                             htmlFor="username"
                         >
-                            Enter Gmail
+                            Enter Email
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline text-black"

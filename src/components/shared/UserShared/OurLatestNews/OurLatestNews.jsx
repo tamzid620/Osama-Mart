@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import cardImage1 from "@/assests/images/store2.jpg";
-import cardImage2 from "@/assests/images/store1.jpg";
-import cardImage3 from "@/assests/images/store3.jpg";
+import cardImage1 from "../../../../assests/images/store2.jpg";
+import cardImage2 from "../../../../assests/images/store1.jpg";
+import cardImage3 from "../../../../assests/images/store3.jpg";
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
 

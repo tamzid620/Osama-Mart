@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BannerImage from "@/assests/images/banner.jpg";
+import BannerImage from "../../../../assests/images/banner.jpg";
 import Image from "next/image";
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
