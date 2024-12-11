@@ -1,7 +1,7 @@
 "use client";
 import { Kanit } from "next/font/google";
 import { Merriweather } from "next/font/google";
-import "@/components/shared/Navbar/Navbar.css";
+import "./Navbar.css";
 import React, { useState } from "react";
 import Image from "next/image";
 import navbarImage from "@/assests/icons/OsamaMart -Logo.png";

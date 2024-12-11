@@ -1,9 +1,9 @@
-import Banner from "@/components/shared/Banner/Banner";
-import FrequentlyAskedQuestions from "@/components/shared/FrequentlyAskedQuestions/FrequentlyAskedQuestions";
-import HomeDetails from "@/components/shared/HomeDetails/HomeDetails";
-import OurCategories from "@/components/shared/OurCategories/OurCategories";
-import OurLatestNews from "@/components/shared/OurLatestNews/OurLatestNews";
-import OurSpecialGallery from "@/components/shared/OurSpecialGallery/OurSpecialGallery";
+import Banner from "@/components/shared/UserShared/Banner/Banner";
+import FrequentlyAskedQuestions from "@/components/shared/UserShared/FrequentlyAskedQuestions/FrequentlyAskedQuestions";
+import HomeDetails from "@/components/shared/UserShared/HomeDetails/HomeDetails";
+import OurCategories from "@/components/shared/UserShared/OurCategories/OurCategories";
+import OurLatestNews from "@/components/shared/UserShared/OurLatestNews/OurLatestNews";
+import OurSpecialGallery from "@/components/shared/UserShared/OurSpecialGallery/OurSpecialGallery";
 
 export const metadata = {
   title: "OsamaMart -Home",
