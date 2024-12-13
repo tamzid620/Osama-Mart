@@ -48,11 +48,20 @@ const Navbar = () => {
         {/* nav ul section for large device  */}
         <div className="md:flex sm: hidden">
           <ul className="uppercase flex gap-10 ">
-            <li title="Home"><Link href="/">Home</Link></li>
-            <li title="All Products"><Link href="/allProducts">All Products</Link></li>
-            <li title="About Us"><Link href="/aboutUs">About Us</Link></li>
-            <li title="View Cart" onClick={toggleViewCart}>
-              <BsFillCartCheckFill size={20} />
+            <li title="Home">
+              <Link href="/">Home</Link>
+            </li>
+            <li title="All Products">
+              <Link href="/allProducts">All Products</Link>
+            </li>
+            <li title="About Us">
+              <Link href="/aboutUs">About Us</Link>
+            </li>
+            <li className="relative" title="View Cart" onClick={toggleViewCart}>
+              <BsFillCartCheckFill className="relative" size={24} />
+              <h1 className="absolute top-[-6px] right-[-10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
+                1
+              </h1>
             </li>
           </ul>
         </div>
@@ -77,9 +86,15 @@ const Navbar = () => {
          bg-[#F26626] dropShadow w-full -mx-4 
          text-center leading-[50px] py-4"
           >
-            <li title="Home"><Link href="/">Home</Link></li>
-            <li title="All Products"><Link href="/allProducts">All Products</Link></li>
-            <li title="About Us"><Link href="/aboutUs">About Us</Link></li>
+            <li title="Home">
+              <Link href="/">Home</Link>
+            </li>
+            <li title="All Products">
+              <Link href="/allProducts">All Products</Link>
+            </li>
+            <li title="About Us">
+              <Link href="/aboutUs">About Us</Link>
+            </li>
           </ul>
         )}
       </div>
@@ -87,7 +102,7 @@ const Navbar = () => {
       <div className="relative">
         {viewCart ? (
           <div className="absolute bg-white w-[350px] shadow-md shadow-[#F26626] h-screen z-10 transition ease-in-out duration-500 ">
-            <ViewCart toggleViewCart={toggleViewCart}/>
+            <ViewCart toggleViewCart={toggleViewCart} />
           </div>
         ) : (
           <></>

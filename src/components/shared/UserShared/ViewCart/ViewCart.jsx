@@ -13,6 +13,8 @@ const ViewCart = ({ toggleViewCart }) => {
               alt="navbar"
             />
             </div>
+            {/* information section  */}
+            
         </div>
     );
 };

@@ -51,7 +51,7 @@ const Login = () => {
     // handle submit button -------------
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault();surah
 
         const res = await signIn('credentials', {
             redirect: false,

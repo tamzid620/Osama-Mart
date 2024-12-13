@@ -46,6 +46,12 @@ const OurCategories = () => {
   // defalut toys shows
   const defaultToys = filteredToys.slice(0, showAllToys);
 
+  // handleAddToCart Function  --------------
+const handleAddToCart = () => {
+  const cart =  JSON.parse(local)
+}
+
+
   return (
     <div className="my-20">
       <h1
@@ -177,7 +183,9 @@ const OurCategories = () => {
                   onMouseEnter={() => setHoveredIndex(id)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <button className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
+                  <button 
+                  onClick={() => handleAddToCart({ id ,image, name, price })}
+                  className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
                     {hoveredIndex === id ? (
                       <span className=" flex justify-center items-center">
                         Add to Cart
