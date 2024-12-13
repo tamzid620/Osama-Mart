@@ -8,15 +8,15 @@
 
 • import { Kanit } from "next/font/google";
 
-• import { Merriweather } from "next/font/google";
+• import { Mulish } from "next/font/google";
 
 • const kanit = Kanit({
   weight: ["400", "700"],
   style: ["normal"],
 });
 
-• const merriweather = Merriweather({
-  weight: ["400", "700"],
+• const mulish = Mulish({
+  weight: ["300", "700"],
   style: ["normal"],
 });
 •    {` ${kanit.className} `}

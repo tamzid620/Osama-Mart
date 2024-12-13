@@ -2,7 +2,7 @@
 import { Kanit } from "next/font/google";
 import { Merriweather } from "next/font/google";
 import "./Navbar.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import navbarImage from "../../../../assests/icons/OsamaMart -Logo.png";
 import menuBar from "../../../../assests/icons/menu-bar.png";
@@ -22,6 +22,15 @@ const merriweather = Merriweather({
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewCart, setViewCart] = useState(false);
+  const [cartLength, setCartLength] = useState(0);
+
+  useEffect(() => {
+    const cartData = localStorage.getItem("cart");
+    if (cartData) {
+      const cart = JSON.parse(cartData);
+      setCartLength(cart.length);
+    }
+  }, []);
 
   const toggleViewCart = () => {
     setViewCart(!viewCart);
@@ -59,20 +68,24 @@ const Navbar = () => {
             </li>
             <li className="relative" title="View Cart" onClick={toggleViewCart}>
               <BsFillCartCheckFill className="relative" size={24} />
-              <h1 className="absolute top-[-6px] right-[-10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
-                1
-              </h1>
+              <p className="absolute top-[-6px] right-[-10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
+                {cartLength}
+              </p>
             </li>
           </ul>
         </div>
         {/* nav ul section for medium & small  device  */}
         <div className="relative md:hidden sm: flex">
+          <h1 className="relative" title="View Cart" onClick={toggleViewCart}>
           <BsFillCartCheckFill
             title="View Cart"
             size={30}
-            onClick={toggleViewCart}
-            className="me-5 text-[#F26626]"
+            className="relative me-5 text-[#F26626]"
           />
+          <p className="absolute top-[-6px] right-[10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
+          {cartLength}
+              </p>
+          </h1>
           <Image
             onClick={handleMenuBar}
             className="w-[30px] dropShadow "
