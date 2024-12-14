@@ -14,9 +14,10 @@ import heartIcon from "../../../../assests/icons/white-heart.png";
 import ReactStars from "react-stars";
 import axios from "axios";
 import { baseUrl } from "../../../../utilies/config";
-import Loader from "../../../../utilies/Loader/Loader";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const kanit = Kanit({
   weight: ["400", "700"],
@@ -48,8 +49,8 @@ const OurCategories = () => {
   // defalut toys shows
   const defaultToys = filteredToys.slice(0, showAllToys);
 
-const handleNothing =() => {
-    toast.info('Please Click Select Option Button!', {
+  const handleNothing = () => {
+    toast.info("Please Click Select Option Button!", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -58,15 +59,15 @@ const handleNothing =() => {
       draggable: true,
       progress: undefined,
       theme: "dark",
-      });
-}
+    });
+  };
   // handleAddToCart button ---------------------
   const handleAddToCart = (toy) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [] ;
-    cart.push(toy) ;
-     localStorage.setItem("cart", JSON.stringify(cart)) ;
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(toy);
+    localStorage.setItem("cart", JSON.stringify(cart));
     //  Toast message -----------------------------
-     toast.success('Item has been added to your cart!', {
+    toast.success("Item has been added to your cart!", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -75,7 +76,7 @@ const handleNothing =() => {
       draggable: true,
       progress: undefined,
       theme: "dark",
-      });
+    });
   };
 
   return (
@@ -159,8 +160,35 @@ const handleNothing =() => {
       {/* information section  ------------------------------------------------------------------------------  */}
       <div className="mt-10 flex justify-center">
         {allToys.length === 0 ? (
-        //  Loader component --------
-          <Loader />
+          // Show skeleton placeholders ---------------------------
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5">
+            {Array(4)
+              .fill()
+              .map((_, index) => (
+                <div
+                  key={index}
+                  className="bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md shadow-[#F26626]"
+                >
+                  <Skeleton height={220} className="rounded-t-lg" />
+                  <p className="mx-2 my-2 font-semibold mt-3">
+                    <Skeleton width={`60%`} />
+                  </p>
+                  <span className="flex justify-center mb-2">
+                    <Skeleton width={100} height={24} />
+                  </span>
+                  <p className="px-2 pb-5 font-semibold">
+                    <Skeleton width={`40%`} />
+                  </p>
+                  <div className="flex justify-center pb-5">
+                    <Skeleton
+                      width={`80%`}
+                      height={40}
+                      className="rounded-lg"
+                    />
+                  </div>
+                </div>
+              ))}
+          </div>
         ) : (
           <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
             {defaultToys.map(
@@ -174,7 +202,7 @@ const handleNothing =() => {
                       className="rounded-t-lg transition-opacity duration-300 ease-in-out hover:opacity-0"
                       src={image.trimEnd()}
                       width={250}
-                      height={220} 
+                      height={220}
                       alt=""
                     />
                     <Image
@@ -233,7 +261,7 @@ const handleNothing =() => {
                   {/* MENU BUTTONS */}
                   <div className="absolute menu top-3 right-3 bg-[#F26626] w-[40px] py-2 inline-block justify-center items-center rounded-lg">
                     <span
-                    onClick= {handleNothing}
+                      onClick={handleNothing}
                       className="relative flex justify-center mb-2 tooltip tooltip-left"
                       data-tip="Shuffle"
                     >
@@ -244,7 +272,7 @@ const handleNothing =() => {
                       />
                     </span>
                     <span
-                    onClick= {handleNothing}
+                      onClick={handleNothing}
                       className="relative flex justify-center mb-2 tooltip tooltip-left"
                       data-tip="Search"
                     >
@@ -255,7 +283,7 @@ const handleNothing =() => {
                       />
                     </span>
                     <span
-                    onClick= {handleNothing}
+                      onClick={handleNothing}
                       className="relative flex justify-center tooltip tooltip-left"
                       data-tip="Favorites"
                     >
@@ -296,7 +324,7 @@ const handleNothing =() => {
           </div>
         )}
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };
