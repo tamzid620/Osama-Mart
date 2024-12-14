@@ -1,17 +1,17 @@
 "use client" ;
-import "@/components/shared/OurCategories/OurCategories.css";
+import "../../../shared/UserShared/OurCategories/OurCategories.css";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
-import { baseUrl } from "@/utilies/config";
+import { baseUrl } from "../../../../utilies/config";
 import { FaCartArrowDown } from "react-icons/fa";
-import suffleIcon from "@/assests/icons/white-suffle.png";
-import searchIcon from "@/assests/icons/white-search.png";
-import heartIcon from "@/assests/icons/white-heart.png";
+import suffleIcon from "../../../../assests/icons/white-suffle.png";
+import searchIcon from "../../../../assests/icons/white-search.png";
+import heartIcon from "../../../../assests/icons/white-heart.png";
 import ReactStars from "react-stars";
 import axios from "axios";
-import Loader from "@/utilies/Loader/Loader";
+import Loader from "../../../../utilies/Loader/Loader";
 
 const kanit = Kanit({
     weight: ["400", "700"],
