@@ -1,5 +1,5 @@
 "use client" ;
-import "../../../shared/UserShared/OurCategories/OurCategories.css";
+import "../../../../components/shared/UserShared/OurCategories/OurCategories.css";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Kanit } from "next/font/google";
@@ -13,6 +13,7 @@ import ReactStars from "react-stars";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Link from "next/link";
 
 const kanit = Kanit({
     weight: ["400", "700"],
@@ -36,6 +37,36 @@ const kanit = Kanit({
           setAllToys(error);
         });
     }, []);
+
+    const handleNothing = () => {
+      toast.info("Please Click Select Option Button!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    };
+    // handleAddToCart button ---------------------
+    const handleAddToCart = (toy) => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(toy);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      //  Toast message -----------------------------
+      toast.success("Item has been added to your cart!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    };
 
     return (
 <div className="my-10 flex justify-center">
@@ -73,8 +104,8 @@ const kanit = Kanit({
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
           {allToys.map(
             ({ id, image, hoverImage, name, quantity, rating, price }) => (
+              <Link  key={id} className="" href={`allProducts/${id}`}>
               <div
-                key={id}
                 className=" card-zoom bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md shadow-[#F26626]"
               >
                 <span className=" zoom-effect block overflow-hidden">
@@ -94,7 +125,7 @@ const kanit = Kanit({
                   />
                 </span>
                 <p
-                  className={`${kanit.className} mx-2 my-2 font-semibold mt-3`}
+                  className={`${kanit.className} mx-2 my-2 font-semibold hover:underline hover:text-[#F26626] mt-3`}
                 >
                   {name}
                 </p>
@@ -117,7 +148,11 @@ const kanit = Kanit({
                   onMouseEnter={() => setHoveredIndex(id)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  <button className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
+                  <button 
+                  onClick={() =>
+                    handleAddToCart({ id, image, name, price })
+                  }
+                  className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center">
                     {hoveredIndex === id ? (
                       <span className=" flex justify-center items-center">
                         Add to Cart
@@ -136,6 +171,7 @@ const kanit = Kanit({
                 {/* MENU BUTTONS */}
                 <div className="absolute menu top-3 right-3 bg-[#F26626] w-[40px] py-2 inline-block justify-center items-center rounded-lg">
                   <span
+                  onClick={handleNothing}
                     className="relative flex justify-center mb-2 tooltip tooltip-left"
                     data-tip="Shuffle"
                   >
@@ -146,6 +182,7 @@ const kanit = Kanit({
                     />
                   </span>
                   <span
+                  onClick={handleNothing}
                     className="relative flex justify-center mb-2 tooltip tooltip-left"
                     data-tip="Search"
                   >
@@ -156,6 +193,7 @@ const kanit = Kanit({
                     />
                   </span>
                   <span
+                  onClick={handleNothing}
                     className="relative flex justify-center tooltip tooltip-left"
                     data-tip="Favorites"
                   >
@@ -173,6 +211,7 @@ const kanit = Kanit({
                   </span>
                 </div>
               </div>
+              </Link>
             )
           )}
         </div>

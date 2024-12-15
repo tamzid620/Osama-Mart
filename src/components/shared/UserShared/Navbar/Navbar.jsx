@@ -66,6 +66,9 @@ const Navbar = () => {
             <li title="About Us">
               <Link href="/aboutUs">About Us</Link>
             </li>
+            <li title="Admin Panel">
+              <Link href="/dp">AdminPanel</Link>
+            </li>
             <li className="relative" title="View Cart" onClick={toggleViewCart}>
               <BsFillCartCheckFill className="relative" size={24} />
               <p className="absolute top-[-6px] right-[-10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
@@ -107,6 +110,9 @@ const Navbar = () => {
             </li>
             <li title="About Us">
               <Link href="/aboutUs">About Us</Link>
+            </li>
+            <li title="Admin Panel">
+              <Link href="/dp">AdminPanel</Link>
             </li>
           </ul>
         )}

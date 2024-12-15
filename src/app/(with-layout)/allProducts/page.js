@@ -2,15 +2,10 @@ import React from "react";
 import Image from "next/image";
 import childPageBanner from "../../../assests/images/child-page-banner-1.jpeg";
 import { Kanit } from "next/font/google";
-import { Mulish } from "next/font/google";
-import AllProductsCards from "../../../components/shared/UserShared/AllProductsCards/AllProductsCards";
+import AllProductsCards from "./AllProductsCards/AllProductsCards";
 
 const kanit = Kanit({
   weight: ["400", "700"],
-  style: ["normal"],
-});
-const mulish = Mulish({
-  weight: ["300", "700"],
   style: ["normal"],
 });
 
