@@ -17,16 +17,30 @@ const authOptions: NextAuthOptions = {
         if (email !== "admin@test.com" || password !== "12345") {
           throw new Error("invalid credentials");
         }
-
         return {
           id: "007",
           name: "Osama",
           email: "admin@test.com",
           role: "admin",
+          token: "nopiqpwoervhjmp qocwejhm[vuyn3-v7nyuu"
         };
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.id = token.id;
+      session.user.role = token.role;
+      return session;
+    },
+  },
   pages: {
     signIn: "/login",
   },

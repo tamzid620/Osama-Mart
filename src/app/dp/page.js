@@ -1,13 +1,15 @@
 import React from 'react';
 
-const dp = () => {
+const Dp = () => {
+  
+
     return (
         <div>
-            <h1>
-                Dashboard Body
-            </h1>
+        <div>
+            <h1>Admin Dashboard</h1>
+        </div>
         </div>
     );
 };
 
-export default dp;
+export default Dp;
