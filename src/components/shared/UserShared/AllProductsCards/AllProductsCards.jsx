@@ -11,7 +11,8 @@ import searchIcon from "../../../../assests/icons/white-search.png";
 import heartIcon from "../../../../assests/icons/white-heart.png";
 import ReactStars from "react-stars";
 import axios from "axios";
-import Loader from "../../../../utilies/Loader/Loader";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const kanit = Kanit({
     weight: ["400", "700"],
@@ -39,8 +40,35 @@ const kanit = Kanit({
     return (
 <div className="my-10 flex justify-center">
 {allToys.length === 0 ? (
-    // Show the Loader when there is no data
-    <Loader />
+    // Show skeleton placeholders ---------------------------
+              <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5">
+                {Array(4)
+                  .fill()
+                  .map((_, index) => (
+                    <div
+                      key={index}
+                      className="bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md shadow-[#F26626]"
+                    >
+                      <Skeleton height={220} className="rounded-t-lg" />
+                      <p className="mx-2 my-2 font-semibold mt-3">
+                        <Skeleton width={`60%`} />
+                      </p>
+                      <span className="flex justify-center mb-2">
+                        <Skeleton width={100} height={24} />
+                      </span>
+                      <p className="px-2 pb-5 font-semibold">
+                        <Skeleton width={`40%`} />
+                      </p>
+                      <div className="flex justify-center pb-5">
+                        <Skeleton
+                          width={`80%`}
+                          height={40}
+                          className="rounded-lg"
+                        />
+                      </div>
+                    </div>
+                  ))}
+              </div>
   ) : (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
           {allToys.map(
