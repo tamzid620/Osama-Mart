@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import loginBanner from '../../assests/images/banner.jpg';
 import { Kanit } from "next/font/google";
+import { Mulish } from "next/font/google";
 import Link from 'next/link';
 import brandLogo from "../../assests/icons/OsamaMart -Logo.png";
 import showPasswordIcon from "../../assests/icons/show-password-icon-18.jpg";
@@ -16,6 +17,12 @@ const kanit = Kanit({
     weight: ["400", "700"],
     style: ["normal"],
 });
+const mulish = Mulish({
+    weight: ["300", "700"],
+    style: ["normal"],
+  });
+
+  
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -91,15 +98,18 @@ const Login = () => {
                 <div className="absolute top-0 w-full bg-black opacity-60 inset-0" />
             </div>
             {/* Login Card  */}
-            <div className='absolute inset-0 flex justify-center items-center'>
+            <div className= {` ${kanit.className} absolute inset-0 flex justify-center items-center`}>
                 <div className='w-full max-w-md relative'>
                     {/* form section  */}
                     <form
                         onSubmit={handleSubmit}
                         className="bg-black drop-shadow-2xl rounded-xl px-8 pt-6 pb-8 mb-4 shadow-lg shadow-[#F26626] border-t-2 border-[#F26626] "
                     >
-                        <h1 className={` ${kanit.className} font-semibold text-lg text-white text-center mb-5 `}>
-                            Management Login Only
+                        <h1 className={` ${mulish.className} font-semibold text-sm text-white text-center mb-2 `}>
+                            Email: admin@test.com
+                        </h1>
+                        <h1 className={` ${mulish.className} font-semibold text-sm text-white text-center mb-5 `}>
+                            Password: 12345
                         </h1>
                         {/* email field  */}
                         <div className="mb-4">

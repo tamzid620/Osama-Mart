@@ -48,11 +48,13 @@ const Navbar = () => {
       >
         {/* Image section  */}
         <div>
+        <Link href="/">
           <Image
             src={navbarImage}
             alt="navbar-image"
             className="w-[120px] py-3"
           />
+          </Link>
         </div>
         {/* nav ul section for large device  */}
         <div className="md:flex sm: hidden">
@@ -89,12 +91,14 @@ const Navbar = () => {
           {cartLength}
               </p>
           </h1>
+          <Link href="/">
           <Image
             onClick={handleMenuBar}
             className="w-[30px] dropShadow "
             src={menuBar}
             alt="navbar"
           />
+          </Link>
         </div>
         {isOpen && (
           <ul

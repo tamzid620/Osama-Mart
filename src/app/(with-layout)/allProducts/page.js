@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import childPageBanner from "../../../assests/images/child-page-banner-1.jpeg";
 import { Kanit } from "next/font/google";
-import AllProductsCards from "./AllProductsCards/AllProductsCards";
+import AllProductsCards from "./AllProductsCards";
 
 const kanit = Kanit({
   weight: ["400", "700"],
