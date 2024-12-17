@@ -3,6 +3,8 @@
 
 • defalut icon color: #F26626  (orange);
 •  blue color: #000040 (blue);
+•  blue color: #A64D79 (light mejanda);
+•  blue color: #6A1E55 (dark mejanda);
 
 • default margin : md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto 
 

@@ -23,7 +23,9 @@
     "react-slick": "^0.30.2",
     "react-stars": "^2.2.5",
     "react-toastify": "^10.0.6",
+    "recharts": "^2.15.0",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.13",
     "sweetalert2": "^11.15.0"
   },
   "devDependencies": {
