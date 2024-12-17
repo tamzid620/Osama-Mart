@@ -29,6 +29,7 @@ const mulish = Mulish({
 });
 
 const OurCategories = () => {
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [showAllToys, setShowAllToys] = useState(4);
   const [allToys, setAllToys] = useState([]);
@@ -77,6 +78,7 @@ const OurCategories = () => {
       progress: undefined,
       theme: "dark",
     });
+    window.location.reload();
   };
 
   return (

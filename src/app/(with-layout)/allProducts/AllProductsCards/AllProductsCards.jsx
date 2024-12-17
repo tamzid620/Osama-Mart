@@ -14,6 +14,8 @@ import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const kanit = Kanit({
     weight: ["400", "700"],
@@ -25,7 +27,7 @@ const kanit = Kanit({
   });
   
   const AllProductsCards = () => {
-    
+
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [allToys, setAllToys] = useState([]);
 
@@ -66,6 +68,7 @@ const kanit = Kanit({
         progress: undefined,
         theme: "dark",
       });
+      window.location.reload();
     };
 
     return (
@@ -104,16 +107,16 @@ const kanit = Kanit({
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
           {allToys.map(
             ({ id, image, hoverImage, name, quantity, rating, price }) => (
-              <Link  key={id} className="" href={`allProducts/${id}`}>
-              <div
+              
+              <div  key={id}
                 className=" card-zoom bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md shadow-[#F26626]"
               >
                 <span className=" zoom-effect block overflow-hidden">
                   <Image
                     className="rounded-t-lg transition-opacity duration-300 ease-in-out hover:opacity-0"
                     src={image.trimEnd()}
-                    width={250} // Add width
-                    height={220} // Add height
+                    width={250} 
+                    height={220}
                     alt=""
                   />
                   <Image
@@ -124,11 +127,12 @@ const kanit = Kanit({
                     alt=""
                   />
                 </span>
-                <p
-                  className={`${kanit.className} mx-2 my-2 font-semibold hover:underline hover:text-[#F26626] mt-3`}
+                <Link className="" href={`allProducts/${id}`}>
+                <p className={`${kanit.className} mx-2 my-2 font-semibold hover:underline hover:text-[#F26626] mt-3`}
                 >
                   {name}
                 </p>
+                </Link>
                 <span className="flex justify-center mb-2">
                   {/* rating appers here -------------------------------------------------------------------------- */}
                   <ReactStars
@@ -211,11 +215,11 @@ const kanit = Kanit({
                   </span>
                 </div>
               </div>
-              </Link>
             )
           )}
         </div>
            )}
+           <ToastContainer />
       </div>
     );
 };
