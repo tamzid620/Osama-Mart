@@ -210,19 +210,6 @@ const AdminPanelLayout = ({ children }) => {
                     </Link>
                 </List>
                 <Divider />
-                <List>
-                    <Link href="/dp/updateToys">
-                        <ListItem key={"Update Toys"} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                     <ViewCarouselIcon /> 
-                                </ListItemIcon>
-                                <ListItemText >Update Toys</ListItemText>
-                            </ListItemButton>
-                        </ListItem>
-                    </Link>
-                </List>
-                <Divider />
             </Drawer>
             <Main open={open}>
                 <div >

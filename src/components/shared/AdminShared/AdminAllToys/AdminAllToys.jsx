@@ -6,6 +6,7 @@ import { Mulish } from "next/font/google";
 import axios from "axios";
 import { baseUrl } from "../../../../utilies/config";
 import Image from "next/image";
+import Link from "next/link";
 
 const kanit = Kanit({
   weight: ["400", "700"],
@@ -18,6 +19,9 @@ const mulish = Mulish({
 
 const AdminAllToys = () => {
   const [allToys, setAllToys] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; 
+
 
   useEffect(() => {
     axios
@@ -27,6 +31,16 @@ const AdminAllToys = () => {
         setAllToys(error);
       });
   }, []);
+ 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentToys = allToys.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(allToys.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
@@ -46,14 +60,24 @@ const AdminAllToys = () => {
           </tr>
         </thead>
         <tbody className={` ${mulish.className} `}>
-          {allToys.map((toy, index) => (
+          {currentToys.map((toy, index) => (
             <tr key={toy?.id}>
               <td>{index + 1}</td>
               <td>
-                <Image width={30} height={30} src={toy?.image?.trim()} alt={toy?.name} />
+                <Image
+                  width={60}
+                  height={60}
+                  src={toy?.image?.trim()}
+                  alt={toy?.name}
+                />
               </td>
               <td>
-                <Image width={30} height={30} src={toy?.hoverImage?.trim()} alt={toy?.name} />
+                <Image
+                  width={60}
+                  height={60}
+                  src={toy?.hoverImage?.trim()}
+                  alt={toy?.name}
+                />
               </td>
               <td>{toy?.name}</td>
               <td>{toy?.price}</td>
@@ -62,11 +86,13 @@ const AdminAllToys = () => {
               <td>{toy?.rating}</td>
               <td>{toy?.description}</td>
               <td>
-                <button
-                  className={` ${kanit.className} uppercase bg-green-500 px-3 py-1 rounde-md hover:bg-green-600 me-2 mb-1`}
-                >
-                  Edit
-                </button>
+                <Link href="/dp/updateToys">
+                  <button
+                    className={` ${kanit.className} uppercase bg-green-500 px-3 py-1 rounde-md hover:bg-green-600 me-2 mb-1`}
+                  >
+                    Edit
+                  </button>
+                </Link>
                 <button
                   className={` ${kanit.className} uppercase bg-red-500 px-3 py-1 rounde-md hover:bg-red-600 `}
                 >
@@ -77,6 +103,24 @@ const AdminAllToys = () => {
           ))}
         </tbody>
       </table>
+ {/* Pagination */}
+ <div className="pagination flex justify-center mt-4">
+        {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+          (pageNumber) => (
+            <button
+              key={pageNumber}
+              onClick={() => handlePageChange(pageNumber)}
+              className={`px-3 py-1 mx-1 ${
+                currentPage === pageNumber
+                  ? "bg-[#A64D79] text-white"
+                  : "bg-gray-200 text-black"
+              } rounded`}
+            >
+              {pageNumber}
+            </button>
+          )
+        )}
+      </div>
     </div>
   );
 };
