@@ -15,7 +15,7 @@ export const metadata = {
 
 const AllToys = () => {
     return (
-        <div className='h-screen'>
+        <div>
             <h1 className={` ${kanit.className} text-3xl text-center`}>All Toys</h1>
             <div className='flex justify-center mt-3'>
             <hr className='w-60'/>
