@@ -1,13 +1,13 @@
 import React from 'react';
 import Image from "next/image";
 import childPageBanner from "../../../assests/images/child-page-banner-1.jpeg";
-import { Kanit } from "next/font/google";
-import { Mulish } from "next/font/google";
 import HomeDetails from '../../../components/shared/UserShared/HomeDetails/HomeDetails';
 import FrequentlyAskedQuestions from '../../../components/shared/UserShared/FrequentlyAskedQuestions/FrequentlyAskedQuestions';
 import user1 from '../../../assests/images/u1.jpg';
 import user2 from '../../../assests/images/user2.jpeg';
 import user3 from '../../../assests/images/user3.jpg';
+import { Kanit } from "next/font/google";
+import { Mulish } from "next/font/google";
 
 const kanit = Kanit({
   weight: ["400", "700"],

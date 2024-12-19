@@ -1,7 +1,7 @@
 'use client';
+import './style.css' ;
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
-
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -20,9 +20,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
+import ViewDayIcon from '@mui/icons-material/ViewDay';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 
 const drawerWidth = 240;
@@ -45,7 +46,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
                         duration: theme.transitions.duration.enteringScreen,
                     }),
                     marginLeft: 0,
-                },
+                }, 
             },
         ],
     }),
@@ -77,7 +78,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
@@ -132,9 +132,9 @@ const AdminPanelLayout = ({ children }) => {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex'}}>
             <CssBaseline />
-            <AppBar sx={{backgroundColor : '#F26626' }} position="fixed" open={open}>
+            <AppBar sx={{backgroundColor : '#A64D79' }} position="fixed" open={open}>
                 <Toolbar sx={{ width: "100% ", display: 'flex', justifyContent: 'space-between', alignItems:"center"}}>
                     <div className='flex items-center'>
                     <IconButton
@@ -158,7 +158,7 @@ const AdminPanelLayout = ({ children }) => {
                     <div>
                     <Typography
                     onClick={handleLogout}
-                     className='bg-black hover:bg-orange-400 px-3 py-2 rounded-md uppercase font-semibold' 
+                     className='bg-black hover:bg-[#6A1E55] px-3 py-2 rounded-md uppercase font-semibold' 
                      variant="h7" noWrap component="div" >
                    Logout
                     </Typography>
@@ -185,30 +185,44 @@ const AdminPanelLayout = ({ children }) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                    <Link href="/dp">
+                        <ListItem key={"Admin Panel"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                     <ViewCarouselIcon /> 
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText>Admin Panel</ListItemText>
                             </ListItemButton>
                         </ListItem>
-                    ))}
+                    </Link>
                 </List>
                 <Divider />
                 <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
+                    <Link href="/dp/allToys">
+                        <ListItem key={"All Toys"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                     <ViewCarouselIcon /> 
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText>All Toys</ListItemText>
                             </ListItemButton>
                         </ListItem>
-                    ))}
+                    </Link>
                 </List>
+                <Divider />
+                <List>
+                    <Link href="/dp/updateToys">
+                        <ListItem key={"Update Toys"} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                     <ViewCarouselIcon /> 
+                                </ListItemIcon>
+                                <ListItemText >Update Toys</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                </List>
+                <Divider />
             </Drawer>
             <Main open={open}>
                 <div >
