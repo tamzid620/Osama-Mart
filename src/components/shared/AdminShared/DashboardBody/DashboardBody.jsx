@@ -2,50 +2,93 @@
 import './DashboardBody.css' ;
 import React from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Kanit } from "next/font/google";
+import { Mulish } from "next/font/google";
+
+const kanit = Kanit({
+  weight: ["400", "700"],
+  style: ["normal"],
+});
+const mulish = Mulish({
+  weight: ["300", "700"],
+  style: ["normal"],
+});
 
 const data = [
     {
-      name: 'Page A',
+      name: 'January',
       expense: 4000,
       Income: 2400,
       amt: 2400,
     },
     {
-      name: 'Page B',
+      name: 'February',
       expense: 3000,
       Income: 1398,
       amt: 2210,
     },
     {
-      name: 'Page C',
+      name: 'March',
       expense: 2000,
       Income: 9800,
       amt: 2290,
     },
     {
-      name: 'Page D',
+      name: 'April',
       expense: 2780,
       Income: 3908,
       amt: 2000,
     },
     {
-      name: 'Page E',
+      name: 'May',
       expense: 1890,
       Income: 4800,
       amt: 2181,
     },
     {
-      name: 'Page F',
+      name: 'June',
       expense: 2390,
       Income: 3800,
       amt: 2500,
     },
     {
-      name: 'Page G',
+      name: 'July',
       expense: 3490,
       Income: 4300,
       amt: 2100,
     },
+    {
+      name: 'August',
+      expense: 2000,
+      Income: 9800,
+      amt: 2290,
+    },
+    
+    {
+      name: 'September',
+      expense: 1890,
+      Income: 4800,
+      amt: 2181,
+    },
+    
+    {
+      name: 'October',
+      expense: 2780,
+      Income: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'November',
+      expense: 5490,
+      Income: 9300,
+      amt: 2100,
+    },
+    {
+      name: 'December',
+      expense: 4390,
+      Income: 9900,
+      amt: 2500,
+  }
   ];
 
 const DashboardBody = () => {
@@ -59,35 +102,35 @@ const DashboardBody = () => {
           {/* <!-- card one  --> */}
           <div>
             <div className="box-div">
-              <h5 className="box-title">Income Today</h5>
-              <p className="box-text"> د.إ  6700</p>
+              <h5 className={` ${kanit.className} box-title`}>Income Today</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  6700</p>
             </div>
           </div>
           {/* <!-- card two  --> */}
           <div>
             <div className="box-div0">
-              <h5 className="box-title0">Expense Today</h5>
-              <p className="box-text"> د.إ  600</p>
+              <h5 className={` ${kanit.className} box-title0`}>Expense Today</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  600</p>
             </div>
           </div>
           {/* <!-- card three  --> */}
           <div>
             <div className="box-div">
-              <h5 className="box-title">Monthly Income</h5>
-              <p className="box-text"> د.إ  6700</p>
+              <h5 className={` ${kanit.className} box-title`}>Monthly Income</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  6700</p>
             </div>
           </div>
           {/* <!-- card four  --> */}
           <div>
             <div className="box-div0">
-              <h5 className="box-title0">Monthly Expense</h5>
-              <p className="box-text"> د.إ  6700</p>
+              <h5 className={` ${kanit.className} box-title0`}>Monthly Expense</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  6700</p>
             </div>
           </div>
         </div>
       </div>
       {/* <!--------------------<<<<<<<<< Graph section >>>>>>>>>> --------------------> */}
-      <div className="graphParentdiv ">
+      <div className={` ${kanit.className} graphParentdiv`}>
       <ResponsiveContainer width="100%" height="100%" >
         <BarChart
           width={500}
@@ -116,22 +159,22 @@ const DashboardBody = () => {
           {/* <!-- card one  --> */}
           <div>
             <div className="box-div">
-              <h5 className="box-title">Total Income</h5>
-              <p className="box-text"> د.إ  6700</p>
+              <h5 className={` ${kanit.className} box-title`}>Total Income</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  6700</p>
             </div>
           </div>
           {/* <!-- card two  --> */}
           <div>
             <div className="box-div0">
-              <h5 className="box-title0">Total Expense</h5>
-              <p className="box-text"> د.إ  600</p>
+              <h5 className={` ${kanit.className} box-title0`}>Total Expense</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  600</p>
             </div>
           </div>
           {/* <!-- card three  --> */}
           <div>
             <div className="box-div">
-              <h5 className="box-title">Total Dues</h5>
-              <p className="box-text"> د.إ  6700</p>
+              <h5 className={` ${kanit.className} box-title`}>Total Dues</h5>
+              <p className={` ${mulish.className} box-text`}> د.إ  6700</p>
             </div>
           </div>
         </div>
@@ -139,7 +182,7 @@ const DashboardBody = () => {
       {/* <!--------------------<<<<<<<<< Matured Bills section >>>>>>>>>> --------------------> */}
       <div className="MBD">
         <table className="table">
-          <thead>
+          <thead className={` ${kanit.className} text-[14px]`}>
             <tr>
               <th scope="col">#</th>
               <th scope="col">Client Name</th>
@@ -149,7 +192,7 @@ const DashboardBody = () => {
               <th scope="col">Payment Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className={` ${mulish.className} `}>
             <tr>
               <td>1</td>
               <td>Akkas Ali</td>
