@@ -8,6 +8,7 @@ const kanit = Kanit({
   subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
+ preload: true,
 });
 
 const ViewCart = ({ toggleViewCart }) => {

@@ -23,10 +23,12 @@ const kanit = Kanit({
   subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
+ preload: true,
 });
 const mulish = Mulish({
   weight: ["300", "700"],
   style: ["normal"],
+ preload: true,
 });
 
 const OurCategories = () => {
