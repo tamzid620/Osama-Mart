@@ -34,7 +34,7 @@ const FrequentlyAskedQuestions = () => {
               What is the estimated delivery time for orders?
               </div>
               <div className="collapse-content">
-                <p>We aim to deliver your order within 3–7 business days, depending on your location. You'll receive a tracking number to monitor your shipment's progress.</p>
+                <p>We aim to deliver your order within 3–7 business days, depending on your location. You&apos;ll receive a tracking number to monitor your shipment's progress.</p>
               </div>
             </div>
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
