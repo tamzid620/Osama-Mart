@@ -5,6 +5,7 @@ import { Kanit } from "next/font/google";
 import AllProductsCards from "./AllProductsCards/AllProductsCards";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

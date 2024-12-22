@@ -4,6 +4,7 @@ import errorImage from '../assests/images/404.png'
 import { Kanit } from "next/font/google";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

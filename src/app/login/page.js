@@ -14,6 +14,7 @@ import { getSession } from 'next-auth/react';
 import Swal from 'sweetalert2';
 
 const kanit = Kanit({
+    subsets: ['latin'], 
     weight: ["400", "700"],
     style: ["normal"],
 });

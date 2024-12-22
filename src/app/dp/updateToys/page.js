@@ -4,6 +4,7 @@ import { Mulish } from "next/font/google";
 import AdminUpdateToys from '../../../components/shared/AdminShared/AdminUpdateToys/AdminUpdateToys';
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

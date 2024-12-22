@@ -3,6 +3,7 @@ import AdminAllToys from '../../../components/shared/AdminShared/AdminAllToys/Ad
 import { Kanit } from "next/font/google";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

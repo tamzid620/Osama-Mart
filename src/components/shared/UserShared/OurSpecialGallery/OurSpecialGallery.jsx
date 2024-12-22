@@ -11,6 +11,7 @@ import axios from "axios";
 import { baseUrl } from "../../../../utilies/config";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

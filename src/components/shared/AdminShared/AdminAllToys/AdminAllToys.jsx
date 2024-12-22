@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

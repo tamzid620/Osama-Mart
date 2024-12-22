@@ -18,6 +18,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
     weight: ["400", "700"],
     style: ["normal"],
   });

@@ -13,6 +13,7 @@
 • import { Mulish } from "next/font/google";
 
 • const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

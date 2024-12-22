@@ -1,6 +1,5 @@
 "use client";
 import { Kanit } from "next/font/google";
-import { Merriweather } from "next/font/google";
 import "./Navbar.css";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -11,10 +10,7 @@ import Link from "next/link";
 import ViewCart from "../ViewCart/ViewCart";
 
 const kanit = Kanit({
-  weight: ["400", "700"],
-  style: ["normal"],
-});
-const merriweather = Merriweather({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });

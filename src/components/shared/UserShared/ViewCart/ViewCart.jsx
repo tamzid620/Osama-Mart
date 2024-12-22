@@ -5,6 +5,7 @@ import closeIcon from "../../../../assests/icons/closeBlack.png";
 import deleteIcon from "../../../../assests/icons/delete.png";
 
 const kanit = Kanit({
+  subsets: ['latin'], 
   weight: ["400", "700"],
   style: ["normal"],
 });
