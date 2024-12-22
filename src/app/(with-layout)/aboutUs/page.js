@@ -69,7 +69,7 @@ const AboutUs = () => {
         <div>
           <>
             <h1 className={` ${kanit.className} text-[#F26626] text-2xl mb-4 text-center`}>Our Mission in the Galaxy</h1>
-            <p className={` ${mulish.className} text-center mb-10`}>At OsamaMart, we believe that every Star Wars fan deserves a piece of the galaxy to call their own. Our mission is simple: to bring the magic, adventure, and nostalgia of Star Wars into your hands. Whether you're a seasoned collector or a young Padawan starting your journey, we are here to make your Star Wars dreams come true</p>
+            <p className={` ${mulish.className} text-center mb-10`}>At OsamaMart, we believe that every Star Wars fan deserves a piece of the galaxy to call their own. Our mission is simple: to bring the magic, adventure, and nostalgia of Star Wars into your hands. Whether you’re a seasoned collector or a young Padawan starting your journey, we are here to make your Star Wars dreams come true</p>
           </>
           <>
             <h1 className={` ${kanit.className} text-[#F26626] text-2xl mb-4 text-center`}>Our Journey Through the Stars</h1>

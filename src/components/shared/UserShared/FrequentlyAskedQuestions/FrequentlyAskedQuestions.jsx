@@ -34,7 +34,7 @@ const FrequentlyAskedQuestions = () => {
               What is the estimated delivery time for orders?
               </div>
               <div className="collapse-content">
-                <p>We aim to deliver your order within 3–7 business days, depending on your location. You&apos;ll receive a tracking number to monitor your shipment's progress.</p>
+                <p>We aim to deliver your order within 3–7 business days, depending on your location. You’ll receive a tracking number to monitor your shipment’s progress.</p>
               </div>
             </div>
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
@@ -49,7 +49,7 @@ const FrequentlyAskedQuestions = () => {
             <div className="collapse collapse-arrow join-item border-[#F26626] border">
               <input type="radio" name="my-accordion-4" />
               <div className="collapse-title text-xl font-medium text-orange-500">
-              Can I return or exchange a toy if I'm not satisfied?
+              Can I return or exchange a toy if I’m not satisfied?
               </div>
               <div className="collapse-content">
                 <p>Yes, we offer a hassle-free return and exchange policy. Items can be returned or exchanged within 14 days of delivery, provided they are unused and in their original packaging.</p>
