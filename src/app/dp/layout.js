@@ -186,6 +186,19 @@ const AdminPanelLayout = ({ children }) => {
                 <Divider />
                 <List>
                     <Link href="/dp">
+                        <ListItem key={"Home"} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                     <ViewCarouselIcon /> 
+                                </ListItemIcon>
+                                <ListItemText>Home</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                </List>
+                <Divider />
+                <List>
+                    <Link href="/dp">
                         <ListItem key={"Admin Panel"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
