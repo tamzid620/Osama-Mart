@@ -1,6 +1,27 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+declare module "next-auth" {
+  interface User {
+    id: string;
+    role: string;
+  }
+
+  interface Session {
+    user: {
+      id: string;
+      role: string;
+      name?: string;
+      email?: string;
+    };
+  }
+
+  interface JWT {
+    id: string;
+    role: string;
+  }
+}
+
 const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
@@ -36,8 +57,11 @@ const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      session.user.id = token.id;
-      session.user.role = token.role;
+      session.user = {
+        ...(session.user || {}),
+        id: token.id as string,
+        role: token.role as string,
+      };
       return session;
     },
   },
