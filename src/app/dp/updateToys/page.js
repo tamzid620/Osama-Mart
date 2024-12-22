@@ -10,7 +10,8 @@ const kanit = Kanit({
  preload: true,
 });
 const mulish = Mulish({
-  weight: ["300", "700"],
+  subsets: ["latin"],
+weight: ["300", "700"],
   style: ["normal"],
  preload: true,
 });
