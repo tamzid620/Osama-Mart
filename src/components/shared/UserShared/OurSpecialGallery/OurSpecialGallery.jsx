@@ -39,7 +39,7 @@ const OurSpecialGallery = () => {
     axios
       .get(baseUrl("special-gallery"))
       .then((res) => setSpecialGallery(res.data))
-      .catch((error) => setAllToys(error));
+      .catch((error) => (error));
   }, []);
 
   const settings = {

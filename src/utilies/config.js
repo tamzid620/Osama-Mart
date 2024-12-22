@@ -5,3 +5,4 @@ export function baseUrl(route){
     return `${coreUrl}${route}` ;
 }
 
+
