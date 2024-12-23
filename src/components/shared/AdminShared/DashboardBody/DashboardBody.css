@@ -4,10 +4,7 @@
     width: 95%;
     margin: auto;
   }
-  /* number status section  */
-  .NSD {
-    margin: auto;
-  }
+
   .row {
     margin-top: 40px;
   }
@@ -49,7 +46,6 @@
     width: 60px;
   }
   .card-link {
-    margin: auto;
     padding: 8px;
     background: linear-gradient(to left, #3bb890, #114070);
     border-bottom-left-radius: 5px;
@@ -57,18 +53,10 @@
   }
   /* graph section  */
   .graphParentdiv {
-      margin: auto;
       width: 100%;
       height: 800px;
   }
-  /* total calculation section  */
-  .TCD {
-    margin: auto;
-  }
-  /* Matured Bills section  */
-  .MBD {
-    margin: auto;
-  }
+
   .tableTittle {
     margin-top: 40px;
     margin-bottom: -35px;

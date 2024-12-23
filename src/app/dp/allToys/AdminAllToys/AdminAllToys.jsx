@@ -7,6 +7,7 @@ import axios from "axios";
 import { baseUrl } from "../../../../utilies/config";
 import Image from "next/image";
 import Link from "next/link";
+import LoadingCompo from '../../../../components/shared/LoadingCompo/LoadingCompo';
 
 const kanit = Kanit({
   subsets: ['latin'], 
@@ -23,17 +24,24 @@ weight: ["300", "700"],
 
 const AdminAllToys = () => {
   const [allToys, setAllToys] = useState([]);
+  const [isLoading, setIsloading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10; 
 
-
   useEffect(() => {
-    axios
-      .get(baseUrl("all-toys"))
-      .then((res) => setAllToys(res.data))
-      .catch((error) => {
-        setAllToys(error);
-      });
+    const fetchToys = async () => {
+      setIsloading(true);
+      try {
+        const res = await axios.get(baseUrl("all-toys"));
+        setAllToys(res.data);
+      } catch (error) {
+        console.error("Error fetching toys:", error);
+      } finally {
+        setIsloading(false);
+      }
+    };
+
+    fetchToys();
   }, []);
  
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -63,51 +71,57 @@ const AdminAllToys = () => {
             <th scope="col">Action</th>
           </tr>
         </thead>
+
+          {
+            isLoading? 
+             <LoadingCompo/>
+            :
         <tbody className={` ${mulish.className} `}>
-          {currentToys.map((toy, index) => (
-            <tr key={toy?.id}>
-              <td>{index + 1}</td>
-              <td>
-                <Image
-                  width={60}
-                  height={60}
-                  src={toy?.image?.trimEnd()}
-                  alt={toy?.name}
-                  priority={false}
-                />
-              </td>
-              <td>
-                <Image
-                  width={60}
-                  height={60}
-                  src={toy?.hoverImage?.trimEnd()}
-                  alt={toy?.name}
-                  priority={false}
-                />
-              </td>
-              <td>{toy?.name}</td>
-              <td>{toy?.price}</td>
-              <td>{toy?.quantity}</td>
-              <td>{toy?.category}</td>
-              <td>{toy?.rating}</td>
-              <td>{toy?.description}</td>
-              <td>
-              <Link className="" href={`updateToys/${toy?.id}`}>
+            {currentToys.map((toy, index) => (
+              <tr key={toy?.id}>
+                <td>{index + 1}</td>
+                <td>
+                  <Image
+                    width={60}
+                    height={60}
+                    src={toy?.image?.trimEnd()}
+                    alt={toy?.name}
+                    priority={false}
+                  />
+                </td>
+                <td>
+                  <Image
+                    width={60}
+                    height={60}
+                    src={toy?.hoverImage?.trimEnd()}
+                    alt={toy?.name}
+                    priority={false}
+                  />
+                </td>
+                <td>{toy?.name}</td>
+                <td>{toy?.price}</td>
+                <td>{toy?.quantity}</td>
+                <td>{toy?.category}</td>
+                <td>{toy?.rating}</td>
+                <td>{toy?.description}</td>
+                <td>
+                <Link className="" href={`updateToys/${toy?.id}`}>
+                    <button
+                      className={` ${kanit.className} uppercase bg-green-500 px-3 py-1 rounde-md hover:bg-green-600 me-2 mb-1`}
+                    >
+                      Edit
+                    </button>
+                  </Link>
                   <button
-                    className={` ${kanit.className} uppercase bg-green-500 px-3 py-1 rounde-md hover:bg-green-600 me-2 mb-1`}
+                    className={` ${kanit.className} uppercase bg-red-500 px-3 py-1 rounde-md hover:bg-red-600 `}
                   >
-                    Edit
+                    Delete
                   </button>
-                </Link>
-                <button
-                  className={` ${kanit.className} uppercase bg-red-500 px-3 py-1 rounde-md hover:bg-red-600 `}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
+                </td>
+              </tr>
+            ))}
         </tbody>
+      }
       </table>
  {/* Pagination */}
  <div className="pagination flex justify-center mt-4">
