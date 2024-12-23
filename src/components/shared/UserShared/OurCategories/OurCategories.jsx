@@ -126,7 +126,7 @@ const OurCategories = () => {
                 : "border-[#F26626]"
             } text-white hover:border-white hover:bg-[#F26626]`}
           >
-            <span className="flex justify-center sm: -ms-8">
+            <span className="flex justify-center md:ms-0 sm: -ms-8">
               <Image
                 className="w-[30px] ms-8"
                 src={icon2}
@@ -148,7 +148,7 @@ const OurCategories = () => {
                 : "border-[#F26626]"
             } text-white hover:border-white hover:bg-[#F26626]`}
           >
-            <span className="flex justify-center sm: -ms-3">
+            <span className="flex justify-center md:ms-0 sm: -ms-3">
               <Image
                 className="w-[30px] ms-3"
                 src={icon3}
