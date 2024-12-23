@@ -101,7 +101,6 @@ const DashboardBody = () => {
         <div>
              <div className='dashboardBody'>
       {/* <!--------------------<<<<<<<<< Number status section >>>>>>>>>> --------------------> */}
-      <div className="NSD">
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-10">
           {/* <!-- card one  --> */}
           <div>
@@ -132,7 +131,6 @@ const DashboardBody = () => {
             </div>
           </div>
         </div>
-      </div>
       {/* <!--------------------<<<<<<<<< Graph section >>>>>>>>>> --------------------> */}
       <div className={` ${kanit.className} graphParentdiv`}>
       <ResponsiveContainer width="100%" height="100%" >
@@ -184,7 +182,7 @@ const DashboardBody = () => {
         </div>
       </div>
       {/* <!--------------------<<<<<<<<< Matured Bills section >>>>>>>>>> --------------------> */}
-      <div className="MBD">
+      <div className="overflow-x-auto">
         <table className="table">
           <thead className={` ${kanit.className} text-[14px]`}>
             <tr>

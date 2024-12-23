@@ -21,7 +21,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
-import ViewDayIcon from '@mui/icons-material/ViewDay';
 import { useEffect } from 'react';
 import Link from 'next/link';
 
@@ -185,7 +184,7 @@ const AdminPanelLayout = ({ children }) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <Link href="/dp">
+                    <Link href="/">
                         <ListItem key={"Home"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
@@ -199,12 +198,12 @@ const AdminPanelLayout = ({ children }) => {
                 <Divider />
                 <List>
                     <Link href="/dp">
-                        <ListItem key={"Admin Panel"} disablePadding>
+                        <ListItem key={"Dashboard"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
                                      <ViewCarouselIcon /> 
                                 </ListItemIcon>
-                                <ListItemText>Admin Panel</ListItemText>
+                                <ListItemText>Dashboard</ListItemText>
                             </ListItemButton>
                         </ListItem>
                     </Link>

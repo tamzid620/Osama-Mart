@@ -71,16 +71,18 @@ const AdminAllToys = () => {
                 <Image
                   width={60}
                   height={60}
-                  src={toy?.image?.trim()}
+                  src={toy?.image?.trimEnd()}
                   alt={toy?.name}
+                  priority={false}
                 />
               </td>
               <td>
                 <Image
                   width={60}
                   height={60}
-                  src={toy?.hoverImage?.trim()}
+                  src={toy?.hoverImage?.trimEnd()}
                   alt={toy?.name}
+                  priority={false}
                 />
               </td>
               <td>{toy?.name}</td>
@@ -90,7 +92,7 @@ const AdminAllToys = () => {
               <td>{toy?.rating}</td>
               <td>{toy?.description}</td>
               <td>
-                <Link href="/dp/updateToys">
+              <Link className="" href={`updateToys/${toy?.id}`}>
                   <button
                     className={` ${kanit.className} uppercase bg-green-500 px-3 py-1 rounde-md hover:bg-green-600 me-2 mb-1`}
                   >

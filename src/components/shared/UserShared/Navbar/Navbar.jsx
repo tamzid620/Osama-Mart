@@ -28,6 +28,19 @@ const Navbar = () => {
       setCartLength(cart.length);
     }
   }, []);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isOpen]);
 
   const toggleViewCart = () => {
     setViewCart(!viewCart);

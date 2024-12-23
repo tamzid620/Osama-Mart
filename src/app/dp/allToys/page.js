@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminAllToys from '../../../components/shared/AdminShared/AdminAllToys/AdminAllToys';
+import AdminAllToys from './AdminAllToys/AdminAllToys';
 import { Kanit } from "next/font/google";
 
 const kanit = Kanit({
