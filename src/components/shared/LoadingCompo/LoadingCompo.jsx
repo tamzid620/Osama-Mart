@@ -3,7 +3,7 @@ import React from "react";
 
 const LoadingCompo = () => {
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className="flex justify-center items-center w-full h-screen">
       <div>
         <Loader />
       </div>

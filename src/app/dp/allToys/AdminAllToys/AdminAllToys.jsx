@@ -7,26 +7,26 @@ import axios from "axios";
 import { baseUrl } from "../../../../utilies/config";
 import Image from "next/image";
 import Link from "next/link";
-import LoadingCompo from '../../../../components/shared/LoadingCompo/LoadingCompo';
+import LoadingCompo from "../../../../components/shared/LoadingCompo/LoadingCompo";
 
 const kanit = Kanit({
-  subsets: ['latin'], 
+  subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal"],
- preload: true,
+  preload: true,
 });
 const mulish = Mulish({
   subsets: ["latin"],
-weight: ["300", "700"],
+  weight: ["300", "700"],
   style: ["normal"],
- preload: true,
+  preload: true,
 });
 
 const AdminAllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; 
+  const itemsPerPage = 10;
 
   useEffect(() => {
     const fetchToys = async () => {
@@ -43,7 +43,7 @@ const AdminAllToys = () => {
 
     fetchToys();
   }, []);
- 
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentToys = allToys.slice(indexOfFirstItem, indexOfLastItem);
@@ -56,27 +56,25 @@ const AdminAllToys = () => {
 
   return (
     <div>
-      <table className="table">
-        <thead className={` ${kanit.className} text-[14px]`}>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Image</th>
-            <th scope="col">Hover Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
-            <th scope="col">Category</th>
-            <th scope="col">Rating</th>
-            <th scope="col">description</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-
-          {
-            isLoading? 
-             <LoadingCompo/>
-            :
-        <tbody className={` ${mulish.className} `}>
+      {isLoading ? (
+        <LoadingCompo />
+      ) : (
+        <table className="table">
+          <thead className={` ${kanit.className} text-[14px]`}>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Image</th>
+              <th scope="col">Hover Image</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Category</th>
+              <th scope="col">Rating</th>
+              <th scope="col">description</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody className={` ${mulish.className} `}>
             {currentToys.map((toy, index) => (
               <tr key={toy?.id}>
                 <td>{index + 1}</td>
@@ -86,8 +84,8 @@ const AdminAllToys = () => {
                     height={60}
                     src={toy?.image?.trimEnd()}
                     alt={toy?.name}
-                    priority={false}
-                  />
+                    priority
+                    />
                 </td>
                 <td>
                   <Image
@@ -95,7 +93,7 @@ const AdminAllToys = () => {
                     height={60}
                     src={toy?.hoverImage?.trimEnd()}
                     alt={toy?.name}
-                    priority={false}
+                    priority
                   />
                 </td>
                 <td>{toy?.name}</td>
@@ -105,7 +103,7 @@ const AdminAllToys = () => {
                 <td>{toy?.rating}</td>
                 <td>{toy?.description}</td>
                 <td>
-                <Link className="" href={`updateToys/${toy?.id}`}>
+                  <Link className="" href={`updateToys/${toy?.id}`}>
                     <button
                       className={` ${kanit.className} uppercase bg-green-500 px-3 py-1 rounde-md hover:bg-green-600 me-2 mb-1`}
                     >
@@ -120,11 +118,11 @@ const AdminAllToys = () => {
                 </td>
               </tr>
             ))}
-        </tbody>
-      }
-      </table>
- {/* Pagination */}
- <div className="pagination flex justify-center mt-4">
+          </tbody>
+        </table>
+      )}
+      {/* Pagination */}
+      <div className="pagination flex justify-center mt-4">
         {Array.from({ length: totalPages }, (_, index) => index + 1).map(
           (pageNumber) => (
             <button

@@ -131,7 +131,7 @@ const AdminPanelLayout = ({ children }) => {
     };
 
     return (
-        <Box sx={{ display: 'flex'}}>
+        <Box sx={{ display: 'flex', backgroundColor: "black" }}>
             <CssBaseline />
             <AppBar sx={{backgroundColor : '#A64D79' }} position="fixed" open={open}>
                 <Toolbar sx={{ width: "100% ", display: 'flex', justifyContent: 'space-between', alignItems:"center"}}>

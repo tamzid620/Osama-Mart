@@ -12,4 +12,16 @@ ul li:hover {
    filter: drop-shadow(1px 1px 1px #F26626) ;
 }
 
+/* Hide hr by default */
+nav ul li hr {
+   opacity: 0;
+   width: 0;
+   transition: all 0.3s ease-in-out;
+ }
+ 
+ nav ul li:hover hr {
+   opacity: 1;
+   width: 100%;
+   transition: all 0.5s ease-in-out;
+ }
 

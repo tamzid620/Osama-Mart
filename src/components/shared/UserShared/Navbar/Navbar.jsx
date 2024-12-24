@@ -71,15 +71,19 @@ const Navbar = () => {
           <ul className="uppercase flex gap-10 ">
             <li title="Home">
               <Link href="/">Home</Link>
+              <hr className="border-2 border-white" />
             </li>
             <li title="All Products">
               <Link href="/allProducts">All Products</Link>
+              <hr className="border-2 border-white" />
             </li>
             <li title="About Us">
               <Link href="/aboutUs">About Us</Link>
+              <hr className="border-2 border-white" />
             </li>
             <li title="Admin Panel">
               <Link href="/dp">AdminPanel</Link>
+              <hr className="border-2 border-white" />
             </li>
             <li className="relative" title="View Cart" onClick={toggleViewCart}>
               <BsFillCartCheckFill className="relative" size={24} />
