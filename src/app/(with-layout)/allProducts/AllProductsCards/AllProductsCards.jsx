@@ -22,7 +22,8 @@ const kanit = Kanit({
     weight: ["400", "700"],
     style: ["normal"],
  preload: true,
-  });dp/allToys
+  })
+  
   const mulish = Mulish({
     subsets: ["latin"],
 weight: ["300", "700"],

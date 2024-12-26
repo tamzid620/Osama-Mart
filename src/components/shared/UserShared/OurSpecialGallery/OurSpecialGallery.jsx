@@ -5,10 +5,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import { Kanit } from "next/font/google";
-import { Mulish } from "next/font/google";
 import axios from "axios";
 import { baseUrl } from "../../../../utilies/config";
+import { Kanit } from "next/font/google";
+import { Mulish } from "next/font/google";
 
 const kanit = Kanit({
   subsets: ['latin'], 

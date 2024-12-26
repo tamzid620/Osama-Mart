@@ -58,7 +58,7 @@ const SingleProductDetails = () => {
           className={`${kanit.className} grid lg:grid-cols-2 md:grid-cols-1 sm: grid-cols-1 gap-5`}
         >
           <div className="grid lg:grid-cols-2 md:grid-cols-2 sm: grid-cols-1 gap-2">
-            <Image
+            {/* <Image
               className="w-[350px] mb-3 "
               width={300}
               height={200}
@@ -71,7 +71,25 @@ const SingleProductDetails = () => {
               height={200}
               src={toyDetails?.hoverImage}
               alt={toyDetails?.name}
-            />
+            /> */}
+             {toyDetails.image && (
+              <Image
+                className="w-[350px] h-[300px] mb-3"
+                width={300}
+                height={200}
+                src={toyDetails.image}
+                alt={toyDetails.name}
+              />
+            )}
+            {toyDetails.hoverImage && (
+              <Image
+                className="w-[350px]"
+                width={300}
+                height={200}
+                src={toyDetails.hoverImage}
+                alt={toyDetails.name}
+              />
+            )}
           </div>
           <div className="leading-10">
             <h1>
