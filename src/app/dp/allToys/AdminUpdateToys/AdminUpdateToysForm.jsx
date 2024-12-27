@@ -25,6 +25,7 @@ const AdminUpdateToysForm = () => {
 
   const { id } = useParams();
   const [toyDetails, setToyDetails] = useState({
+ 
     image: "",
     hoverImage: "",
     name: "",
@@ -39,7 +40,19 @@ const AdminUpdateToysForm = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:7000/all-toys/${id}`)
-      .then((res) => setToyDetails(res.data))
+      // .then((res) => setToyDetails(res.data))
+      .then((res) => {
+        setToyDetails({
+          image: res.data.image || "",
+          hoverImage: res.data.hoverImage || "",
+          name: res.data.name || "",
+          price: res.data.price || "",
+          quantity: res.data.quantity || "",
+          category: res.data.category || "",
+          rating: res.data.rating || "",
+          description: res.data.description || "",
+        });
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -52,24 +65,38 @@ const AdminUpdateToysForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
+    // Check if all fields are populated properly
+    if (!toyDetails?.image || !toyDetails?.hoverImage) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please upload both image and hover image.',
+        icon: 'error',
+        showConfirmButton: true,
+      });
+      return;
+    }
     const formData = new FormData();
-    formData.append('image', toyDetails.image);
-    formData.append('hoverImage', toyDetails.hoverImage);
-    formData.append('name', toyDetails.name);
-    formData.append('price', toyDetails.price);
-    formData.append('quantity', toyDetails.quantity);
-    formData.append('category', toyDetails.category);
-    formData.append('rating', toyDetails.rating);
-    formData.append('description', toyDetails.description);
+    formData.append('id', id); 
+    formData.append('image', toyDetails?.image);
+    formData.append('hoverImage', toyDetails?.hoverImage);
+    formData.append('name', toyDetails?.name);
+    formData.append('price', toyDetails?.price);
+    formData.append('quantity', toyDetails?.quantity);
+    formData.append('category', toyDetails?.category);
+    formData.append('rating', toyDetails?.rating);
+    formData.append('description', toyDetails?.description);
+    console.log('formData ------', formData);
   
     axios
-      .post('http://localhost:7000/update-toy', formData)
+      .post('http://localhost:7000/update-toys', formData)
       .then((res) => {
         Swal.fire({
           title: 'Success!',
           text: 'Toy details have been updated!',
           icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
         });
         router.push('/dp/allToys');
       })
@@ -77,8 +104,10 @@ const AdminUpdateToysForm = () => {
         console.error(error);
         Swal.fire({
           title: 'Error!',
-          text: 'Something went wrong.',
+          text: 'Error Updating Details.',
           icon: 'error',
+          showConfirmButton: false,
+          timer: 1500
         });
       });
   };
@@ -90,6 +119,18 @@ const AdminUpdateToysForm = () => {
       className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-white text-black shadow-md rounded-sm mt-10 `}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Id
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={toyDetails?.id}
+            onChange={handleChange}
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          />
+        </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Image
