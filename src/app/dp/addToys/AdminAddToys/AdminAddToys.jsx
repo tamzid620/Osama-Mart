@@ -72,6 +72,7 @@ const AdminAddToys = () => {
               type="text"
               name="id"
               value={addToys?.id}
+              placeholder="click generate id button"
               readOnly
               className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
@@ -166,8 +167,8 @@ const AdminAddToys = () => {
           </label>
           <select 
           type="ratio"
-          name="rating"
-          value={addToys?.rating}
+          name="category"
+          value={addToys?.category}
           onChange={handleChange}
           required
           className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"

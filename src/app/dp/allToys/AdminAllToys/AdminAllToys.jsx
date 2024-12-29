@@ -76,25 +76,33 @@ const AdminAllToys = () => {
           </thead>
           <tbody className={` ${mulish.className} `}>
             {currentToys.map((toy, index) => (
-              <tr key={toy?.id}>
+              <tr key={`${toy?.id}-${index}`}>
                 <td>{index + 1}</td>
                 <td>
-                  <Image
-                    width={60}
-                    height={60}
-                    src={toy?.image?.trimEnd()}
-                    alt={toy?.name}
-                    priority
-                  />
+                  {toy?.image?.trimEnd() ? (
+                    <Image
+                      width={60}
+                      height={60}
+                      src={toy?.image?.trimEnd()}
+                      alt={toy?.name}
+                      priority
+                    />
+                  ) : (
+                    <span>No Image</span> // You can display a placeholder or text here.
+                  )}
                 </td>
                 <td>
-                  <Image
-                    width={60}
-                    height={60}
-                    src={toy?.hoverImage?.trimEnd()}
-                    alt={toy?.name}
-                    priority
-                  />
+                  {toy?.hoverImage?.trimEnd() ? (
+                    <Image
+                      width={60}
+                      height={60}
+                      src={toy?.hoverImage?.trimEnd()}
+                      alt={toy?.name}
+                      priority
+                    />
+                  ) : (
+                    <span>No Hover Image</span> // Placeholder for missing hover image.
+                  )}
                 </td>
                 <td>{toy?.name}</td>
                 <td>{toy?.price}</td>
