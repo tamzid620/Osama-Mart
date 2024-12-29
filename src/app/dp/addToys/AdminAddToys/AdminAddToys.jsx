@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { kanit, mulish } from "../../../../utilies/FontsProvider/fontProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AdminAddToys = () => {
   const [addToys, setAddToys] = useState({
@@ -17,6 +19,15 @@ const AdminAddToys = () => {
   });
   const router = useRouter();
 
+  // Function to generate a random number (ID)
+  const handleRenerateRandomId = () => {
+    const randomId = Math.floor(Math.random() * 100000); 
+    setAddToys((prevDetails) => ({
+      ...prevDetails,
+      id: randomId.toString(),
+    }));
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAddToys((prevDetails) => ({
@@ -28,7 +39,7 @@ const AdminAddToys = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:7000/all-toys", addToys)
+      .post("http://localhost:7000/all-toys", addToys)
       .then((res) => {
         Swal.fire({
           icon: "success",
@@ -52,19 +63,28 @@ const AdminAddToys = () => {
       className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-white text-black shadow-md rounded-sm mt-10 `}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
+      <div>
           <label className="block text-sm font-medium text-gray-700">
             Toy Id
           </label>
-          <input
-            type="number"
-            name="id"
-            placeholder="write number"
-            value={addToys?.id}
-            onChange={handleChange} 
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          />
+          <div className="flex items-center">
+            <input
+              type="text"
+              name="id"
+              value={addToys?.id}
+              readOnly
+              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+            <button
+              type="button"
+              onClick={handleRenerateRandomId}
+              className="ml-2 bg-[#A64D79] hover:bg-[#6A1E55] text-white w-[100px] py-3 rounded-sm text-sm"
+            >
+              Generate ID
+            </button>
+          </div>
         </div>
+
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Image URL
@@ -75,6 +95,7 @@ const AdminAddToys = () => {
             value={addToys?.image}
             placeholder="paste first image url"
             onChange={handleChange}
+            required
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -89,6 +110,7 @@ const AdminAddToys = () => {
             value={addToys?.hoverImage}
             placeholder="paste second image url"
             onChange={handleChange}
+            required
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -103,6 +125,7 @@ const AdminAddToys = () => {
             value={addToys?.name}
             placeholder="write product name"
             onChange={handleChange}
+            required
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -117,6 +140,7 @@ const AdminAddToys = () => {
             value={addToys?.price}
             placeholder="write product price"
             onChange={handleChange}
+            required
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -131,6 +155,7 @@ const AdminAddToys = () => {
             value={addToys?.quantity}
             placeholder="write product quantity"
             onChange={handleChange}
+            required
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -144,6 +169,7 @@ const AdminAddToys = () => {
           name="rating"
           value={addToys?.rating}
           onChange={handleChange}
+          required
           className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
         
           >
@@ -163,6 +189,7 @@ const AdminAddToys = () => {
           name="rating"
           value={addToys?.rating}
           onChange={handleChange}
+          required
           className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
         
           >
@@ -188,6 +215,7 @@ const AdminAddToys = () => {
             value={addToys?.description}
             placeholder="write product description"
             onChange={handleChange}
+            required
             rows="4"
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           ></textarea>
