@@ -79,12 +79,17 @@ const AdminUpdateToysForm = () => {
     });
   };
   
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
 
   return (
     <div
       className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-white text-black shadow-md rounded-sm mt-10 `}
     >
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit}  onKeyDown={handleKeyDown}  className="space-y-4">
       <div>
           <label className="block text-sm font-medium text-gray-700">
            Toy Id
