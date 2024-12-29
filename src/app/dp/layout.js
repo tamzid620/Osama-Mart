@@ -223,7 +223,7 @@ const AdminPanelLayout = ({ children }) => {
                 </List>
                 <Divider />
             </Drawer>
-            <Main open={open}>
+            <Main open={open}  sx={{ backgroundColor: "black" }}>
                 <div >
                     <>
                         <DrawerHeader />

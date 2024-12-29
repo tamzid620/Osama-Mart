@@ -38,4 +38,4 @@ weight: ["300", "700"],
 • front end link: https://osama-mart.vercel.app/
 •  ’
 •  
-• 
+•  router.push('/dp/allToys');

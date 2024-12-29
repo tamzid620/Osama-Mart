@@ -42,16 +42,7 @@ const AdminUpdateToysForm = () => {
       .get(`http://localhost:7000/all-toys/${id}`)
       // .then((res) => setToyDetails(res.data))
       .then((res) => {
-        setToyDetails({
-          image: res.data.image || "",
-          hoverImage: res.data.hoverImage || "",
-          name: res.data.name || "",
-          price: res.data.price || "",
-          quantity: res.data.quantity || "",
-          category: res.data.category || "",
-          rating: res.data.rating || "",
-          description: res.data.description || "",
-        });
+        setToyDetails(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -60,58 +51,33 @@ const AdminUpdateToysForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setToyDetails({ ...toyDetails, [name]: value });
+    setToyDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Check if all fields are populated properly
-    if (!toyDetails?.image || !toyDetails?.hoverImage) {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Please upload both image and hover image.',
-        icon: 'error',
-        showConfirmButton: true,
-      });
-      return;
-    }
-    const formData = new FormData();
-    formData.append('id', id); 
-    formData.append('image', toyDetails?.image);
-    formData.append('hoverImage', toyDetails?.hoverImage);
-    formData.append('name', toyDetails?.name);
-    formData.append('price', toyDetails?.price);
-    formData.append('quantity', toyDetails?.quantity);
-    formData.append('category', toyDetails?.category);
-    formData.append('rating', toyDetails?.rating);
-    formData.append('description', toyDetails?.description);
-    console.log('formData ------', formData);
-  
     axios
-      .post('http://localhost:7000/update-toys', formData)
-      .then((res) => {
-        Swal.fire({
-          title: 'Success!',
-          text: 'Toy details have been updated!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500
-        });
-        router.push('/dp/allToys');
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire({
-          title: 'Error!',
-          text: 'Error Updating Details.',
-          icon: 'error',
-          showConfirmButton: false,
-          timer: 1500
-        });
+    .put(`http://localhost:7000/all-toys/${id}`, toyDetails)
+    .then((response) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Toy Updated',
+        text: response.data.message,
       });
+      router.push('/dp/allToys');// Navigate back to the toys list page
+    })
+    .catch((error) => {
+      console.error('Error updating toy:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Update Failed',
+        text: error.response?.data?.message || 'An error occurred.',
+      });
+    });
   };
-  
   
 
   return (
@@ -121,40 +87,39 @@ const AdminUpdateToysForm = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
       <div>
           <label className="block text-sm font-medium text-gray-700">
-            Id
+           Toy Id
           </label>
           <input
-            type="text"
+            type="number"
             name="name"
-            value={toyDetails?.id}
-            onChange={handleChange}
+            value={id}
+            readOnly
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Image
+            Image URL
           </label>
           <input
-            type="file"
+            type="text"
             name="image"
-            onChange={(e) =>
-              setToyDetails({ ...toyDetails, image: e.target.files[0] })
-            }
+            value={toyDetails?.image}
+            onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Hover Image
+            Hover Image URL
           </label>
           <input
-            type="file"
+            type="text"
             name="hoverImage"
-            onChange={(e) =>
-              setToyDetails({ ...toyDetails, hoverImage: e.target.files[0] })
-            }
+            
+            value={toyDetails?.hoverImage}
+            onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
