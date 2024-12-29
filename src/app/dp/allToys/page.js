@@ -1,13 +1,7 @@
 import React from 'react';
 import AdminAllToys from './AdminAllToys/AdminAllToys';
-import { Kanit } from "next/font/google";
+import { kanit } from './AdminUpdateToys/AdminUpdateToysForm';
 
-const kanit = Kanit({
-  subsets: ['latin'], 
-  weight: ["400", "700"],
-  style: ["normal"],
- preload: true,
-});
 
 export const metadata = {
   title: "OsamaMart -All Toys",

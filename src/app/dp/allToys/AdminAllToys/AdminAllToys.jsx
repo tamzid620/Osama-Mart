@@ -102,16 +102,16 @@ const AdminAllToys = () => {
                 <td>{toy?.category}</td>
                 <td>{toy?.rating}</td>
                 <td>{toy?.description}</td>
-                <td className="flex justify-center items-center gap-2">
+                <td className="">
                   <Link className="" href={`updateToys/${toy?.id}`}>
                     <button
-                      className={` ${kanit.className} uppercase bg-green-500 w-[70px] h-[25px] rounde-md hover:bg-green-600 `}
+                      className={` ${kanit.className} uppercase bg-green-500 w-[70px] h-[25px] mx-1 my-1 rounde-md hover:bg-green-600 `}
                     >
                       Edit
                     </button>
                   </Link>
                   <button
-                    className={` ${kanit.className} uppercase bg-red-500 w-[70px] h-[25px] rounde-md hover:bg-red-600 `}
+                    className={` ${kanit.className} uppercase bg-red-500 w-[70px] h-[25px] mx-1 my-1 rounde-md hover:bg-red-600 `}
                   >
                     Delete
                   </button>

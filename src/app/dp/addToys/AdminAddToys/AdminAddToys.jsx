@@ -1,31 +1,11 @@
 "use client";
-import axios from "axios";
-import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import { useRouter } from 'next/navigation';
-import { Kanit } from "next/font/google";
-import { Mulish } from "next/font/google";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { kanit, mulish } from "../../../../utilies/FontsProvider/fontProvider";
 
-export const kanit = Kanit({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal"],
-  preload: true,
-});
-export const mulish = Mulish({
-  subsets: ["latin"],
-  weight: ["300", "700"],
-  style: ["normal"],
-  preload: true,
-});
-
-const AdminUpdateToysForm = () => {
-
-
-  const { id } = useParams();
-  const [toyDetails, setToyDetails] = useState({
- 
+const AdminAddToys = () => {
+  const [addToys, setAddToys] = useState({
+    id: "",
     image: "",
     hoverImage: "",
     name: "",
@@ -37,21 +17,9 @@ const AdminUpdateToysForm = () => {
   });
   const router = useRouter();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:7000/all-toys/${id}`)
-      // .then((res) => setToyDetails(res.data))
-      .then((res) => {
-        setToyDetails(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setToyDetails((prevDetails) => ({
+    setAddToys((prevDetails) => ({
       ...prevDetails,
       [name]: value,
     }));
@@ -60,41 +28,40 @@ const AdminUpdateToysForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-    .put(`http://localhost:7000/all-toys/${id}`, toyDetails)
-    .then((res) => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Toy Updated',
-        text: res.data.message,
+      .put("http://localhost:7000/all-toys", addToys)
+      .then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Toy Added",
+          text: res.data.message,
+        });
+        router.push("/dp/allToys");
+      })
+      .catch((error) => {
+        console.error("Error updating toy:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Add Failed",
+          text: error.res?.data?.message || "An error occurred.",
+        });
       });
-      router.push('/dp/allToys');// Navigate back to the toys list page
-    })
-    .catch((error) => {
-      console.error('Error updating toy:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Update Failed',
-        text: error.res?.data?.message || 'An error occurred.',
-      });
-    });
   };
-  
 
   return (
     <div
       className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-white text-black shadow-md rounded-sm mt-10 `}
     >
       <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
+        <div>
           <label className="block text-sm font-medium text-gray-700">
-           Toy Id
+            Toy Id
           </label>
           <input
             type="number"
-            name="name"
-            value={id}
-            hidden
-            readOnly
+            name="id"
+            placeholder="write number"
+            value={addToys?.id}
+            onChange={handleChange} 
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
         </div>
@@ -105,7 +72,8 @@ const AdminUpdateToysForm = () => {
           <input
             type="text"
             name="image"
-            value={toyDetails?.image}
+            value={addToys?.image}
+            placeholder="paste first image url"
             onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -118,7 +86,8 @@ const AdminUpdateToysForm = () => {
           <input
             type="text"
             name="hoverImage"
-            value={toyDetails?.hoverImage}
+            value={addToys?.hoverImage}
+            placeholder="paste second image url"
             onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -131,7 +100,8 @@ const AdminUpdateToysForm = () => {
           <input
             type="text"
             name="name"
-            value={toyDetails?.name}
+            value={addToys?.name}
+            placeholder="write product name"
             onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -144,7 +114,8 @@ const AdminUpdateToysForm = () => {
           <input
             type="number"
             name="price"
-            value={toyDetails?.price}
+            value={addToys?.price}
+            placeholder="write product price"
             onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -157,7 +128,8 @@ const AdminUpdateToysForm = () => {
           <input
             type="number"
             name="quantity"
-            value={toyDetails?.quantity}
+            value={addToys?.quantity}
+            placeholder="write product quantity"
             onChange={handleChange}
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
@@ -167,28 +139,44 @@ const AdminUpdateToysForm = () => {
           <label className="block text-sm font-medium text-gray-700">
             Category
           </label>
-          <input
-            type="text"
-            name="category"
-            value={toyDetails?.category}
-            onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          />
+          <select 
+          type="ratio"
+          name="rating"
+          value={addToys?.rating}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        
+          >
+            <option value="">Select Your Category</option>
+            <option value="Action Figures">Action Figures</option>
+            <option value="Vehicles & Starships">Vehicles & Starships</option>
+            <option value="Lightsabers & Weapons">Lightsabers & Weapons</option>
+          </select>
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700">
             Rating
           </label>
-          <input
-            type="number"
-            step="0.1"
-            max="5"
-            name="rating"
-            value={toyDetails?.rating}
-            onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          />
+          <select 
+          type="ratio"
+          name="rating"
+          value={addToys?.rating}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        
+          >
+            <option value="">Select Your Rating</option>
+            <option value="1.0">1.0</option>
+            <option value="1.5">1.5</option>
+            <option value="2.0">2.0</option>
+            <option value="2.5">2.5</option>
+            <option value="3.0">3.0</option>
+            <option value="3.5">3.5</option>
+            <option value="4.0">4.0</option>
+            <option value="4.5">4.5</option>
+            <option value="5.0">5.0</option>
+          </select>
         </div>
 
         <div>
@@ -197,7 +185,8 @@ const AdminUpdateToysForm = () => {
           </label>
           <textarea
             name="description"
-            value={toyDetails?.description}
+            value={addToys?.description}
+            placeholder="write product description"
             onChange={handleChange}
             rows="4"
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -215,4 +204,4 @@ const AdminUpdateToysForm = () => {
   );
 };
 
-export default AdminUpdateToysForm;
+export default AdminAddToys;

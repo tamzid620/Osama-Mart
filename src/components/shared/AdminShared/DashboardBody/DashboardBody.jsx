@@ -101,7 +101,7 @@ const DashboardBody = () => {
         <div>
              <div className='dashboardBody'>
       {/* <!--------------------<<<<<<<<< Number status section >>>>>>>>>> --------------------> */}
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-10">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5">
           {/* <!-- card one  --> */}
           <div>
             <div className="box-div">
@@ -157,7 +157,7 @@ const DashboardBody = () => {
       </div>
       {/* <!--------------------<<<<<<<<< Total Calculation section >>>>>>>>>> --------------------> */}
       <div className="TCD">
-        <div className="row grid lg:grid-cols-3 md:grid-cols-2 sm: grid-cols-1 gap-10">
+        <div className="row grid lg:grid-cols-3 md:grid-cols-2 sm: grid-cols-1 gap-5">
           {/* <!-- card one  --> */}
           <div>
             <div className="box-div">

@@ -222,6 +222,19 @@ const AdminPanelLayout = ({ children }) => {
                     </Link>
                 </List>
                 <Divider />
+                <List>
+                    <Link href="/dp/addToys">
+                        <ListItem key={"Add Toys"} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                     <ViewCarouselIcon /> 
+                                </ListItemIcon>
+                                <ListItemText>Add Toys</ListItemText>
+                            </ListItemButton>
+                        </ListItem>
+                    </Link>
+                </List>
+                <Divider />
             </Drawer>
             <Main open={open}  sx={{ backgroundColor: "black" }}>
                 <div >
