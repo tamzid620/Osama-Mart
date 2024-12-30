@@ -5,19 +5,19 @@ import closeIcon from "../../../../assests/icons/closeBlack.png";
 import deleteIcon from "../../../../assests/icons/delete.png";
 
 const kanit = Kanit({
-  subsets: ['latin'], 
+  subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal"],
- preload: true,
+  preload: true,
 });
 
 const ViewCart = ({ toggleViewCart }) => {
-const [cartItems, setCartItems] = useState([]) ;
+  const [cartItems, setCartItems] = useState([]);
 
-useEffect(()=> {
-const cartData = JSON.parse(localStorage.getItem("cart")) || [] ;
-setCartItems(cartData) ;
-},[])
+  useEffect(() => {
+    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(cartData);
+  }, []);
 
   // handleDelete button  -----------------------
   const handleDelete = (id) => {
@@ -27,8 +27,8 @@ setCartItems(cartData) ;
   };
 
   return (
-    <div>
-      <div className="flex justify-end">
+    <div className="relative">
+      <div className="flex justify-end ">
         <Image
           onClick={toggleViewCart}
           className="w-[20px] my-2 mx-2 bg-gray-300 hover:bg-[#F26626] p-1"
@@ -44,7 +44,7 @@ setCartItems(cartData) ;
           cartItems.map(({ id, name, price, image }) => (
             <div
               key={id}
-              className="flex justify-between mx-3 my-3 bg-gray-200 shadow-md hover:shadow-lg rounded-md text-black"
+              className=" flex justify-between mx-3 my-3 bg-gray-200 shadow-md hover:shadow-lg rounded-md text-black"
             >
               {/* Item Image */}
               <div>
@@ -74,6 +74,12 @@ setCartItems(cartData) ;
                     alt="Delete Icon"
                   />
                 </div>
+              </div>
+              {/* Buy Now Button */}
+              <div className="absolute top-28 left-0 w-full p-4">
+                <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-md shadow-lg">
+                  Buy Now
+                </button>
               </div>
             </div>
           ))

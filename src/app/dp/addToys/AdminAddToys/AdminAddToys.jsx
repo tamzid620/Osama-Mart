@@ -39,7 +39,7 @@ const AdminAddToys = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://osama-mart-backend.vercel.app/all-toys", addToys)
+      .post("http://localhost:7000/all-toys", addToys)
       .then((res) => {
         Swal.fire({
           icon: "success",

@@ -2,21 +2,8 @@
 import React, { useEffect, useState } from "react";
 import BannerImage from "../../../../assests/images/banner.jpg";
 import Image from "next/image";
-import { Kanit } from "next/font/google";
-import { Mulish } from "next/font/google";
+import { kanit, mulish } from "../../../../app/dp/allToys/AdminUpdateToys/AdminUpdateToysForm";
 
-const kanit = Kanit({
-  subsets: ['latin'], 
-  weight: ["400", "700"],
-  style: ["normal"],
- preload: true,
-});
-const mulish = Mulish({
-  subsets: ["latin"],
-weight: ["300", "700"],
-  style: ["normal"],
- preload: true,
-});
 
 const bannerInfo = [
   {

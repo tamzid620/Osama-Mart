@@ -27,7 +27,7 @@ const SingleProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://osama-mart-backend.vercel.app/all-toys/${id}`)
+      .get(`http://localhost:7000/all-toys/${id}`)
       .then((res) => setToyDetails(res.data))
       .catch((error) => {
         console.log(error);
