@@ -119,14 +119,14 @@ weight: ["300", "700"],
                 <span className=" zoom-effect block overflow-hidden">
                   <Image
                     className="rounded-t-lg transition-opacity duration-300 ease-in-out hover:opacity-0"
-                    src={image.trimEnd()}
+                    src={image?.trimEnd() || ""}
                     width={250} 
                     height={220}
                     alt=""
                   />
                   <Image
                     className="rounded-t-lg absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
-                    src={hoverImage.trimEnd()}
+                    src={hoverImage?.trimEnd() || ""}
                     width={250}
                     height={220}
                     alt=""

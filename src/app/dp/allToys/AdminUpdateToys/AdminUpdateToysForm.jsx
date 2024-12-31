@@ -39,8 +39,7 @@ const AdminUpdateToysForm = () => {
 
   useEffect(() => {
     axios
-      .get(`https://osama-mart-server-backend.vercel.app/all-toys/${id}`)
-      // .then((res) => setToyDetails(res.data))
+      .get(baseUrl(`all-toys/${id}`))
       .then((res) => {
         setToyDetails(res.data);
       })
@@ -60,7 +59,7 @@ const AdminUpdateToysForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-    .put(`https://osama-mart-server-backend.vercel.app/all-toys/${id}`, toyDetails)
+    .put(baseUrl(`all-toys/${id}`), toyDetails) 
     .then((res) => {
       Swal.fire({
         icon: 'success',
