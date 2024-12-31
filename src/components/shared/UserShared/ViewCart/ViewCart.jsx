@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Kanit } from "next/font/google";
 import closeIcon from "../../../../assests/icons/closeBlack.png";
 import deleteIcon from "../../../../assests/icons/delete.png";
+import Link from "next/link";
 
 const kanit = Kanit({
   subsets: ["latin"],
@@ -18,6 +19,11 @@ const ViewCart = ({ toggleViewCart }) => {
     const cartData = JSON.parse(localStorage.getItem("cart")) || [];
     setCartItems(cartData);
   }, []);
+
+// Total Price --------
+  const calculateTotal = () => {
+    return cartItems.reduce((acc, item) => acc + item.price, 0);
+  };
 
   // handleDelete button  -----------------------
   const handleDelete = (id) => {
@@ -77,9 +83,13 @@ const ViewCart = ({ toggleViewCart }) => {
               </div>
               {/* Buy Now Button */}
               <div className="absolute top-28 left-0 w-full p-4">
+                <hr />
+                <p className="my-2">Total:  ${calculateTotal().toFixed(2)}</p>
+                <Link href="/paymentGateway">
                 <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-md shadow-lg">
                   Buy Now
                 </button>
+                </Link>
               </div>
             </div>
           ))

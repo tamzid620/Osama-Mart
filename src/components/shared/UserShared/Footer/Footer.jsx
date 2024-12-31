@@ -45,7 +45,7 @@ const Footer = () => {
             <p>
               Osama Mart Ltd.
               <br />
-              Providing reliable tech since 2023
+              Providing reliable tech since 2024
             </p>
           </aside>
           <nav className="md:place-self-center md:justify-self-end">
