@@ -1,4 +1,4 @@
-const coreUrl = "https://osama-mart-server-backend-git-main-forced783gmailcoms-projects.vercel.app/";
+const coreUrl = "https://osama-mart-server.onrender.com/";
 
 export function baseUrl(route){
     return `${coreUrl}${route}` ;
