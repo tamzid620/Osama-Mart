@@ -81,20 +81,20 @@ const ViewCart = ({ toggleViewCart }) => {
                   />
                 </div>
               </div>
+            </div>
+          ))
+        )}
+      </div>
               {/* Buy Now Button */}
-              <div className="absolute top-28 left-0 w-full p-4">
+              <div className="">
                 <hr />
-                <p className="my-2">Total:  ${calculateTotal().toFixed(2)}</p>
+                <p className={`${kanit.className} my-2 text-black `}>Total: ${cartItems.length > 0 ? calculateTotal().toFixed(2) : "0.00"}</p>
                 <Link href="/paymentGateway">
                 <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-md shadow-lg">
                   Buy Now
                 </button>
                 </Link>
               </div>
-            </div>
-          ))
-        )}
-      </div>
     </div>
   );
 };
