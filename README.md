@@ -35,7 +35,6 @@ weight: ["300", "700"],
   };
 
 • render.com backend server site:  https://osama-mart-server.onrender.com/
-• front end link: https://osmamart-e-mart.netlify.app/
 • front end link: https://osama-mart.vercel.app/
 •  
 •  
