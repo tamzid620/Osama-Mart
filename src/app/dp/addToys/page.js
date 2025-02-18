@@ -12,7 +12,7 @@ export const metadata = {
 const AddToys = () => {
     return (
         <div>
-            <h1 className={` ${kanit.className} text-3xl text-center`}>Add Toys</h1>
+            <h1 className={` ${kanit.className} text-3xl text-center text-white`}>Add Toys</h1>
             <div className='flex justify-center mt-3'>
             <hr className='w-60'/>
             </div>

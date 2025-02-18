@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { kanit, mulish } from "../../../../utilies/FontsProvider/fontProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { baseUrl } from "../../../../utilies/config";
 
 const AdminAddToys = () => {
   const [addToys, setAddToys] = useState({
@@ -66,11 +67,11 @@ const AdminAddToys = () => {
 
   return (
     <div
-      className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-white text-black shadow-md rounded-sm mt-10 `}
+      className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-gray-900 text-black shadow-md rounded-sm mt-10 `}
     >
       <form onSubmit={handleSubmit}  onKeyDown={handleKeyDown} className="space-y-4">
       <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Toy Id
           </label>
           <div className="flex items-center">
@@ -80,7 +81,7 @@ const AdminAddToys = () => {
               value={addToys?.id}
               placeholder="click generate id button"
               readOnly
-              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
             />
             <button
               type="button"
@@ -93,7 +94,7 @@ const AdminAddToys = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Image URL
           </label>
           <input
@@ -103,12 +104,12 @@ const AdminAddToys = () => {
             placeholder="paste first image url"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Hover Image URL
           </label>
           <input
@@ -118,12 +119,12 @@ const AdminAddToys = () => {
             placeholder="paste second image url"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Name
           </label>
           <input
@@ -133,12 +134,12 @@ const AdminAddToys = () => {
             placeholder="write product name"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Price
           </label>
           <input
@@ -148,12 +149,12 @@ const AdminAddToys = () => {
             placeholder="write product price"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Quantity
           </label>
           <input
@@ -163,12 +164,12 @@ const AdminAddToys = () => {
             placeholder="write product quantity"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Category
           </label>
           <select 
@@ -177,7 +178,7 @@ const AdminAddToys = () => {
           value={addToys?.category}
           onChange={handleChange}
           required
-          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
         
           >
             <option value="">Select Your Category</option>
@@ -188,7 +189,7 @@ const AdminAddToys = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Rating
           </label>
           <select 
@@ -197,7 +198,7 @@ const AdminAddToys = () => {
           value={addToys?.rating}
           onChange={handleChange}
           required
-          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
         
           >
             <option value="">Select Your Rating</option>
@@ -214,7 +215,7 @@ const AdminAddToys = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Description
           </label>
           <textarea
@@ -224,7 +225,7 @@ const AdminAddToys = () => {
             onChange={handleChange}
             required
             rows="4"
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           ></textarea>
         </div>
 
