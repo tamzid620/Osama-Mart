@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { baseUrl } from "../../../../utilies/config";
 
 const AdminAddToys = () => {
+  const [isLoding, setIsLoading] = useState(false) ;
   const [addToys, setAddToys] = useState({
     id: "",
     image: "",
@@ -37,27 +38,98 @@ const AdminAddToys = () => {
     }));
   };
 
+  // image upload  handle funciton ----------------
+  const handleImageUpload = async (e, field) => {
+    const file = e.target.files[0]; 
+    if (!file) return;
+  
+    const formData = new FormData();
+    formData.append("image", file);
+  
+    try {
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=20c5bd09df5ae71b18f0540387ed355a`,
+        formData
+      );
+  
+      if (response.data.success) {
+        setAddToys((prevDetails) => ({
+          ...prevDetails,
+          [field]: response.data.data.url, 
+        }));
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Upload Failed",
+          text: "Image upload failed. Try again!",
+        });
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Upload Error",
+        text: "Something went wrong while uploading the image.",
+      });
+    }
+  };
+  
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .get(baseUrl('all-toys'), addToys) 
+  //     .then((res) => {
+  //       Swal.fire({
+  //         icon: "success",
+  //         title: "Toy Added",
+  //         text: res.data.message,
+  //       });
+  //       router.push("/dp/allToys");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error updating toy:", error);
+  //       Swal.fire({
+  //         icon: "error",
+  //         title: "Add Failed",
+  //         text: error.res?.data?.message || "An error occurred.",
+  //       });
+  //     });
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    if (!addToys.image || !addToys.hoverImage) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Image Required",
+        text: "Please upload images before submitting.",
+      });
+    }
+    setIsLoading(true); 
     axios
-      .get(baseUrl('all-toys'), addToys) 
+      .post(baseUrl("all-toys"), addToys)
       .then((res) => {
+        setIsLoading(false);
         Swal.fire({
           icon: "success",
           title: "Toy Added",
-          text: res.data.message,
+          text: "Your toy has been added successfully!",
         });
         router.push("/dp/allToys");
       })
       .catch((error) => {
-        console.error("Error updating toy:", error);
+        console.error("Error adding toy:", error);
         Swal.fire({
           icon: "error",
           title: "Add Failed",
-          text: error.res?.data?.message || "An error occurred.",
+          text: "An error occurred while adding the toy.",
         });
       });
+      console.log('button clicked');
   };
+  
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -93,7 +165,7 @@ const AdminAddToys = () => {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <label className="block text-sm font-medium text-white">
             Image URL
           </label>
@@ -121,7 +193,31 @@ const AdminAddToys = () => {
             required
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
-        </div>
+        </div> */}
+        <div>
+  <label className="block text-sm font-medium text-white">
+    Image Upload
+  </label>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => handleImageUpload(e, "image")}
+    className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
+  />
+</div>
+
+<div>
+  <label className="block text-sm font-medium text-white">
+    Hover Image Upload
+  </label>
+  <input
+    type="file"
+    accept="image/*"
+    onChange={(e) => handleImageUpload(e, "hoverImage")}
+    className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
+  />
+</div>
+
 
         <div>
           <label className="block text-sm font-medium text-white">
@@ -228,13 +324,21 @@ const AdminAddToys = () => {
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           ></textarea>
         </div>
-
+        {/*---------------------- Submit Button-------------------  */}
         <button
-          type="submit"
-          className={` ${mulish.className} w-full uppercase bg-green-600 text-white py-2 px-4 rounded-sm shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold`}
-        >
-          Submit
-        </button>
+  type="submit"
+  className={`${mulish.className} w-full uppercase ${
+    isLoding ? "bg-gray-300" : "bg-green-600 hover:bg-green-700"
+  } text-white py-2 px-4 rounded-sm shadow font-semibold`}
+  disabled={isLoding}
+>
+  {isLoding ? (
+    <span className="loading loading-spinner text-success"></span>
+  ) : (
+    "Submit"
+  )}
+</button>
+
       </form>
     </div>
   );
