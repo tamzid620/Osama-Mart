@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useRouter } from 'next/navigation';
 import { Kanit } from "next/font/google";
 import { Mulish } from "next/font/google";
+import { baseUrl } from "../../../../utilies/config";
 
 export const kanit = Kanit({
   subsets: ["latin"],
@@ -86,11 +87,11 @@ const AdminUpdateToysForm = () => {
 
   return (
     <div
-      className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-white text-black shadow-md rounded-sm mt-10 `}
+      className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-gray-900  shadow-md rounded-sm mt-10 `}
     >
       <form onSubmit={handleSubmit}  onKeyDown={handleKeyDown}  className="space-y-4">
       <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
            Toy Id
           </label>
           <input
@@ -99,11 +100,11 @@ const AdminUpdateToysForm = () => {
             value={id}
             hidden
             readOnly
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Image URL
           </label>
           <input
@@ -111,12 +112,12 @@ const AdminUpdateToysForm = () => {
             name="image"
             value={toyDetails?.image}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Hover Image URL
           </label>
           <input
@@ -124,12 +125,12 @@ const AdminUpdateToysForm = () => {
             name="hoverImage"
             value={toyDetails?.hoverImage}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Name
           </label>
           <input
@@ -137,12 +138,12 @@ const AdminUpdateToysForm = () => {
             name="name"
             value={toyDetails?.name}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Price
           </label>
           <input
@@ -150,12 +151,12 @@ const AdminUpdateToysForm = () => {
             name="price"
             value={toyDetails?.price}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Quantity
           </label>
           <input
@@ -163,12 +164,12 @@ const AdminUpdateToysForm = () => {
             name="quantity"
             value={toyDetails?.quantity}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Category
           </label>
           <input
@@ -176,12 +177,12 @@ const AdminUpdateToysForm = () => {
             name="category"
             value={toyDetails?.category}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Rating
           </label>
           <input
@@ -191,12 +192,12 @@ const AdminUpdateToysForm = () => {
             name="rating"
             value={toyDetails?.rating}
             onChange={handleChange}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
+          <label className="block text-sm font-medium text-white">
             Description
           </label>
           <textarea
@@ -204,7 +205,7 @@ const AdminUpdateToysForm = () => {
             value={toyDetails?.description}
             onChange={handleChange}
             rows="4"
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           ></textarea>
         </div>
 
