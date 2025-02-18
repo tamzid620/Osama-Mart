@@ -8,6 +8,7 @@ import { baseUrl } from "../../../../utilies/config";
 import Image from "next/image";
 import Link from "next/link";
 import LoadingCompo from "../../../../components/shared/LoadingCompo/LoadingCompo";
+import Swal from "sweetalert2";
 
 const kanit = Kanit({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ const mulish = Mulish({
 });
 
 const AdminAllToys = () => {
+  const [deleteLoading, isDeleteLoading] = useState(false);
   const [allToys, setAllToys] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,6 +55,36 @@ const AdminAllToys = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  // delete function ----------------------------
+  const handleDelete = (_id) => {
+    const confirmDelete = window.confirm("Are you sure to delete this item?");
+  
+    if (!confirmDelete) return;
+  
+    isDeleteLoading(true);
+  
+    axios
+      .delete(baseUrl(`all-toys/${_id}`))
+      .then(() => {
+        isDeleteLoading(false);
+        setAllToys((prevToys) => prevToys.filter((toy) => toy._id !== _id));
+        Swal.fire({
+          icon: "success",
+          title: "Item Deleted",
+          text: "Your toy has been deleted successfully!",
+        });
+      })
+      .catch((error) => {
+        console.error("Error deleting toy:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Failed",
+          text: "Operation failed.",
+        });
+      });
+  };
+  
 
   return (
     <div>
@@ -88,7 +120,7 @@ const AdminAllToys = () => {
                       priority
                     />
                   ) : (
-                    <span>No Image</span> // You can display a placeholder or text here.
+                    <span>No Image</span>
                   )}
                 </td>
                 <td>
@@ -113,15 +145,25 @@ const AdminAllToys = () => {
                 <td className="">
                   <Link className="" href={`updateToys/${toy?.id}`}>
                     <button
-                      className={` ${kanit.className} uppercase bg-green-500 w-[70px] h-[25px] mx-1 my-1 rounde-md hover:bg-green-600 `}
+                      className={` ${kanit.className} uppercase bg-green-500 w-[70px] h-[25px] mx-1 my-1  hover:bg-green-600 `}
                     >
                       Edit
                     </button>
                   </Link>
+
                   <button
-                    className={` ${kanit.className} uppercase bg-red-500 w-[70px] h-[25px] mx-1 my-1 rounde-md hover:bg-red-600 `}
+                    onClick={() => handleDelete(toy?._id)}
+                    className={` ${
+                      kanit.className
+                    } uppercase w-[70px] h-[25px] mx-1 my-1 bg-red-500 hover:bg-red-600
+                    }`}
+                    disabled={deleteLoading}
                   >
-                    Delete
+                    {deleteLoading ? (
+                      <span className="loading loading-spinner text-white"></span>
+                    ) : (
+                      "Delete"
+                    )}
                   </button>
                 </td>
               </tr>

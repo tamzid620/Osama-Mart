@@ -127,7 +127,6 @@ const AdminAddToys = () => {
           text: "An error occurred while adding the toy.",
         });
       });
-      console.log('button clicked');
   };
   
 
