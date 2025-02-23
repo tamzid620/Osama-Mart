@@ -69,7 +69,7 @@ const Login = () => {
         });
         const session = await getSession();
 
-        if (session?.user) {
+        if (session?.user ) {
             localStorage.setItem('user', JSON.stringify(session.user));
         }
         if (res.status === 200) {
@@ -93,6 +93,7 @@ const Login = () => {
             });
             router.push('/login');
         }
+        console.log(res);
     };
 
     return (
