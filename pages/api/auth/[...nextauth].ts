@@ -48,23 +48,6 @@ const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  // callbacks: {
-  //   async jwt({ token, user }) {
-  //     if (user) {
-  //       token.id = user.id;
-  //       token.role = user.role;
-  //     }
-  //     return token;
-  //   },
-  //   async session({ session, token }) {
-  //     session.user = {
-  //       ...(session.user || {}),
-  //       id: token.id as string,
-  //       role: token.role as string,
-  //     };
-  //     return session;
-  //   },
-  // },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -74,12 +57,14 @@ const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      token.id = session.user.id as string ;
-      token.role = session.user.role as string ;
+      session.user = {
+        ...(session.user || {}),
+        id: token.id as string,
+        role: token.role as string,
+      };
       return session;
     },
   },
-  
   pages: {
     signIn: "/login",
   },
