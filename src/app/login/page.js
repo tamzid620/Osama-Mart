@@ -72,7 +72,7 @@ const Login = () => {
         if (session?.user ) {
             localStorage.setItem('user', JSON.stringify(session.user));
         }
-        if (nextauth.message) {
+        if (res.status === 200) {
             //  Toast message -----------------------------
             Swal.fire({
                 position: "center",

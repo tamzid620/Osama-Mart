@@ -89,7 +89,7 @@ const AdminPanelLayout = ({ children }) => {
 
         if (adminData) {
             const user = JSON.parse(adminData);
-            if (user.id !== '007') {
+            if (nextauth.message) {
                 router.push('/dp');
             }
         } else {
