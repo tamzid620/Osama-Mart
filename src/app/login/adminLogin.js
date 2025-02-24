@@ -8,31 +8,27 @@ import Link from 'next/link';
 import brandLogo from "../../assests/icons/OsamaMart -Logo.png";
 import showPasswordIcon from "../../assests/icons/show-password-icon-18.jpg";
 import hidePasswordIcon from "../../assests/icons/show-password-icon-19.jpg";
-import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation' ;
+import { getSession } from 'next-auth/react';
 import Swal from 'sweetalert2';
-// import { auth } from "../../../pages/api/auth/firebase/firebaseConfig";
-import { getAuth } from "firebase/auth"; 
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../../pages/api/auth/firebase/firebaseConfig';
-
 
 const kanit = Kanit({
-    subsets: ['latin'],
+    subsets: ['latin'], 
     weight: ["400", "700"],
     style: ["normal"],
-    preload: true,
+ preload: true,
 });
 const mulish = Mulish({
     subsets: ["latin"],
-    weight: ["300", "700"],
+weight: ["300", "700"],
     style: ["normal"],
-    preload: true,
-});
+ preload: true,
+  });
 
+  
 
-const Login = () => {
-    
-// const auth = getAuth();
+const AdminLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
@@ -63,40 +59,41 @@ const Login = () => {
 
     // handle submit button -------------
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    setEmailError("");
-    setPasswordError("");
-
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        localStorage.setItem('user', JSON.stringify(user));
-        Swal.fire({
-            icon: "success",
-            title: "Login Successful!",
-            text: `Welcome back, ${user.email}`,
+        const res = await signIn('credentials', {
+            redirect: false,
+            email: email,
+            password: password,
         });
+        const session = await getSession();
 
-        router.push("/dp"); 
-    } catch (error) {
-        if (error.code === "auth/user-not-found") {
-            setEmailError("No account found with this email.");
-        } else if (error.code === "auth/wrong-password") {
-            setPasswordError("Incorrect password.");
-        } else {
-            Swal.fire({
-                icon: "error",
-                title: "Login Failed",
-                text: error.message,
-            });
-            
-        router.push("/login"); 
+        if (session?.user) {
+            localStorage.setItem('user', JSON.stringify(session.user));
         }
-    }
-};
-
+        if (res.status === 200) {
+            //  Toast message -----------------------------
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Logged in Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            router.push('/dp');
+        } else {
+            //  Toast message -----------------------------
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "something went wrong",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            router.push('/login');
+        }
+    };
 
     return (
         <div>
@@ -105,7 +102,7 @@ const handleSubmit = async (e) => {
                 <div className="absolute top-0 w-full bg-black opacity-60 inset-0" />
             </div>
             {/* Login Card  */}
-            <div className={` ${kanit.className} absolute inset-0 flex justify-center items-center`}>
+            <div className= {` ${kanit.className} absolute inset-0 flex justify-center items-center`}>
                 <div className='w-full max-w-md relative'>
                     {/* form section  */}
                     <form
@@ -116,7 +113,7 @@ const handleSubmit = async (e) => {
                             Email: admin@test.com
                         </h1>
                         <h1 className={` ${mulish.className} font-semibold text-sm text-white text-center mb-5 `}>
-                            Password: 123456
+                            Password: 12345
                         </h1>
                         {/* email field  */}
                         <div className="mb-4">
@@ -206,4 +203,4 @@ const handleSubmit = async (e) => {
     );
 };
 
-export default Login;
+export default AdminLogin;

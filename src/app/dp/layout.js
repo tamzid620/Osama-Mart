@@ -89,9 +89,7 @@ const AdminPanelLayout = ({ children }) => {
 
         if (adminData) {
             const user = JSON.parse(adminData);
-            if (nextauth.message) {
                 router.push('/dp');
-            }
         } else {
             //  Toast message -----------------------------
             Swal.fire({
