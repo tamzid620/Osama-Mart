@@ -46,7 +46,7 @@ const OurSpecialGallery = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
@@ -88,7 +88,7 @@ const OurSpecialGallery = () => {
           {specialGallery.map(({ id , img }) => (
             <div key={id} className="">
                 <Image
-                  className="w-full h-[350px] border-black border-l-4 border-r-4 "
+                  className="w-full h-[450px] object-cover border-black border-l-4 border-r-4"
                   width={500}
                   height={500}
                   src={img}
