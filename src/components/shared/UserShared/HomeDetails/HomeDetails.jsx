@@ -22,20 +22,13 @@ const HomeDetails = () => {
     <div className="mt-40 mb-20 lg:px-0 md:px-5 sm: px-3 mx-auto">
       <div className="grid md:grid-cols-2 sm: grid-cols-1 gap-5 items-center">
         {/* images section  */}
-        <div className="relative">
-          <div className="relative">
+          <div className="">
             <Image
               className="w-[600px] rounded-md shadow-md shadow-[#F26626]"
               src={storeImage2}
               alt="store image"
             />
           </div>
-          <Image
-            className="absolute top-[-40px] right-[300px] w-[350px] rounded-md shadow-md shadow-[#F26626] lg:block md:hidden sm: hidden"
-            src={storeImage1}
-            alt="store image"
-          />
-        </div>
         {/* content section  */}
         <div>
           <h1 className={`${kanit.className} text-4xl mb-5 text-[#F26626]`}>
