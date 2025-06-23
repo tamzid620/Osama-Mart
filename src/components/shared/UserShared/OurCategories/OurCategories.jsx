@@ -90,7 +90,7 @@ const OurCategories = () => {
       <h1
         className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626] `}
       >
-        Our Category
+        Our Category : {allToys?.length}
       </h1>
       {/* ---------------------------- Tab title section ----------------------------  */}
       <div className="md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
