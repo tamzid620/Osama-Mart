@@ -1,4 +1,5 @@
 
+import Testimonial from "../../components/shared/UserShared/Testimonial/Testimonial.jsx";
 import Banner from "../../components/shared/UserShared/Banner/Banner.jsx";
 import FrequentlyAskedQuestions from "../../components/shared/UserShared/FrequentlyAskedQuestions/FrequentlyAskedQuestions";
 import HomeDetails from "../../components/shared/UserShared/HomeDetails/HomeDetails";
@@ -19,6 +20,7 @@ const Home = () => {
       <OurLatestNews/>
       <OurSpecialGallery/>
       <HomeDetails/>
+      <Testimonial/>
       <FrequentlyAskedQuestions/>
     </div>
   );
