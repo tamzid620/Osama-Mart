@@ -211,7 +211,7 @@ const AdminUpdateToysForm = () => {
 
         <button
           type="submit"
-          className={` ${mulish.className} w-full uppercase bg-green-600 text-white py-2 px-4 rounded-sm shadow hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold`}
+          className={` ${mulish.className} w-full uppercase border-2 text-white py-2 px-4 rounded-sm shadow hover:bg-[#A64D79] focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold`}
         >
           Submit
         </button>

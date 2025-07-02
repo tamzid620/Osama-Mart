@@ -145,7 +145,7 @@ const AdminAllToys = () => {
                 <td className="">
                   <Link className="" href={`updateToys/${toy?.id}`}>
                     <button
-                      className={` ${kanit.className} uppercase bg-green-500 w-[70px] h-[25px] mx-1 my-1  hover:bg-green-600 `}
+                      className={` ${kanit.className} uppercase border-2 w-[70px] h-[25px] mx-1 my-1  hover:bg-[#A64D79] `}
                     >
                       Edit
                     </button>
@@ -155,7 +155,7 @@ const AdminAllToys = () => {
                     onClick={() => handleDelete(toy?._id)}
                     className={` ${
                       kanit.className
-                    } uppercase w-[70px] h-[25px] mx-1 my-1 bg-red-500 hover:bg-red-600
+                    } uppercase w-[70px] h-[25px] mx-1 my-1 bg-red-600 hover:bg-red-800
                     }`}
                     disabled={deleteLoading}
                   >

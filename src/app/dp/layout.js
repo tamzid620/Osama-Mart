@@ -1,5 +1,4 @@
 'use client';
-import './style.css' ;
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
 import * as React from 'react';
@@ -45,7 +44,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
                         duration: theme.transitions.duration.enteringScreen,
                     }),
                     marginLeft: 0,
-                }, 
+                },
             },
         ],
     }),
@@ -89,7 +88,7 @@ const AdminPanelLayout = ({ children }) => {
 
         if (adminData) {
             const user = JSON.parse(adminData);
-                router.push('/dp');
+            router.push('/dp');
         } else {
             //  Toast message -----------------------------
             Swal.fire({
@@ -105,9 +104,9 @@ const AdminPanelLayout = ({ children }) => {
     }, [router])
     // handleLogout button 
     const handleLogout = () => {
-        localStorage.removeItem('user') ;
-          //  Toast message -----------------------------
-          Swal.fire({
+        localStorage.removeItem('user');
+        //  Toast message -----------------------------
+        Swal.fire({
             position: "center",
             icon: "success",
             title: "LogOut Successfully",
@@ -129,36 +128,36 @@ const AdminPanelLayout = ({ children }) => {
     };
 
     return (
-        <Box sx={{ display: 'flex', backgroundColor: "black" }}>
+        <Box sx={{ display: 'flex', }}>
             <CssBaseline />
-            <AppBar sx={{backgroundColor : '#A64D79' }} position="fixed" open={open}>
-                <Toolbar sx={{ width: "100% ", display: 'flex', justifyContent: 'space-between', alignItems:"center"}}>
+            <AppBar sx={{ backgroundColor: '#A64D79' }} position="fixed" open={open}>
+                <Toolbar sx={{ width: "100% ", display: 'flex', justifyContent: 'space-between', alignItems: "center" }}>
                     <div className='flex items-center'>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={[
-                            {
-                                mr: 2,
-                            },
-                            open && { display: 'none' },
-                        ]}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Admin Panel
-                    </Typography>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            sx={[
+                                {
+                                    mr: 2,
+                                },
+                                open && { display: 'none' },
+                            ]}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" noWrap component="div">
+                            Admin Panel
+                        </Typography>
                     </div>
                     <div>
-                    <Typography
-                    onClick={handleLogout}
-                     className='bg-black hover:bg-[#6A1E55] px-3 py-2 rounded-md uppercase font-semibold' 
-                     variant="h7" noWrap component="div" >
-                   Logout
-                    </Typography>
+                        <Typography
+                            onClick={handleLogout}
+                            className='bg-black hover:bg-[#6A1E55] px-3 py-2 rounded-md uppercase font-semibold'
+                            variant="h7" noWrap component="div" >
+                            Logout
+                        </Typography>
                     </div>
                 </Toolbar>
             </AppBar>
@@ -169,6 +168,8 @@ const AdminPanelLayout = ({ children }) => {
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
+                        backgroundColor: '#A64D79',
+                        color: 'white',
                     },
                 }}
                 variant="persistent"
@@ -186,7 +187,7 @@ const AdminPanelLayout = ({ children }) => {
                         <ListItem key={"Home"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                     <ViewCarouselIcon /> 
+                                    <ViewCarouselIcon />
                                 </ListItemIcon>
                                 <ListItemText>Home</ListItemText>
                             </ListItemButton>
@@ -199,7 +200,7 @@ const AdminPanelLayout = ({ children }) => {
                         <ListItem key={"Dashboard"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                     <ViewCarouselIcon /> 
+                                    <ViewCarouselIcon />
                                 </ListItemIcon>
                                 <ListItemText>Dashboard</ListItemText>
                             </ListItemButton>
@@ -212,7 +213,7 @@ const AdminPanelLayout = ({ children }) => {
                         <ListItem key={"All Toys"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                     <ViewCarouselIcon /> 
+                                    <ViewCarouselIcon />
                                 </ListItemIcon>
                                 <ListItemText>All Toys</ListItemText>
                             </ListItemButton>
@@ -225,7 +226,7 @@ const AdminPanelLayout = ({ children }) => {
                         <ListItem key={"Add Toys"} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                     <ViewCarouselIcon /> 
+                                    <ViewCarouselIcon />
                                 </ListItemIcon>
                                 <ListItemText>Add Toys</ListItemText>
                             </ListItemButton>
@@ -234,7 +235,7 @@ const AdminPanelLayout = ({ children }) => {
                 </List>
                 <Divider />
             </Drawer>
-            <Main open={open}  sx={{ backgroundColor: "black" }}>
+            <Main open={open} sx={{ backgroundColor: "black" }}>
                 <div >
                     <>
                         <DrawerHeader />

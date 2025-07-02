@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import { baseUrl } from "../../../../utilies/config";
 
 const AdminAddToys = () => {
-  const [isLoding, setIsLoading] = useState(false) ;
+  const [isLoding, setIsLoading] = useState(false);
   const [addToys, setAddToys] = useState({
     id: "",
     image: "",
@@ -23,7 +23,7 @@ const AdminAddToys = () => {
 
   // Handle Function to generate a random number (ID)
   const handleRenerateRandomId = () => {
-    const randomId = Math.floor(Math.random() * 100000); 
+    const randomId = Math.floor(Math.random() * 100000);
     setAddToys((prevDetails) => ({
       ...prevDetails,
       id: randomId.toString(),
@@ -40,22 +40,22 @@ const AdminAddToys = () => {
 
   // image upload  handle funciton ----------------
   const handleImageUpload = async (e, field) => {
-    const file = e.target.files[0]; 
+    const file = e.target.files[0];
     if (!file) return;
-  
+
     const formData = new FormData();
     formData.append("image", file);
-  
+
     try {
       const response = await axios.post(
         `https://api.imgbb.com/1/upload?key=20c5bd09df5ae71b18f0540387ed355a`,
         formData
       );
-  
+
       if (response.data.success) {
         setAddToys((prevDetails) => ({
           ...prevDetails,
-          [field]: response.data.data.url, 
+          [field]: response.data.data.url,
         }));
       } else {
         Swal.fire({
@@ -73,12 +73,11 @@ const AdminAddToys = () => {
       });
     }
   };
-  
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   axios
-  //     .get(baseUrl('all-toys'), addToys) 
+  //     .get(baseUrl('all-toys'), addToys)
   //     .then((res) => {
   //       Swal.fire({
   //         icon: "success",
@@ -99,7 +98,7 @@ const AdminAddToys = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!addToys.image || !addToys.hoverImage) {
       return Swal.fire({
         icon: "warning",
@@ -107,7 +106,7 @@ const AdminAddToys = () => {
         text: "Please upload images before submitting.",
       });
     }
-    setIsLoading(true); 
+    setIsLoading(true);
     axios
       .post(baseUrl("all-toys"), addToys)
       .then((res) => {
@@ -128,7 +127,6 @@ const AdminAddToys = () => {
         });
       });
   };
-  
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -140,11 +138,13 @@ const AdminAddToys = () => {
     <div
       className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-gray-900 text-black shadow-md rounded-sm mt-10 `}
     >
-      <form onSubmit={handleSubmit}  onKeyDown={handleKeyDown} className="space-y-4">
-      <div>
-          <label className="block text-sm font-medium text-white">
-            Toy Id
-          </label>
+      <form
+        onSubmit={handleSubmit}
+        onKeyDown={handleKeyDown}
+        className="space-y-4"
+      >
+        <div>
+          <label className="block text-sm font-medium text-white">Toy Id</label>
           <div className="flex items-center">
             <input
               type="text"
@@ -194,34 +194,31 @@ const AdminAddToys = () => {
           />
         </div> */}
         <div>
-  <label className="block text-sm font-medium text-white">
-    Image Upload
-  </label>
-  <input
-    type="file"
-    accept="image/*"
-    onChange={(e) => handleImageUpload(e, "image")}
-    className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
-  />
-</div>
-
-<div>
-  <label className="block text-sm font-medium text-white">
-    Hover Image Upload
-  </label>
-  <input
-    type="file"
-    accept="image/*"
-    onChange={(e) => handleImageUpload(e, "hoverImage")}
-    className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
-  />
-</div>
-
+          <label className="block text-sm font-medium text-white">
+            Image Upload
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => handleImageUpload(e, "image")}
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
+          />
+        </div>
 
         <div>
           <label className="block text-sm font-medium text-white">
-            Name
+            Hover Image Upload
           </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => handleImageUpload(e, "hoverImage")}
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-white">Name</label>
           <input
             type="text"
             name="name"
@@ -234,9 +231,7 @@ const AdminAddToys = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-white">
-            Price
-          </label>
+          <label className="block text-sm font-medium text-white">Price</label>
           <input
             type="number"
             name="price"
@@ -267,14 +262,13 @@ const AdminAddToys = () => {
           <label className="block text-sm font-medium text-white">
             Category
           </label>
-          <select 
-          type="ratio"
-          name="category"
-          value={addToys?.category}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
-        
+          <select
+            type="ratio"
+            name="category"
+            value={addToys?.category}
+            onChange={handleChange}
+            required
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           >
             <option value="">Select Your Category</option>
             <option value="Action Figures">Action Figures</option>
@@ -284,17 +278,14 @@ const AdminAddToys = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-white">
-            Rating
-          </label>
-          <select 
-          type="ratio"
-          name="rating"
-          value={addToys?.rating}
-          onChange={handleChange}
-          required
-          className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
-        
+          <label className="block text-sm font-medium text-white">Rating</label>
+          <select
+            type="ratio"
+            name="rating"
+            value={addToys?.rating}
+            onChange={handleChange}
+            required
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           >
             <option value="">Select Your Rating</option>
             <option value="1.0">1.0</option>
@@ -325,19 +316,18 @@ const AdminAddToys = () => {
         </div>
         {/*---------------------- Submit Button-------------------  */}
         <button
-  type="submit"
-  className={`${mulish.className} w-full uppercase ${
-    isLoding ? "bg-gray-300" : "bg-green-600 hover:bg-green-700"
-  } text-white py-2 px-4 rounded-sm shadow font-semibold`}
-  disabled={isLoding}
->
-  {isLoding ? (
-    <span className="loading loading-spinner text-success"></span>
-  ) : (
-    "Submit"
-  )}
-</button>
-
+          type="submit"
+          className={`${mulish.className} w-full uppercase ${
+            isLoding ? "bg-gray-300" : "border-2 hover:bg-[#A64D79]"
+          } text-white py-2 px-4 rounded-sm shadow font-semibold`}
+          disabled={isLoding}
+        >
+          {isLoding ? (
+            <span className="loading loading-spinner text-success"></span>
+          ) : (
+            "Submit"
+          )}
+        </button>
       </form>
     </div>
   );
