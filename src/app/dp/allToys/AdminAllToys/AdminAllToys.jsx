@@ -91,7 +91,7 @@ const AdminAllToys = () => {
       {isLoading ? (
         <LoadingCompo />
       ) : (
-        <table className="table ">
+        <table className="table text-white">
           <thead className={` ${kanit.className} text-[14px]`}>
             <tr>
               <th scope="col">#</th>
