@@ -44,7 +44,7 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <div className="my-40">
+    <div className="my-40 xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto ">
       <h1
         className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626] `}
       >
@@ -65,7 +65,7 @@ const Testimonial = () => {
               <Image
                 src={reviewData[currentIndex].reviewImage}
                 alt="Trainer photo"
-                className="w-[400px] h-[600px]"
+                className="w-[400px] h-[400px] object-cover"
               />
             </div>
 

@@ -16,14 +16,12 @@ const Home = () => {
   return (
     <div className="mt-16">
       <Banner />
-      <div className="xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm mx-auto ">
+        <OurSpecialGallery />
         <OurCategories />
         <OurLatestNews />
-        <OurSpecialGallery />
         <HomeDetails />
         <Testimonial />
         <FrequentlyAskedQuestions />
-      </div>
     </div>
   );
 }

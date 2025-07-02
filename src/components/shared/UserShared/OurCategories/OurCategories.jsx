@@ -86,7 +86,7 @@ const OurCategories = () => {
   };
 
   return (
-    <div className="my-20">
+    <div className="my-40">
       <h1
         className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626] `}
       >

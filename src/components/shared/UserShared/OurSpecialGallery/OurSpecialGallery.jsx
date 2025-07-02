@@ -92,7 +92,7 @@ const OurSpecialGallery = () => {
   };
 
   return (
-    <div className="my-40 lg:px-0 md:px-5 sm: px-3 mx-auto">
+    <div className="my-40 xl:max-w-7xl lg:max-w-6xl md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
       <h1
         className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626]`}
       >
