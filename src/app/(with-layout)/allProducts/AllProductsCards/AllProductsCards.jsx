@@ -41,8 +41,9 @@ weight: ["300", "700"],
         .get(baseUrl("all-toys"))
         .then((res) => setAllToys(res.data))
         .catch((error) => {
-          setAllToys(error);
+          console.log(error);
         });
+        console.log("allToys:", allToys);
     }, []);
 
     const handleNothing = () => {
@@ -111,9 +112,9 @@ weight: ["300", "700"],
   ) : (
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm: grid-cols-1 gap-5 ">
           {allToys.map(
-            ({ id, image, hoverImage, name, quantity, rating, price }) => (
+            ({ _id, id,  image, hoverImage, name, quantity, rating, price }) => (
               
-              <div  key={id}
+              <div  key={_id}
                 className=" card-zoom bg-white text-[#000040] text-center w-[280px] rounded-lg shadow-md shadow-[#F26626]"
               >
                 <span className=" zoom-effect block overflow-hidden">
@@ -123,6 +124,7 @@ weight: ["300", "700"],
                     width={250} 
                     height={220}
                     alt=""
+                     priority  
                   />
                   <Image
                     className="rounded-t-lg absolute top-0 left-0 transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
@@ -130,6 +132,7 @@ weight: ["300", "700"],
                     width={250}
                     height={220}
                     alt=""
+                     priority  
                   />
                 </span>
                 <Link className="" href={`allProducts/${id}`}>
@@ -188,6 +191,7 @@ weight: ["300", "700"],
                       className="w-[25px]"
                       src={suffleIcon}
                       alt="Shuffle Icon"
+                       priority  
                     />
                   </span>
                   <span
@@ -199,6 +203,7 @@ weight: ["300", "700"],
                       className="w-[25px]"
                       src={searchIcon}
                       alt="Search Icon"
+                       priority  
                     />
                   </span>
                   <span
@@ -210,6 +215,7 @@ weight: ["300", "700"],
                       className="w-[25px]"
                       src={heartIcon}
                       alt="Favorites Icon"
+                       priority  
                     />
                   </span>
                 </div>
