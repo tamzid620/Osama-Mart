@@ -179,9 +179,9 @@ const handleSubmit = async (e) => {
                             <span className="text-red-600">{passwordError}</span>
                         </div>
                         {/* login button  */}
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-center text-center">
                             <button
-                                className="bg-[#F26626] hover:bg-[#f26726c0] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+                                className="bg-[#F26626] hover:bg-[#f26726c0] font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full text-center"
                                 type="submit"
                             >
                                 Login
