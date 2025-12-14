@@ -28,11 +28,7 @@ export default function AccountMenu() {
     React.useEffect(() => {
         const adminData = localStorage.getItem('user');
 
-        if (adminData) {
-            const user = JSON.parse(adminData);
-            // Delay navigation until after render
-            setTimeout(() => router.push('/dp'), 0);
-        } else {
+        if (!adminData) {
             Swal.fire({
                 position: "center",
                 icon: "error",
@@ -42,20 +38,40 @@ export default function AccountMenu() {
             }).then(() => {
                 router.push('/login');
             });
+        } else {
+            // Only redirect if currently at /login
+            if (window.location.pathname === '/login') {
+                router.push('/dp');
+            }
         }
     }, [router]);
 
-    // handleLogout button 
+
     const handleLogout = () => {
-        localStorage.removeItem('user');
         Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "LogOut Successfully",
-            showConfirmButton: false,
-            timer: 1500
-        }).then(() => {
-            router.push('/login');
+            title: "Are you sure?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#212121",
+            confirmButtonText: "Logout",
+            customClass: {
+                container: 'swal-z-index'
+            }
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('user');
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Logout Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    router.push('/login');
+                });
+
+            }
         });
     };
 
@@ -116,27 +132,60 @@ export default function AccountMenu() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 
             >
-                <MenuItem className='hover:bg-gray-500'>
+                <MenuItem
+                    sx={{
+                        '&:hover': {
+                            backgroundColor: '#6b7280', // Tailwind gray-500 hex
+                        },
+                    }}
+                >
                     <Avatar /> Profile
                 </MenuItem>
-                <MenuItem className='hover:bg-gray-500'>
+                <MenuItem
+                    sx={{
+                        '&:hover': {
+                            backgroundColor: '#6b7280', // Tailwind gray-500 hex
+                        },
+                    }}
+                >
                     <Avatar /> My account
                 </MenuItem>
                 <Divider />
-                <MenuItem className='hover:bg-gray-500'>
-                    <ListItemIcon className='text-white'>
+                <MenuItem
+                    sx={{
+                        '&:hover': {
+                            backgroundColor: '#6b7280', // Tailwind gray-500 hex
+                        },
+                    }}
+                >
+                    <ListItemIcon
+                        sx={{ color: 'white' }}>
                         <PersonAdd fontSize="small" />
                     </ListItemIcon>
                     Add another account
                 </MenuItem>
-                <MenuItem className='hover:bg-gray-500'>
-                    <ListItemIcon className='text-white'>
+                <MenuItem
+                    sx={{
+                        '&:hover': {
+                            backgroundColor: '#6b7280', // Tailwind gray-500 hex
+                        },
+                    }}
+                >
+                    <ListItemIcon
+                        sx={{ color: 'white' }}>
                         <Settings fontSize="small" />
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem className='hover:bg-gray-500' onClick={handleLogout}>
-                    <ListItemIcon className='text-white'>
+                <MenuItem
+                    sx={{
+                        '&:hover': {
+                            backgroundColor: '#6b7280', // Tailwind gray-500 hex
+                        },
+                    }}
+                    onClick={handleLogout}>
+                    <ListItemIcon
+                        sx={{ color: 'white' }}>
                         <Logout fontSize="small" />
                     </ListItemIcon>
                     Logout

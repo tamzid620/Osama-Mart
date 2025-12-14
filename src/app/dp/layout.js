@@ -19,8 +19,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import AccountMenu from './AccountMenu/AccountMenu';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import Link from 'next/link';
 
 
@@ -105,15 +106,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 
-// navigation itesm route 
+// navigation items route with icons
 const navItems = [
-    { text: 'Home', href: '/' },
-    { text: 'Dashboard', href: '/dp' },
-    { text: 'All Toys', href: '/dp/allToys' },
-    { text: 'Add Toys', href: '/dp/addToys' },
+  { text: 'Dashboard', href: '/dp', icon: <DashboardIcon /> },
+  { text: 'All Toys', href: '/dp/allToys', icon: <InboxIcon /> },
+  { text: 'Add Toys', href: '/dp/addToys', icon: <AddToPhotosIcon /> },
 ];
 
 
+// --------------------------------------------------------------------------------------------
 const DpLayout = ({ children }) => {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -128,7 +129,7 @@ const DpLayout = ({ children }) => {
 
     return (
         <div className='dashboard-home-body'>
-            <Box sx={{ display: 'flex', background: "black" }}>
+            <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar position="fixed" open={open} sx={{ backgroundColor: '#212121' }}>
                     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -147,7 +148,7 @@ const DpLayout = ({ children }) => {
                             >
                                 <MenuIcon />
                             </IconButton>
-                             <Typography variant="h6" noWrap component="div" sx={{textTransform: 'uppercase', fontWeight: 'bold', fontSize: 15, color: 'white'}}>
+                            <Typography variant="h6" noWrap component="div" sx={{ textTransform: 'uppercase', fontWeight: 'bold', fontSize: 15, color: 'white' }}>
                                 Admin Panel
                             </Typography>
                         </div>
@@ -160,12 +161,14 @@ const DpLayout = ({ children }) => {
                     variant="permanent"
                     open={open}
                     PaperProps={{
-                        className: 'bg-[#212121]',
-
+                        sx: {
+                            backgroundColor: '#212121',
+                            color: 'white',
+                        },
                     }}
                 >
                     <DrawerHeader sx={{ backgroundColor: '#212121', color: 'white' }}>
-                       
+
                         <IconButton onClick={handleDrawerClose} sx={{ color: "white" }}>
                             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                         </IconButton>
@@ -176,7 +179,7 @@ const DpLayout = ({ children }) => {
                             <ListItem
                                 key={item.text}
                                 disablePadding
-                                sx={{ display: 'block',  }}
+                                sx={{ display: 'block', }}
                                 className='text-white hover:bg-gray-500'
                             >
 
@@ -194,7 +197,8 @@ const DpLayout = ({ children }) => {
                                             open ? { mr: 3 } : { mr: 'auto' },
                                         ]}
                                     >
-                                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                        {/* {index % 2 === 0 ? <AddToPhotosIcon  /> : <MailIcon />} */}
+                                          {item.icon}
                                     </ListItemIcon>
                                     <ListItemText
                                         primary={item.text}
@@ -206,7 +210,7 @@ const DpLayout = ({ children }) => {
                     </List>
                     {/* <Divider />*/}
                 </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                <Box component="main" sx={{ flexGrow: 1, p: 3 , backgroundColor: 'black', minHeight: '100vh' }}>
                     <DrawerHeader />
 
                     {children}

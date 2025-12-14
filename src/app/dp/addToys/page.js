@@ -1,6 +1,7 @@
 import React from 'react';
 import AdminAddToys from './AdminAddToys/AdminAddToys';
 import { kanit } from '../../../utilies/FontsProvider/fontProvider';
+import { IoIosArrowForward } from 'react-icons/io';
 
 
 export const metadata = {
@@ -12,10 +13,14 @@ export const metadata = {
 const AddToys = () => {
     return (
         <div>
-            <h1 className={` ${kanit.className} text-3xl text-center text-white`}>Add Toys</h1>
-            <div className='flex justify-center mt-3'>
-            <hr className='w-60'/>
-            </div>
+<div className={` ${kanit.className} w-full `}>
+                    <h1 className='text-[20px] font-[700] mb-2'>New Toy</h1>
+                    <ul className='w-full flex items-center gap-[10px] text-neutral-400 text-[14px] font-[500]'>
+                        <li>Dashboard</li>
+                        <li><IoIosArrowForward /></li>
+                        <li>New Toy</li>
+                    </ul>
+                </div>
             <AdminAddToys/>
         </div>
     );

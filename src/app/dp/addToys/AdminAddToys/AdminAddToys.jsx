@@ -136,13 +136,14 @@ const AdminAddToys = () => {
 
   return (
     <div
-      className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-gray-900 text-black shadow-md rounded-sm mt-10 `}
+      className={` ${kanit.className} w-full mx-auto p-6 bg-transparent text-black shadow-md rounded-sm mt-10 `}
     >
       <form
         onSubmit={handleSubmit}
         onKeyDown={handleKeyDown}
         className="space-y-4"
       >
+        {/* Generate Toy ID input field ---------------- */}
         <div>
           <label className="block text-sm font-medium text-white">Toy Id</label>
           <div className="flex items-center">
@@ -152,12 +153,12 @@ const AdminAddToys = () => {
               value={addToys?.id}
               placeholder="click generate id button"
               readOnly
-              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
+              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 placeholder-gray-600 sm:text-sm bg-white text-black"
             />
             <button
               type="button"
               onClick={handleRenerateRandomId}
-              className="ml-2 bg-[#A64D79] hover:bg-[#6A1E55] text-white w-[100px] py-3 rounded-sm text-sm"
+              className="ml-2 bg-orange-500 hover:bg-orange-600 text-white w-[120px] py-[12px] rounded-sm text-xs"
             >
               Generate ID
             </button>
@@ -193,6 +194,7 @@ const AdminAddToys = () => {
             className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
           />
         </div> */}
+        {/* Image Upload input field ---------------- */}
         <div>
           <label className="block text-sm font-medium text-white">
             Image Upload
@@ -201,10 +203,11 @@ const AdminAddToys = () => {
             type="file"
             accept="image/*"
             onChange={(e) => handleImageUpload(e, "image")}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black placeholder-gray-600"
           />
         </div>
 
+        {/* Hover Image Upload input field ---------------- */}
         <div>
           <label className="block text-sm font-medium text-white">
             Hover Image Upload
@@ -213,10 +216,11 @@ const AdminAddToys = () => {
             type="file"
             accept="image/*"
             onChange={(e) => handleImageUpload(e, "hoverImage")}
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 bg-white text-black placeholder-gray-600"
           />
         </div>
 
+        {/* Name input field ---------------- */}
         <div>
           <label className="block text-sm font-medium text-white">Name</label>
           <input
@@ -226,10 +230,11 @@ const AdminAddToys = () => {
             placeholder="write product name"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black placeholder-gray-600"
           />
         </div>
 
+        {/* Price input field ----------------  */}
         <div>
           <label className="block text-sm font-medium text-white">Price</label>
           <input
@@ -239,10 +244,11 @@ const AdminAddToys = () => {
             placeholder="write product price"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black placeholder-gray-600"
           />
         </div>
 
+        {/* Quality input field ----------------  */}
         <div>
           <label className="block text-sm font-medium text-white">
             Quantity
@@ -254,52 +260,57 @@ const AdminAddToys = () => {
             placeholder="write product quantity"
             onChange={handleChange}
             required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black placeholder-gray-600"
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white">
-            Category
-          </label>
-          <select
-            type="ratio"
-            name="category"
-            value={addToys?.category}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
-          >
-            <option value="">Select Your Category</option>
-            <option value="Action Figures">Action Figures</option>
-            <option value="Vehicles & Starships">Vehicles & Starships</option>
-            <option value="Lightsabers & Weapons">Lightsabers & Weapons</option>
-          </select>
+        {/* Category & Rating input fields --------------- */}
+        <div className="flex  gap-5">
+
+          <div className="w-full">
+            <label className="block text-sm font-medium text-white">
+              Category
+            </label>
+            <select
+              type="ratio"
+              name="category"
+              value={addToys?.category}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black placeholder-gray-600"
+            >
+              <option value="">Select Your Category</option>
+              <option value="Action Figures">Action Figures</option>
+              <option value="Vehicles & Starships">Vehicles & Starships</option>
+              <option value="Lightsabers & Weapons">Lightsabers & Weapons</option>
+            </select>
+          </div>
+
+          <div className="w-full">
+            <label className="block text-sm font-medium text-white">Rating</label>
+            <select
+              type="ratio"
+              name="rating"
+              value={addToys?.rating}
+              onChange={handleChange}
+              required
+              className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black placeholder-gray-600"
+            >
+              <option value="">Select Your Rating</option>
+              <option value="1.0">1.0</option>
+              <option value="1.5">1.5</option>
+              <option value="2.0">2.0</option>
+              <option value="2.5">2.5</option>
+              <option value="3.0">3.0</option>
+              <option value="3.5">3.5</option>
+              <option value="4.0">4.0</option>
+              <option value="4.5">4.5</option>
+              <option value="5.0">5.0</option>
+            </select>
+          </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-white">Rating</label>
-          <select
-            type="ratio"
-            name="rating"
-            value={addToys?.rating}
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
-          >
-            <option value="">Select Your Rating</option>
-            <option value="1.0">1.0</option>
-            <option value="1.5">1.5</option>
-            <option value="2.0">2.0</option>
-            <option value="2.5">2.5</option>
-            <option value="3.0">3.0</option>
-            <option value="3.5">3.5</option>
-            <option value="4.0">4.0</option>
-            <option value="4.5">4.5</option>
-            <option value="5.0">5.0</option>
-          </select>
-        </div>
-
+        {/* Description input field ---------------  */}
         <div>
           <label className="block text-sm font-medium text-white">
             Description
@@ -311,15 +322,15 @@ const AdminAddToys = () => {
             onChange={handleChange}
             required
             rows="4"
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
+            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black placeholder-gray-600"
           ></textarea>
         </div>
+
         {/*---------------------- Submit Button-------------------  */}
         <button
           type="submit"
-          className={`${mulish.className} w-full uppercase ${
-            isLoding ? "bg-gray-300" : "border-2 hover:bg-[#A64D79]"
-          } text-white py-2 px-4 rounded-sm shadow font-semibold`}
+          className={`${mulish.className} w-full uppercase ${isLoding ? "bg-gray-300" : " bg-orange-500 hover:bg-orange-600"
+            } text-white py-2 px-4 rounded-sm shadow font-semibold`}
           disabled={isLoding}
         >
           {isLoding ? (

@@ -10,8 +10,7 @@ import showPasswordIcon from "../../assests/icons/show-password-icon-18.jpg";
 import hidePasswordIcon from "../../assests/icons/show-password-icon-19.jpg";
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
-// import { auth } from "../../../pages/api/auth/firebase/firebaseConfig";
-import { getAuth } from "firebase/auth"; 
+import { getAuth } from "firebase/auth";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../pages/api/auth/firebase/firebaseConfig';
 
@@ -31,8 +30,8 @@ const mulish = Mulish({
 
 
 const Login = () => {
-    
-// const auth = getAuth();
+
+    // const auth = getAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
@@ -64,38 +63,39 @@ const Login = () => {
     // handle submit button -------------
 
 
-const handleSubmit = async (e) => {
-    e.preventDefault();
-    setEmailError("");
-    setPasswordError("");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setEmailError("");
+        setPasswordError("");
 
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        localStorage.setItem('user', JSON.stringify(user));
-        Swal.fire({
-            icon: "success",
-            title: "Login Successful!",
-            text: `Welcome back, ${user.email}`,
-        });
-
-        router.push("/dp"); 
-    } catch (error) {
-        if (error.code === "auth/user-not-found") {
-            setEmailError("No account found with this email.");
-        } else if (error.code === "auth/wrong-password") {
-            setPasswordError("Incorrect password.");
-        } else {
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            localStorage.setItem('user', JSON.stringify(user));
             Swal.fire({
-                icon: "error",
-                title: "Login Failed",
-                text: error.message,
+                icon: "success",
+                title: "Login Successful!",
+                confirmButtonColor: "#4CAF50",
+                text: `Welcome back, ${user.email}`,
             });
-            
-        router.push("/login"); 
+
+            router.push("/dp");
+        } catch (error) {
+            if (error.code === "auth/user-not-found") {
+                setEmailError("No account found with this email.");
+            } else if (error.code === "auth/wrong-password") {
+                setPasswordError("Incorrect password.");
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Failed",
+                    text: error.message,
+                });
+
+                router.push("/login");
+            }
         }
-    }
-};
+    };
 
 
     return (

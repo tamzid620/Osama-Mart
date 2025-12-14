@@ -19,7 +19,7 @@ const HomeDetails = () => {
             <h1 className="md:text-5xl text-2xl mb-5">
               We believe in nurturing imaginations <br /> and creating joy
             </h1>
-            <Link href="">
+            <Link href="" className="flex justify-center">
             <button className={` ${mulish.className} font-bold uppercase border-4 border-white hover:bg-orange-500 px-5 py-2  rounded-sm`}>Shop Now</button>
             </Link>
           </div>
