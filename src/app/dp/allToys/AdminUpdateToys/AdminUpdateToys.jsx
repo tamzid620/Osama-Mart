@@ -25,7 +25,7 @@ const AdminUpdateToys = () => {
         <ul className='w-full flex items-center gap-[10px] text-neutral-400 text-[14px] font-[500]'>
           <li>Dashboard</li>
           <li><IoIosArrowForward /></li>
-          <li>Toys List</li>
+          <li>Toy List</li>
           <li><IoIosArrowForward /></li>
           <li>Update Toy</li>
         </ul>
