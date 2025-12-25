@@ -5,6 +5,7 @@ import { kanit, mulish } from "../../../../utilies/FontsProvider/fontProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { baseUrl } from "../../../../utilies/config";
+import { toast, ToastContainer, Zoom } from 'react-toastify';
 
 const AdminAddToys = () => {
   const [isLoding, setIsLoading] = useState(false);
@@ -74,36 +75,17 @@ const AdminAddToys = () => {
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .get(baseUrl('all-toys'), addToys)
-  //     .then((res) => {
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Toy Added",
-  //         text: res.data.message,
-  //       });
-  //       router.push("/dp/allToys");
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error updating toy:", error);
-  //       Swal.fire({
-  //         icon: "error",
-  //         title: "Add Failed",
-  //         text: error.res?.data?.message || "An error occurred.",
-  //       });
-  //     });
-  // };
 
+  //  handleSubmit function ----------------
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!addToys.image || !addToys.hoverImage) {
-      return Swal.fire({
-        icon: "warning",
-        title: "Image Required",
-        text: "Please upload images before submitting.",
+      return toast.warn("Image Required!", {
+        position: "top-center",
+        autoClose: 300,
+        theme: "light",
+        transition: Zoom,
       });
     }
     setIsLoading(true);
@@ -111,12 +93,14 @@ const AdminAddToys = () => {
       .post(baseUrl("all-toys"), addToys)
       .then((res) => {
         setIsLoading(false);
-        Swal.fire({
-          icon: "success",
-          title: "Toy Added",
-          text: "Your toy has been added successfully!",
+
+        toast.success("Toy added successfully!", {
+          position: "top-center",
+          autoClose: 300,
+          theme: "light",
+          transition: Zoom,
+          onClose: () => navigate("/dp/allToys"),
         });
-        router.push("/dp/allToys");
       })
       .catch((error) => {
         console.error("Error adding toy:", error);
@@ -136,7 +120,7 @@ const AdminAddToys = () => {
 
   return (
     <div
-      className={` ${kanit.className} w-full mx-auto p-6 bg-transparent text-black shadow-md rounded-sm mt-10 `}
+      className={`${kanit.className} w-full mx-auto p-6 bg-transparent text-black shadow-md rounded-sm mt-10 `}
     >
       <form
         onSubmit={handleSubmit}
@@ -340,6 +324,7 @@ const AdminAddToys = () => {
           )}
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };

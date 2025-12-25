@@ -87,7 +87,7 @@ const AdminUpdateToysForm = () => {
 
   return (
     <div
-      className={` ${kanit.className} max-w-3xl mx-auto p-6 bg-gray-900  shadow-md rounded-sm mt-10 `}
+      className={` ${kanit.className}  w-full mx-auto p-6 bg-transparent text-black shadow-md rounded-sm mt-10 `}
     >
       <form onSubmit={handleSubmit}  onKeyDown={handleKeyDown}  className="space-y-4">
       <div>
@@ -211,7 +211,7 @@ const AdminUpdateToysForm = () => {
 
         <button
           type="submit"
-          className={` ${mulish.className} w-full uppercase border-2 text-white py-2 px-4 rounded-sm shadow hover:bg-[#A64D79] focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold`}
+          className={`${mulish.className} w-full uppercase  bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-sm shadow font-semibold`}
         >
           Submit
         </button>
