@@ -142,7 +142,7 @@ const AdminAddToys = () => {
             <button
               type="button"
               onClick={handleRenerateRandomId}
-              className="ml-2 bg-orange-500 hover:bg-orange-600 text-white w-[120px] py-[12px] rounded-sm text-xs"
+              className="ml-2 mt-1 bg-orange-500 hover:bg-orange-600 text-white w-[120px] py-[10px] rounded-sm text-sm"
             >
               Generate ID
             </button>
