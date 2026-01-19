@@ -1,11 +1,13 @@
 import "./globals.css";
 
-const RootLayout = ({ children }) => {
+
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+          {children}
+      </body>
     </html>
   );
-};
+}
 
-export default RootLayout;

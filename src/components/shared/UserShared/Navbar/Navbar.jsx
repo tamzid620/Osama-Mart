@@ -8,27 +8,30 @@ import menuBar from "../../../../assests/icons/menu-bar.png";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Link from "next/link";
 import ViewCart from "../ViewCart/ViewCart";
+import { useCart } from "../../../../app/context/CartContext";
 
 const kanit = Kanit({
-  subsets: ['latin'], 
+  subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal"],
- preload: true,
+  preload: true,
 });
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [viewCart, setViewCart] = useState(false);
-  const [cartLength, setCartLength] = useState(0);
+  // const [cartItems , setCartItems ] = useState(0);
 
-  useEffect(() => {
-    const cartData = localStorage.getItem("cart");
-    if (cartData) {
-      const cart = JSON.parse(cartData);
-      setCartLength(cart.length);
-    }
-  }, []);
-  
+  // useEffect(() => {
+  //   const cartData = localStorage.getItem("cart");
+  //   if (cartData) {
+  //     const cart = JSON.parse(cartData);
+  //     setCartItems (cart.length);
+  //   }
+  // }, []);
+  const { cartItems } = useCart(); // 🔥 real-time source
+
+
   useEffect(() => {
     const handleScroll = () => {
       if (isOpen) {
@@ -58,12 +61,12 @@ const Navbar = () => {
       >
         {/* Image section  */}
         <div>
-        <Link href="/">
-          <Image
-            src={navbarImage}
-            alt="navbar-image"
-            className="w-[120px] py-3"
-          />
+          <Link href="/">
+            <Image
+              src={navbarImage}
+              alt="navbar-image"
+              className="w-[120px] py-3"
+            />
           </Link>
         </div>
         {/* nav ul section for large device  */}
@@ -88,7 +91,7 @@ const Navbar = () => {
             <li className="relative" title="View Cart" onClick={toggleViewCart}>
               <BsFillCartCheckFill className="relative" size={24} />
               <p className="absolute top-[-6px] right-[-10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
-                {cartLength}
+                {cartItems.length}
               </p>
             </li>
           </ul>
@@ -96,22 +99,22 @@ const Navbar = () => {
         {/* nav ul section for medium & small  device  */}
         <div className="relative md:hidden sm: flex">
           <h1 className="relative" title="View Cart" onClick={toggleViewCart}>
-          <BsFillCartCheckFill
-            title="View Cart"
-            size={30}
-            className="relative me-5 text-[#F26626]"
-          />
-          <p className="absolute top-[-6px] right-[10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
-          {cartLength}
-              </p>
+            <BsFillCartCheckFill
+              title="View Cart"
+              size={30}
+              className="relative me-5 text-[#F26626]"
+            />
+            <p className="absolute top-[-6px] right-[10px] bg-gray-100 text-black rounded-full flex justify-center text-center w-[15px] text-[10px]">
+              {cartItems.length}
+            </p>
           </h1>
           <Link href="/">
-          <Image
-            onClick={handleMenuBar}
-            className="w-[30px] dropShadow "
-            src={menuBar}
-            alt="navbar"
-          />
+            <Image
+              onClick={handleMenuBar}
+              className="w-[30px] dropShadow "
+              src={menuBar}
+              alt="navbar"
+            />
           </Link>
         </div>
         {isOpen && (
@@ -138,7 +141,7 @@ const Navbar = () => {
       {/* ViewCart  SideBar */}
       <div className="relative">
         {viewCart ? (
-          <div className="absolute bg-white w-[350px] shadow-md shadow-[#F26626] h-screen z-10 transition ease-in-out duration-500 ">
+          <div className="absolute -top-16 bg-black w-[350px] shadow-md shadow-[#F26626] h-screen z-10 transition ease-in-out duration-500">
             <ViewCart toggleViewCart={toggleViewCart} />
           </div>
         ) : (

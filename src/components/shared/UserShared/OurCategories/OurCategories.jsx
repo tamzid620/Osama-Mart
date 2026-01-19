@@ -18,26 +18,28 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useCart} from  "../../../../app/context/CartContext";
 
 const kanit = Kanit({
-  subsets: ['latin'], 
+  subsets: ["latin"],
   weight: ["400", "700"],
   style: ["normal"],
- preload: true,
+  preload: true,
 });
 const mulish = Mulish({
   subsets: ["latin"],
-weight: ["300", "700"],
+  weight: ["300", "700"],
   style: ["normal"],
- preload: true,
+  preload: true,
 });
 
 const OurCategories = () => {
-
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [showAllToys, setShowAllToys] = useState(4);
   const [allToys, setAllToys] = useState([]);
   const [selectedTab, setSelectedTab] = useState("Vehicles & Starships");
+  const [loadingId, setLoadingId] = useState(null);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     axios
@@ -49,7 +51,7 @@ const OurCategories = () => {
   }, []);
   // Filter the toys by category
   const filteredToys = allToys.filter((toy) =>
-    selectedTab === "All" ? allToys : toy.category === selectedTab
+    selectedTab === "All" ? allToys : toy.category === selectedTab,
   );
   // defalut toys shows
   const defaultToys = filteredToys.slice(0, showAllToys);
@@ -67,22 +69,43 @@ const OurCategories = () => {
     });
   };
   // handleAddToCart button ---------------------
-  const handleAddToCart = (toy) => {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(toy);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    //  Toast message -----------------------------
-    toast.success("Item has been added to your cart!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-    window.location.reload();
+
+  // const handleAddToCart = async (toy) => {
+  //   setLoadingId(toy.id);
+
+  //   try {
+  //     const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  //     cart.push(toy);
+  //     localStorage.setItem("cart", JSON.stringify(cart));
+
+  //     toast.success("Item has been added to your cart!", {
+  //       position: "top-center",
+  //       autoClose: 2000,
+  //       theme: "dark",
+  //     });
+  //   } catch (error) {
+  //     toast.error("Something went wrong!");
+  //   } finally {
+  //     setLoadingId(null);
+  //   }
+  // };
+
+  const handleAddToCart = async (toy) => {
+    setLoadingId(toy.id);
+
+    try {
+      addToCart(toy); // 🔥 THIS updates Navbar instantly
+
+      toast.success("Item has been added to your cart!", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+      });
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setLoadingId(null);
+    }
   };
 
   return (
@@ -90,7 +113,7 @@ const OurCategories = () => {
       <h1
         className={`${kanit.className} text-4xl text-center mb-10 text-[#F26626] `}
       >
-        Our Category 
+        Our Category
       </h1>
       {/* ---------------------------- Tab title section ----------------------------  */}
       <div className="md:max-w-3xl sm: max-w-sm lg:px-0 md:px-5 sm: px-3 mx-auto">
@@ -244,23 +267,27 @@ const OurCategories = () => {
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
                     <button
+                      disabled={loadingId === id}
                       onClick={() =>
                         handleAddToCart({ id, image, name, price })
                       }
-                      className="w-full mx-4 bg-gray-100 hover:bg-[#F26626] border-2 border-[#F26626] text-[#F26626] hover:text-white py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md flex justify-center items-center"
+                      className={`w-full mx-4 border-2 border-[#F26626] py-2 px-4 font-semibold uppercase rounded-lg text-sm shadow-md
+    ${
+      loadingId === id
+        ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+        : "bg-gray-100 hover:bg-[#F26626] text-[#F26626] hover:text-white"
+    }`}
                     >
-                      {hoveredIndex === id ? (
-                        <span className=" flex justify-center items-center">
-                          Add to Cart
-                          <FaCartArrowDown
-                            size={18}
-                            className="ms-2 transition-opacity duration-500"
-                          />
+                      {loadingId === id ? (
+                        <span className="flex items-center justify-center">
+                          Adding...
+                        </span>
+                      ) : hoveredIndex === id ? (
+                        <span className="flex justify-center items-center">
+                          Add to Cart <FaCartArrowDown className="ms-2" />
                         </span>
                       ) : (
-                        <span className="transition-opacity duration-500">
-                          Select Options
-                        </span>
+                        "Select Options"
                       )}
                     </button>
                   </div>
@@ -307,7 +334,7 @@ const OurCategories = () => {
                     </span>
                   </div>
                 </div>
-              )
+              ),
             )}
           </div>
         )}
