@@ -110,7 +110,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const navItems = [
   { text: 'Dashboard', href: '/dp', icon: <DashboardIcon /> },
   { text: 'All Toys', href: '/dp/allToys', icon: <InboxIcon /> },
-  { text: 'Add Toys', href: '/dp/addToys', icon: <AddToPhotosIcon /> },
+//   { text: 'Add Toys', href: '/dp/addToys', icon: <AddToPhotosIcon /> },
 ];
 
 

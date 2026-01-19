@@ -128,7 +128,7 @@ const AdminAddToys = () => {
         className="space-y-4"
       >
         {/* Generate Toy ID input field ---------------- */}
-        <div>
+        <div className="mb-8">
           <label className="block text-sm font-medium text-white">Toy Id</label>
           <div className="flex items-center">
             <input
@@ -149,37 +149,8 @@ const AdminAddToys = () => {
           </div>
         </div>
 
-        {/* <div>
-          <label className="block text-sm font-medium text-white">
-            Image URL
-          </label>
-          <input
-            type="text"
-            name="image"
-            value={addToys?.image}
-            placeholder="paste first image url"
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-white">
-            Hover Image URL
-          </label>
-          <input
-            type="text"
-            name="hoverImage"
-            value={addToys?.hoverImage}
-            placeholder="paste second image url"
-            onChange={handleChange}
-            required
-            className="mt-1 block w-full rounded-sm border-2 border-gray-300 shadow-lg py-2 ps-2 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm bg-white text-black"
-          />
-        </div> */}
         {/* Image Upload input field ---------------- */}
-        <div>
+        <div className="mb-8">
           <label className="block text-sm font-medium text-white">
             Image Upload
           </label>
@@ -192,7 +163,7 @@ const AdminAddToys = () => {
         </div>
 
         {/* Hover Image Upload input field ---------------- */}
-        <div>
+        <div className="mb-10">
           <label className="block text-sm font-medium text-white">
             Hover Image Upload
           </label>
@@ -206,7 +177,7 @@ const AdminAddToys = () => {
 
         {/* Name input field ---------------- */}
         <div>
-          <label className="block text-sm font-medium text-white">Name</label>
+          <label className="mt-8 block text-sm font-medium text-white">Name</label>
           <input
             type="text"
             name="name"
@@ -220,7 +191,7 @@ const AdminAddToys = () => {
 
         {/* Price input field ----------------  */}
         <div>
-          <label className="block text-sm font-medium text-white">Price</label>
+          <label className="mt-8  block text-sm font-medium text-white">Price</label>
           <input
             type="number"
             name="price"
@@ -234,7 +205,7 @@ const AdminAddToys = () => {
 
         {/* Quality input field ----------------  */}
         <div>
-          <label className="block text-sm font-medium text-white">
+          <label className="mt-8 block text-sm font-medium text-white">
             Quantity
           </label>
           <input
@@ -249,9 +220,9 @@ const AdminAddToys = () => {
         </div>
 
         {/* Category & Rating input fields --------------- */}
-        <div className="flex  gap-5">
+        <div className="flex  gap-5 ">
 
-          <div className="w-full">
+          <div className="w-full mt-6">
             <label className="block text-sm font-medium text-white">
               Category
             </label>
@@ -270,7 +241,7 @@ const AdminAddToys = () => {
             </select>
           </div>
 
-          <div className="w-full">
+          <div className="w-full mt-6">
             <label className="block text-sm font-medium text-white">Rating</label>
             <select
               type="ratio"
@@ -295,8 +266,8 @@ const AdminAddToys = () => {
         </div>
 
         {/* Description input field ---------------  */}
-        <div>
-          <label className="block text-sm font-medium text-white">
+        <div className="">
+          <label className="mt-10 block text-sm font-medium text-white">
             Description
           </label>
           <textarea
@@ -311,9 +282,10 @@ const AdminAddToys = () => {
         </div>
 
         {/*---------------------- Submit Button-------------------  */}
+        <div className="flex justify-end mt-10">
         <button
           type="submit"
-          className={`${mulish.className} w-full uppercase ${isLoding ? "bg-gray-300" : " bg-orange-500 hover:bg-orange-600"
+          className={`${mulish.className}  uppercase ${isLoding ? "bg-gray-300" : " bg-orange-500 hover:bg-orange-700"
             } text-white py-2 px-4 rounded-sm shadow font-semibold`}
           disabled={isLoding}
         >
@@ -323,6 +295,7 @@ const AdminAddToys = () => {
             "Submit"
           )}
         </button>
+        </div>
       </form>
       <ToastContainer />
     </div>

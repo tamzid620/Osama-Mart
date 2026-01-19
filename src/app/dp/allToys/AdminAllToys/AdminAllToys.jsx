@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LoadingCompo from "../../../../components/shared/LoadingCompo/LoadingCompo";
 import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
 
 const kanit = Kanit({
   subsets: ["latin"],
@@ -75,19 +76,20 @@ const AdminAllToys = () => {
       .then(() => {
         isDeleteLoading(false);
         setAllToys((prevToys) => prevToys.filter((toy) => toy._id !== _id));
-        Swal.fire({
-          icon: "success",
-          title: "Item Deleted",
-          text: "Your toy has been deleted successfully!",
-        });
+        
+        toast.success("Item has been deleted successfully!", {
+      position: "top-center",
+      autoClose: 2000,
+      theme: "dark",
+    });
       })
       .catch((error) => {
         console.error("Error deleting toy:", error);
-        Swal.fire({
-          icon: "error",
-          title: "Failed",
-          text: "Operation failed.",
-        });
+        toast.error("Error deleting toy!", {
+      position: "top-center",
+      autoClose: 2000,
+      theme: "dark",
+    });
       });
   };
 
@@ -210,6 +212,7 @@ const AdminAllToys = () => {
           )
         )}
       </div>
+       <ToastContainer />
     </div>
   );
 };
